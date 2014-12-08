@@ -1,83 +1,77 @@
-.jumbotron {
-	background-color: #333;
-	color: #eee;
+/*
+ Skin Name:   Shakepeers
+ Description:  Skin for shakepeers.org
+ Author:       Mark Nightingale
+ Author URI:   http://marknightingale.net
+ 
+*/
+
+/* =Theme customization starts here
+-------------------------------------------------------------- */
+
+/*----------------------
+Colors =================
+------------------------*/
+/* Feel free to copy&paste color codes to your application */
+/* Shakepeers Orange : #ec6719*/
+/* Shakepeers Blue : #2f99cc */
+
+
+/* Fonts */
+html, body {font-family: "Source Sans Pro", Helvetica, sans-serif;}
+h1, h2, h3, h4, h5, h6 {font-family: "Quicksand";}
+
+
+
+/*-------------------------------------------------------------- */
+/*-------------------------------------------------------------- */
+/*----------------  GLOBAL THEME CUSTOMISATION------------------ */
+/*-------------------------------------------------------------- */
+/*-------------------------------------------------------------- */
+.navbar {border-radius: 0;}
+.form-control {border-radius: 0; border: 1px solid #8E8E8E; font-size: 0.8em;}
+input.form-control {box-shadow: none; background-color: white; color: #2f99cc; }
+input.form-control::-webkit-input-placeholder { color: #B0B0B0 ;}
+input.form-control::-moz-placeholder { color: #B0B0B0 ;}
+
+body {padding:0; background-color: #ededed; }
+
+.background_container {
+    background-image: url('images/background.jpg'); 
+    background-position: center top; 
+    background-size:contain;
+    height: 600px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    z-index:-10;
 }
 
-.jumbotron pre {
-	color: #eee;
-}
+/* --------------------------- ---------------------------------
+---------------------- Header ----------------------------------
+-----------------------------------------------------------------*/
+.top_block {background: white; min-height: 185px;}
 
-.jumbotron .new {
-	color: red;
-}
 
-.jumbotron h1 .mw-headline {
-	text-shadow: 1px 1px 0 #000;
-}
 
-@media (min-width: 520px) {
-	.jumbotron pre {
-		width: 523px;
-	}
+/* ---------- Secondary Navigation ---------------*/
+.navbar_secondary {
+    background-color: #ec6719; height: 35px; width: 100%; border:none; min-height: 0; 
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    font-size: 12px;
+    margin-bottom: 0;
 }
+.navbar_secondary .navbar-nav>.open>a, .navbar_secondary .navbar-nav>.open>a:hover, .navbar_secondary .navbar-nav>.open>a:focus {background-color: white; color: #ec6719;}
+.navbar_secondary .navbar-right:last-child {margin-right: 30px;}
+.navbar_secondary .nav > li > a {padding: 8px;}
+.navbar_secondary .navbar-nav>li>a {color: white;}
+.navbar_secondary .navbar-nav>li>a:hover, .navbar_secondary .navbar-nav>li>a:focus {background-color: white; color: #ec6719;}
+/* ---------------- Primary Navigation ---------------*/
+.search_form {float: none !important;clear: both;text-align: right; margin-right: 30px; position: relative;}
+.search_form div:after {content: '\f002'; color: #B0B0B0; font-family: "FontAwesome"; display: inline-block; position: absolute; right: 24px; top:6px;}
 
-.mud-dir {
-	background: #fff;
-	border: 1px solid #eee;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	box-shadow: 0 0 5px rgba( 0, 0, 0, 0.05 );
-	position: relative;
-}
-
-.mud-dir .reverse-short,
-.mud-dir .reverse-long,
-.mud-dir .long,
-.mud-dir .short {
-	padding: 0.5em;
-}
-
-.mud-dir .long {
-	display: none;
-	padding: 0.5em;
-}
-
-.mud-dir .toggle {
-	background: #eee;
-	color: #555;
-	cursor: pointer;
-	display: block;
-	font-size: 0.9em;
-	padding: 0.5em;
-}
-
-.mud-dir.show-long .long {
-	display: block;
-}
-
-.mud-dir.show-long .short {
-	display: none;
-}
-
-.mud-dir .reverse-short,
-.mud-dir .reverse-long {
-	display: none;
-}
-
-.mud-dir.show-reverse .short,
-.mud-dir.show-reverse .long {
-	display: none;
-}
-
-.mud-dir.show-reverse .reverse-short {
-	display: block;
-}
-
-.mud-dir.show-reverse.show-long .reverse-short {
-	display: none;
-}
-
-.mud-dir.show-reverse.show-long .reverse-long {
-	display: block;
-}
+.navbar-brand img {max-height:120px;}

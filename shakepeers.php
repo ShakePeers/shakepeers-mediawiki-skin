@@ -1,10 +1,10 @@
 <?php
 /**
- * Bootstrap MediaWiki
+ * Shakepeers Skin
  *
- * @bootstrap-mediawiki.php
+ * @shakepeers.php
  * @ingroup Skins
- * @author Matthew Batchelder (http://borkweb.com)
+ * @author Mark Nightingale (http://marknightingale.net)
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
@@ -12,24 +12,28 @@ if ( ! defined( 'MEDIAWIKI' ) ) die( "This is an extension to the MediaWiki pack
 
 $wgExtensionCredits['skin'][] = array(
 	'path'        => __FILE__,
-	'name'        => 'Bootstrap Mediawiki',
-	'url'         => 'http://borkweb.com',
-	'author'      => '[http://borkweb.com Matthew Batchelder]',
-	'description' => 'MediaWiki skin using Bootstrap 3',
+	'name'        => 'Shakepeers Skin',
+	'url'         => 'http://shakepeers.org',
+	'author'      => '[http://marknightingale.net Mark Nightingale',
+	'description' => 'MediaWiki skin for Shakepeers using Bootstrap 3',
 );
 
-$wgValidSkinNames['bootstrapmediawiki'] = 'BootstrapMediaWiki';
-$wgAutoloadClasses['SkinBootstrapMediaWiki'] = __DIR__ . '/BootstrapMediaWiki.skin.php';
+$wgValidSkinNames['shakepeers'] = 'Shakepeers';
+$wgAutoloadClasses['SkinShakepeers'] = __DIR__ . '/Shakepeers.skin.php';
 
 
 $skinDirParts = explode( DIRECTORY_SEPARATOR, __DIR__ );
 $skinDir = array_pop( $skinDirParts );
 
-$wgResourceModules['skins.bootstrapmediawiki'] = array(
+$wgMessagesDirs['shakepeers'] = __DIR__ . '/i18n';
+
+$wgResourceModules['skins.shakepeers'] = array(
 	'styles' => array(
 		$skinDir . '/bootstrap/css/bootstrap.min.css'            => array( 'media' => 'all' ),
 		$skinDir . '/google-code-prettify/prettify.css'          => array( 'media' => 'all' ),
 		$skinDir . '/style.css'                                  => array( 'media' => 'all' ),
+		$skinDir . '/custom.css'                                 => array( 'media' => 'all' ),
+        
 	),
 	'scripts' => array(
 		$skinDir . '/bootstrap/js/bootstrap.min.js',
@@ -48,9 +52,9 @@ $wgResourceModules['skins.bootstrapmediawiki'] = array(
 );
 
 if ( isset( $wgSiteJS ) ) {
-	$wgResourceModules['skins.bootstrapmediawiki']['scripts'][] = $skinDir . '/' . $wgSiteJS;
+	$wgResourceModules['skins.shakepeers']['scripts'][] = $skinDir . '/' . $wgSiteJS;
 }//end if
 
 if ( isset( $wgSiteCSS ) ) {
-	$wgResourceModules['skins.bootstrapmediawiki']['styles'][] = $skinDir . '/' . $wgSiteCSS;
+	$wgResourceModules['skins.shakepeers']['styles'][] = $skinDir . '/' . $wgSiteCSS;
 }//end if
