@@ -51,7 +51,7 @@ class SkinShakepeers extends SkinTemplate {
         
         //Include Google Fonts
         $out->addStyle( 'http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic' );
-        $out->addStyle( 'http://fonts.googleapis.com/css?family=Quicksand:300,400,700' );
+        $out->addStyle( 'http://fonts.googleapis.com/css?family=Quicksand:300,400,600,700' );
         
 	}//end setupSkinUserCss
 }
@@ -75,7 +75,7 @@ class ShakepeersTemplate extends QuickTemplate {
 	 * @access private
 	 */
 	public function execute() {
-		global $wgRequest, $wgUser, $wgSitename, $wgSitenameshort, $wgCopyrightLink, $wgCopyright, $wgBootstrap, $wgArticlePath, $wgGoogleAnalyticsID, $wgSiteCSS, $wgLang;
+		global $wgRequest, $wgUser, $wgSitename, $wgSitenameshort, $wgCopyrightLink, $wgCopyright, $wgBootstrap, $wgArticlePath, $wgGoogleAnalyticsID, $wgSiteCSS, $wgLang, $wgTitle;
 		global $wgEnableUploads;
 		global $wgLogo;
 		global $wgTOCLocation;
@@ -124,7 +124,7 @@ class ShakepeersTemplate extends QuickTemplate {
                         </div>
                     </div>
                 </div>
-        		<div class="navbar <?php echo $wgNavBarClasses; ?>" role="navigation">
+        		<div class="navbar <?php echo $wgNavBarClasses; ?> navbar-primary" role="navigation">
         				<div class="container">
         					<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
         					<div class="navbar-header">
@@ -143,125 +143,212 @@ class ShakepeersTemplate extends QuickTemplate {
         							<input type="hidden" name="title" value="Special:Search">
         						</div>
         					</form>
+                            
+                            <!-- Nav Bar -->
         					<div class="collapse navbar-collapse">
         						<ul class="nav navbar-nav navbar-right">
         							<li>
         							<a href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>"><?php echo wfMessage( 'home' ) ;?></a>
         							</li>
         							<li>
-        							<a href="http://beta.shakepeers.org/Th%C3%A9matiques"><?php echo wfMessage( 'themes' ) ;?></a>
+        							<?php echo Linker::link( Title::newFromText('Thématiques'), wfMsg( 'themes' ) ); ?>
         							</li>
-        							<li class="dropdown">
-        								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <span class="caret"></span></a>
-        								<ul class="dropdown-menu">
-        									<li><a href="<?php echo $url_prefix; ?>Special:RecentChanges" class="recent-changes"><i class="fa fa-edit"></i> Recent Changes</a></li>
-        									<li><a href="<?php echo $url_prefix; ?>Special:SpecialPages" class="special-pages"><i class="fa fa-star-o"></i> Special Pages</a></li>
-        									<?php if ( $wgEnableUploads ) { ?>
-        									<li><a href="<?php echo $url_prefix; ?>Special:Upload" class="upload-a-file"><i class="fa fa-upload"></i> Upload a File</a></li>
-        									<?php } ?>
-        								</ul>
-        							</li>
-        							<?php echo $this->nav( $this->get_page_links( 'Bootstrap:TitleBar' ) ); ?>
+                                    <li>
+                                        <?php echo Linker::linkKnown( SpecialPage::getTitleFor('AllPages') , wfMsg('articles'));?>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown-toggle info_menu_button" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-info-circle"></i></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li> <?php echo Linker::linkKnown( Title::newFromText('ShakePeers') , wfMsg('ShakePeers'));?></li>
+                                            <li> <?php echo Linker::linkKnown( Title::newFromText('Contribuer') , wfMsg('Contribuer'));?></li>
+                                            <li> <?php echo Linker::linkKnown( Title::newFromText('Communauté') , wfMsg('Communauté'));?></li>
+                                            <li> <?php echo Linker::linkKnown( Title::newFromText('Aide') , wfMsg('Aide'));?></li>
+                                            <li> <?php echo Linker::linkKnown( Title::newFromText('Contact') , wfMsg('Contact'));?></li>
+                                        </ul>
+                                    </li>
+        							
         						</ul>
-        					<?php
-        					if ( $wgUser->isLoggedIn() ) {
-        						if ( count( $this->data['personal_urls'] ) > 0 ) {
-        							$user_icon = '<span class="user-icon"><img src="https://secure.gravatar.com/avatar/'.md5(strtolower( $wgUser->getEmail())).'.jpg?s=20&r=g"/></span>';
-        							$name = strtolower( $wgUser->getName() );
-        							$user_nav = $this->get_array_links( $this->data['personal_urls'], $user_icon . $name, 'user' );
-        							?>
-        							<ul<?php $this->html('userlangattributes') ?> class="nav navbar-nav navbar-right">
-        								<?php echo $user_nav; ?>
-        							</ul>
-        							<?php
-        						}//end if
-
-        						if ( count( $this->data['content_actions']) > 0 ) {
-        							$content_nav = $this->get_array_links( $this->data['content_actions'], 'Page', 'page' );
-        							?>
-        							<ul class="nav navbar-nav navbar-right content-actions"><?php echo $content_nav; ?></ul>
-        							<?php
-        						}//end if
-        					} else {  // else if is not logged in
-        						?>
-        						<ul class="nav navbar-nav navbar-right">
-        							<li>
-        							<?php echo Linker::linkKnown( SpecialPage::getTitleFor( 'Userlogin' ), wfMsg( 'login' ) ); ?>
-        							</li>
-        						</ul>
-        						<?php
-        					}
-        					?>
+                            <!-- End nav bar -->
         					
         					</div>
         				</div>
         		</div><!-- topbar -->
             </div><!-- top_block -->
-    		
-    		<div id="wiki-outer-body">
-    			<div id="wiki-body" class="container">
-    				<?php
-    					if ( 'sidebar' == $wgTOCLocation ) {
-    						?>
-    						<div class="row">
-    							<section class="col-md-3 toc-sidebar"></section>
-    							<section class="col-md-9 wiki-body-section">
-    						<?php
-    					}//end if
-    				?>
-    				<?php if( $this->data['sitenotice'] ) { ?><div id="siteNotice" class="alert-message warning"><?php $this->html('sitenotice') ?></div><?php } ?>
-    				<?php if ( $this->data['undelete'] ): ?>
-    				<!-- undelete -->
-    				<div id="contentSub2"><?php $this->html( 'undelete' ) ?></div>
-    				<!-- /undelete -->
-    				<?php endif; ?>
-    				<?php if($this->data['newtalk'] ): ?>
-    				<!-- newtalk -->
-    				<div class="usermessage"><?php $this->html( 'newtalk' )  ?></div>
-    				<!-- /newtalk -->
-    				<?php endif; ?>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="<?php echo $url_prefix; ?>Special:RecentChanges" class="recent-changes"><i class="fa fa-edit"></i> Recent Changes</a></li>
+					<li><a href="<?php echo $url_prefix; ?>Special:SpecialPages" class="special-pages"><i class="fa fa-star-o"></i> Special Pages</a></li>
+					<?php if ( $wgEnableUploads ) { ?>
+					<li><a href="<?php echo $url_prefix; ?>Special:Upload" class="upload-a-file"><i class="fa fa-upload"></i> Upload a File</a></li>
+					<?php } ?>
+				</ul>
+			</li>
+            <!--
+                Add mainpage central quote block
+            -->
+    		<?php if ($wgTitle->isMainPage() ) echo "<h2 class='homepage_quote'>".wfMsg("slogan")."</h2>";?>
+            <!--
+                End mainpage block
+            -->
+                
+                
+            <!--Begin main content holders -->
+            <div class="content_holder">
+        		<div id="wiki-outer-body">
+                    <div class="row">
+                        <!--Wiki Body -->
+            			<div id="wiki-body" class="<?php if ($wgTitle->isMainPage() ) echo 'col-md-8'?>">
+            				<?php
+            					if ( 'sidebar' == $wgTOCLocation ) {
+            						?>
+            						<div class="row">
+            							<section class="col-md-3 toc-sidebar"></section>
+            							<section class="col-md-9 wiki-body-section">
+            						<?php
+            					}//end if
+            				?>
+            				<?php if( $this->data['sitenotice'] ) { ?><div id="siteNotice" class="alert-message warning"><?php $this->html('sitenotice') ?></div><?php } ?>
+            				<?php if ( $this->data['undelete'] ): ?>
+            				<!-- undelete -->
+            				<div id="contentSub2"><?php $this->html( 'undelete' ) ?></div>
+            				<!-- /undelete -->
+            				<?php endif; ?>
+            				<?php if($this->data['newtalk'] ): ?>
+            				<!-- newtalk -->
+            				<div class="usermessage"><?php $this->html( 'newtalk' )  ?></div>
+            				<!-- /newtalk -->
+            				<?php endif; ?>
 
-    				<div class="pagetitle page-header">
-    					<h1><?php $this->html( 'title' ) ?> <small><?php $this->html('subtitle') ?></small></h1>
-    				</div>	
+            				<div class="pagetitle page-header">
+            					<h1><?php $this->html( 'title' ) ?> <small><?php $this->html('subtitle') ?></small></h1>
+            				</div>	
+                        
+                            <!-- Page editing -->
+        					<?php 
+                            if ( $wgUser->isLoggedIn() ) {
+                                if ( count( $this->data['content_actions']) > 0 ) {
+            						$content_nav = $this->get_array_links( $this->data['content_actions'], 'Page', 'page' );
+            						?>
+            						<ul class="nav navbar-nav navbar-right content-actions"><?php echo $content_nav; ?></ul>
+            						<?php
+            					}
+                            }//end if ?>
+                            <!--/page editing -->
 
-    				<div class="body">
-    				<?php $this->html( 'bodytext' ) ?>
-    				</div>
+            				<div class="body">
+            				<?php $this->html( 'bodytext' ) ?>
+            				</div>
 
-    				<?php if ( $this->data['catlinks'] ): ?>
-    				<div class="category-links">
-    				<!-- catlinks -->
-    				<?php $this->html( 'catlinks' ); ?>
-    				<!-- /catlinks -->
-    				</div>
-    				<?php endif; ?>
-    				<?php if ( $this->data['dataAfterContent'] ): ?>
-    				<div class="data-after-content">
-    				<!-- dataAfterContent -->
-    				<?php $this->html( 'dataAfterContent' ); ?>
-    				<!-- /dataAfterContent -->
-    				</div>
-    				<?php endif; ?>
-    				<?php
-    					if ( 'sidebar' == $wgTOCLocation ) {
-    						?>
-    						</section></section>
-    						<?php
-    					}//end if
-    				?>
-    			</div><!-- container -->
-    		</div>
-    		<div class="bottom">
-    			<div class="container">
-    				<?php $this->includePage('Bootstrap:Footer'); ?>
-    				<footer>
-    					<p>&copy; <?php echo date('Y'); ?> by <a href="<?php echo (isset($wgCopyrightLink) ? $wgCopyrightLink : 'http://borkweb.com'); ?>"><?php echo (isset($wgCopyright) ? $wgCopyright : 'BorkWeb'); ?></a> 
-    						&bull; Powered by <a href="http://mediawiki.org">MediaWiki</a> 
-    					</p>
-    				</footer>
-    			</div><!-- container -->
-    		</div><!-- bottom -->
+            				<?php if ( $this->data['catlinks'] ): ?>
+            				<div class="category-links">
+            				<!-- catlinks -->
+            				<?php $this->html( 'catlinks' ); ?>
+            				<!-- /catlinks -->
+            				</div>
+            				<?php endif; ?>
+            				<?php if ( $this->data['dataAfterContent'] ): ?>
+            				<div class="data-after-content">
+            				<!-- dataAfterContent -->
+            				<?php $this->html( 'dataAfterContent' ); ?>
+            				<!-- /dataAfterContent -->
+            				</div>
+            				<?php endif; ?>
+            				<?php
+            					if ( 'sidebar' == $wgTOCLocation ) {
+            						?>
+            						</section></section>
+            						<?php
+            					}//end if
+            				?>
+            			</div><!-- wikibody -->
+                        
+                        <!-- Display Article boxes on Homepage -->
+                        
+                        
+                        <?php if ( $wgTitle->isMainPage() ) : ?>
+                            
+                            <?php
+                            
+                            // Build boxes via associative arrays (because DRY)
+                            $categories = [];
+                            array_push($categories,
+                            
+                                // Add publication box
+                                array(
+                                    "namespace" => "Publication",
+                                    "slug"      => "published",
+                                    "pageTitle" => "Publication",
+                                    "icon"      => "icon-ok" 
+                                ),
+                                // Add Revision box
+                                array(
+                                    "namespace" => "Revision",
+                                    "slug"      => "revision",
+                                    "pageTitle" => "Révision",
+                                    "icon"      => "icon-pencil" 
+                                ),
+                                // Add drafts box
+                                array(
+                                    "namespace" => "Brouillon",
+                                    "slug"      => "draft",
+                                    "pageTitle" => "Brouillon",
+                                    "icon"      => "icon-book" 
+                                )
+                            
+                            );
+                            
+                            // Debug
+                            //echo "<pre>".print_r($categories, true)."</pre>";
+                            
+                            
+                            // Start sidebar
+                            echo "<!-- widget sidebar --><div class='col-md-4 widget_sidebar'>";
+                            
+                            // Build content box
+                            foreach ($categories as $category) : ?>
+                                <!-- <?php echo $category['slug'] ?> articles -->
+                                    <div class="articles_widget articles_widget-<?php echo $category['slug'];?>">
+                                        <h3><span class="icon <?php echo $category['icon'] ?>"></span><?php echo Linker::linkKnown( Title::newFromText($category['pageTitle']) , wfMsg("articles-{$category['slug']}-title"));?></h3>
+                                        <?php 
+                                        // Build Wikicode Tag
+                                        $text = "{{#tag:DynamicPageList|
+                                            namespace = {$category['namespace']}
+                                            shownamespace = false
+                                            count         = 4
+                                            }}";
+                                            
+                                        //  Parse
+                                        $title = $wgTitle;
+                                        $parser = new Parser;
+                                        
+                                        // Output
+                                        $parsed = $parser->parse($text, $wgTitle, new ParserOptions()); echo $parsed->getText();
+                                        
+                                        // Add link
+                                        echo '<p class="see_more_link_holder">'.Linker::linkKnown( Title::newFromText($category['pageTitle']) , wfMsg("see-{$category['slug']}-articles").' <span class="icon icon-arrows-right"></span>').'</p>';
+                                        ?>
+                                    </div>
+                                    
+                            <?php endforeach; ?>
+                            
+                            </div><!-- /widget sidebar -->
+                            
+                            
+                        <?php endif; ?>
+                    </div>
+        		</div>
+        		<div class="bottom">
+        			<div class="container">
+        				<?php $this->includePage('Bootstrap:Footer'); ?>
+        				<footer>
+        					<p>&copy; <?php echo date('Y'); ?> by <a href="<?php echo (isset($wgCopyrightLink) ? $wgCopyrightLink : 'http://borkweb.com'); ?>"><?php echo (isset($wgCopyright) ? $wgCopyright : 'BorkWeb'); ?></a> 
+        						&bull; Powered by <a href="http://mediawiki.org">MediaWiki</a> 
+        					</p>
+        				</footer>
+        			</div><!-- container -->
+        		</div><!-- bottom -->
+            </div>
             
         </div><!-- container -->
 		<?php

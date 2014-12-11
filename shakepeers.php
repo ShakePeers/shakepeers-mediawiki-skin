@@ -33,6 +33,8 @@ $wgResourceModules['skins.shakepeers'] = array(
 		$skinDir . '/google-code-prettify/prettify.css'          => array( 'media' => 'all' ),
 		$skinDir . '/style.css'                                  => array( 'media' => 'all' ),
 		$skinDir . '/custom.css'                                 => array( 'media' => 'all' ),
+		$skinDir . '/flatline/style.css'                           => array( 'media' => 'all' ),
+        
         
 	),
 	'scripts' => array(

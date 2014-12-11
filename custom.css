@@ -20,8 +20,12 @@ Colors =================
 /* Fonts */
 html, body {font-family: "Source Sans Pro", Helvetica, sans-serif;}
 h1, h2, h3, h4, h5, h6 {font-family: "Quicksand";}
+h1 {font-size:2.1em; font-weight: bold; color: #2f99cc;}
+h2 {font-size: 1.9em; font-weight: bold; color: #ec6719;}
+a {color: #2f99cc;}
 
-
+/*  Overrides  */
+h2 .mw-headline {font-size: inherit;}
 
 /*-------------------------------------------------------------- */
 /*-------------------------------------------------------------- */
@@ -34,13 +38,11 @@ input.form-control {box-shadow: none; background-color: white; color: #2f99cc; }
 input.form-control::-webkit-input-placeholder { color: #B0B0B0 ;}
 input.form-control::-moz-placeholder { color: #B0B0B0 ;}
 
-body {padding:0; background-color: #ededed; }
-
+body {padding:0; background: #ededed; }
+.content_holder {background-color: white; padding: 10px 50px; border-top: 1px dashed #ec6719 ;}
 .background_container {
-    background-image: url('images/background.jpg'); 
-    background-position: center top; 
-    background-size:contain;
-    height: 600px;
+    background-color: #2f99cc;
+    height:300px;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -51,11 +53,19 @@ body {padding:0; background-color: #ededed; }
     z-index:-10;
 }
 
+.page-Accueil .background_container {
+    background-image: url('images/background.jpg'); 
+    background-position: center top; 
+    background-size:cover;
+    height: 500px;
+}
+
 /* --------------------------- ---------------------------------
 ---------------------- Header ----------------------------------
 -----------------------------------------------------------------*/
-.top_block {background: white; min-height: 185px;}
+.top_block {background: white; min-height: 170px; border-bottom: 1px dashed #ec6719;}
 
+.page-header {margin-top: 0; border-bottom:0;}
 
 
 /* ---------- Secondary Navigation ---------------*/
@@ -74,4 +84,30 @@ body {padding:0; background-color: #ededed; }
 .search_form {float: none !important;clear: both;text-align: right; margin-right: 30px; position: relative;}
 .search_form div:after {content: '\f002'; color: #B0B0B0; font-family: "FontAwesome"; display: inline-block; position: absolute; right: 24px; top:6px;}
 
+.navbar-nav.navbar-right:last-child {margin-right:15px;}
+
 .navbar-brand img {max-height:120px;}
+.navbar .info_menu_button {font-size:1.5em !important; }
+
+.navbar-primary .navbar-nav a {color:#ec6719; font-size: 1.2em; }
+.navbar-primary {margin-bottom: 0;}
+
+
+/*----------------------------------------------------------------
+    -------------- Homepage specific things ----------------
+  ----------------------------------------------------------------
+*/
+
+h2.homepage_quote {text-align:center;  color: white; margin: 100px auto; max-width: 80%;}
+
+/* Articles boxes */
+.articles_widget {background-color: #EDEDED; padding:15px;margin-bottom: 30px;}
+.articles_widget h3 {background-color: #ec6719 ; padding: 5px 15px; margin: -15px -15px 15px -15px; color: white; font-size: 1.3em; font-weight:bold;}
+.articles_widget h3 a {color: white; position: relative; bottom: 8px;}
+.articles_widget h3 .icon {font-size: 2em; margin-right: 10px;}
+.articles_widget li {color: #2f99cc;}
+.articles_widget ul {padding-left: 17px;}
+.articles_widget:nth-child(2) h3 {background-color: rgba(236,103,25,0.7)}
+.articles_widget:nth-child(3) h3 {background-color: rgba(236,103,25,0.5)}
+
+.see_more_link_holder a {color: #ec6719; font-weight:bold;}
