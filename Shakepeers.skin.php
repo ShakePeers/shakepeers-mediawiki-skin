@@ -99,7 +99,6 @@ class ShakepeersTemplate extends QuickTemplate {
                 <div class="navbar_secondary navbar navbar-default navbar-shakepeers-secondary" role="navigation">
                     <div class="container">
                         <div class="collapse navbar-collapse">
-                            
     					<?php
     					if ( $wgUser->isLoggedIn() ) {
     						if ( count( $this->data['personal_urls'] ) > 0 ) {
@@ -107,7 +106,7 @@ class ShakepeersTemplate extends QuickTemplate {
     							$name = wfMessage( 'shakepeers-welcome' )->inContentLanguage() . ' ' .strtolower( $wgUser->getName() );
     							$user_nav = $this->get_array_links( $this->data['personal_urls'], $user_icon . $name, 'user' );
     							?>
-    							<ul<?php $this->html('userlangattributes') ?> class="nav navbar-nav navbar-right">
+    							<ul<?php $this->html('userlangattributes') ?> class="nav navbar-nav navbar-right navbar-nav-user">
     								<?php echo $user_nav; ?>
     							</ul>
     							<?php
@@ -174,16 +173,7 @@ class ShakepeersTemplate extends QuickTemplate {
         				</div>
         		</div><!-- topbar -->
             </div><!-- top_block -->
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li><a href="<?php echo $url_prefix; ?>Special:RecentChanges" class="recent-changes"><i class="fa fa-edit"></i> Recent Changes</a></li>
-					<li><a href="<?php echo $url_prefix; ?>Special:SpecialPages" class="special-pages"><i class="fa fa-star-o"></i> Special Pages</a></li>
-					<?php if ( $wgEnableUploads ) { ?>
-					<li><a href="<?php echo $url_prefix; ?>Special:Upload" class="upload-a-file"><i class="fa fa-upload"></i> Upload a File</a></li>
-					<?php } ?>
-				</ul>
-			</li>
+			
             <!--
                 Add mainpage central quote block
             -->
@@ -198,7 +188,8 @@ class ShakepeersTemplate extends QuickTemplate {
         		<div id="wiki-outer-body">
                     <div class="row">
                         <!--Wiki Body -->
-            			<div id="wiki-body" class="<?php if ($wgTitle->isMainPage() ) echo 'col-md-8'?>">
+            			<div id="wiki-body" class="<?php if ($wgTitle->isMainPage() ) echo 'col-md-8'?>">                            
+                            
             				<?php
             					if ( 'sidebar' == $wgTOCLocation ) {
             						?>
@@ -351,6 +342,16 @@ class ShakepeersTemplate extends QuickTemplate {
         				<footer>
         					<p>&copy; <?php echo date('Y'); ?> by <a href="<?php echo (isset($wgCopyrightLink) ? $wgCopyrightLink : 'http://borkweb.com'); ?>"><?php echo (isset($wgCopyright) ? $wgCopyright : 'BorkWeb'); ?></a> 
         						&bull; Powered by <a href="http://mediawiki.org">MediaWiki</a> 
+                    			<li class="dropdown">
+                    				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <span class="caret"></span></a>
+                    				<ul class="dropdown-menu">
+                    					<li><a href="<?php echo $url_prefix; ?>Special:RecentChanges" class="recent-changes"><i class="fa fa-edit"></i> Recent Changes</a></li>
+                    					<li><a href="<?php echo $url_prefix; ?>Special:SpecialPages" class="special-pages"><i class="fa fa-star-o"></i> Special Pages</a></li>
+                    					<?php if ( $wgEnableUploads ) { ?>
+                    					<li><a href="<?php echo $url_prefix; ?>Special:Upload" class="upload-a-file"><i class="fa fa-upload"></i> Upload a File</a></li>
+                    					<?php } ?>
+                    				</ul>
+                    			</li>
         					</p>
         				</footer>
         			</div><!-- container -->
@@ -414,7 +415,21 @@ class ShakepeersTemplate extends QuickTemplate {
 		}//end foreach
 		return $output;
 	}//end nav
-
+    
+    private function page_nav( $nav ) {
+        $output = '';
+        
+        for ($i=1;$i<count($nav);$i++) {
+            $output .= "<li><a href='{$nav[$i]['link']}'>";
+            $output .= $nav[$i]['title'];
+            $output .= "</li></a>";
+            
+        }
+        return $output;
+    }
+    
+    
+    
 	/**
 	 * Render one or more navigations elements by name, automatically reveresed
 	 * when UI is in RTL mode
@@ -532,36 +547,63 @@ class ShakepeersTemplate extends QuickTemplate {
 			);
 
 			if( 'page' == $which ) {
-				switch( $link['title'] ) {
-				case 'Page': $icon = 'file'; break;
-				case 'Discussion': $icon = 'comment'; break;
-				case 'Edit': $icon = 'pencil'; break;
-				case 'History': $icon = 'clock-o'; break;
-				case 'Delete': $icon = 'remove'; break;
-				case 'Move': $icon = 'arrows'; break;
-				case 'Protect': $icon = 'lock'; break;
-				case 'Watch': $icon = 'eye-open'; break;
-				case 'Unwatch': $icon = 'eye-slash'; break;
-				}//end switch
+				// switch( $link['title'] ) {
+//                 case 'Page': $icon = 'file'; break;
+//                 case 'Discussion': $icon = 'comment'; break;
+//                 case 'Edit': $icon = 'pencil'; break;
+//                 case 'History': $icon = 'clock-o'; break;
+//                 case 'Delete': $icon = 'remove'; break;
+//                 case 'Move': $icon = 'arrows'; break;
+//                 case 'Protect': $icon = 'lock'; break;
+//                 case 'Watch': $icon = 'eye-open'; break;
+//                 case 'Unwatch': $icon = 'eye-slash'; break;
+//                 }//end switch
+                switch( $key ) {
+                    case 'nstab-revision': $icon = "pencil"; break;
+                    case 'talk': $icon = "comment"; break;
+                    case 've-edit': $icon = "pencil-square-o"; break;
+                    case 'edit': $icon = "code"; break;
+                    case 'history': $icon = "history"; break;
+                    case 'watch': $icon = "eye"; break;
+                }// end switch
 
 				$link['title'] = '<i class="fa fa-' . $icon . '"></i> ' . $link['title'];
 			} elseif( 'user' == $which ) {
-				switch( $link['title'] ) {
-				case 'My talk': $icon = 'comment'; break;
-				case 'My preferences': $icon = 'cog'; break;
-				case 'My watchlist': $icon = 'eye-close'; break;
-				case 'My contributions': $icon = 'list-alt'; break;
-				case 'Log out': $icon = 'off'; break;
-				default: $icon = 'user'; break;
-				}//end switch
+                switch( $key ) {
+                    case 'userpage': $icon = 'user'; break;
+                    case 'mytalk': $icon = 'comments-o'; break;
+                    case 'preferences': $icon = 'cog'; break;
+                    case 'betafeatures': $icon = 'asterisk'; break;
+                    case 'watchlist': $icon = 'eye'; break;
+                    case 'newmessages': $icon = 'envelope'; break;
+                    case 'mycontris': $icon = 'list'; break;
+                    case 'logout': $icon = 'power-off'; break;
+                }
+                
+                // Deal with special cases
+                if ($key == 'notifications') {
+                    $link['title'] = '<i class="fa fa-exclamation"></i> &nbsp;' . wfMsg('notifications') .' &nbsp;&nbsp;<span class="badge">' . $link['title'] .'</span>';
+                } else {
+                    $link['title'] = '<i class="fa fa-' . $icon . '"></i> ' . $link['title'];
+                }
 
-				$link['title'] = '<i class="fa fa-' . $icon . '"></i> ' . $link['title'];
+                    
+
+				
 			}//end elseif
-
-			$nav[0]['sublinks'][] = $link;
+            if ('page' == $which) {
+                $nav[] = $link;
+            } else {
+    			$nav[0]['sublinks'][] = $link;
+                
+            }
 		}//end foreach
-
-		return $this->nav( $nav );
+        if ('page' == $which ){
+            return $this->page_nav ($nav);
+        } else {
+    		return $this->nav( $nav );
+            
+        }
 	}//end get_array_links
 
 	function getPageRawText($title) {

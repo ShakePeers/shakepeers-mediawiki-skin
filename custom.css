@@ -25,8 +25,8 @@ h2 {font-size: 1.9em; font-weight: bold; color: #ec6719;}
 a {color: #2f99cc;}
 
 /*  Overrides  */
-h2 .mw-headline {font-size: inherit;}
-
+h2 .mw-headline {font-size: inherit; border-bottom: 0; text-shadow:none;}
+#wiki-body h2 {border-bottom: 0; margin-bottom: 1.3em;}
 /*-------------------------------------------------------------- */
 /*-------------------------------------------------------------- */
 /*----------------  GLOBAL THEME CUSTOMISATION------------------ */
@@ -39,10 +39,11 @@ input.form-control::-webkit-input-placeholder { color: #B0B0B0 ;}
 input.form-control::-moz-placeholder { color: #B0B0B0 ;}
 
 body {padding:0; background: #ededed; }
-.content_holder {background-color: white; padding: 10px 50px; border-top: 1px dashed #ec6719 ;}
+.content_holder {background-color: white; padding: 20px; border-top: 1px dashed #ec6719 ; margin-top: 70px;}
+.page-Accueil .content_holder {margin-top: 0;}
 .background_container {
     background-color: #2f99cc;
-    height:300px;
+    height:350px;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -60,12 +61,14 @@ body {padding:0; background: #ededed; }
     height: 500px;
 }
 
+
+
 /* --------------------------- ---------------------------------
 ---------------------- Header ----------------------------------
 -----------------------------------------------------------------*/
 .top_block {background: white; min-height: 170px; border-bottom: 1px dashed #ec6719;}
 
-.page-header {margin-top: 0; border-bottom:0;}
+.page-header {margin-top: 0; border-bottom:0; margin-bottom:0; }
 
 
 /* ---------- Secondary Navigation ---------------*/
@@ -80,6 +83,9 @@ body {padding:0; background: #ededed; }
 .navbar_secondary .nav > li > a {padding: 8px;}
 .navbar_secondary .navbar-nav>li>a {color: white;}
 .navbar_secondary .navbar-nav>li>a:hover, .navbar_secondary .navbar-nav>li>a:focus {background-color: white; color: #ec6719;}
+
+.navbar-nav-user .dropdown-menu>li>a {font-size: 12px;}
+.navbar-nav-user .dropdown-menu>li>a i.fa {color: #ec6719;}
 /* ---------------- Primary Navigation ---------------*/
 .search_form {float: none !important;clear: both;text-align: right; margin-right: 30px; position: relative;}
 .search_form div:after {content: '\f002'; color: #B0B0B0; font-family: "FontAwesome"; display: inline-block; position: absolute; right: 24px; top:6px;}
@@ -91,6 +97,13 @@ body {padding:0; background: #ededed; }
 
 .navbar-primary .navbar-nav a {color:#ec6719; font-size: 1.2em; }
 .navbar-primary {margin-bottom: 0;}
+
+
+/*----------------------------------------------------------------
+    -------------- General Article things        ----------------
+  ----------------------------------------------------------------
+*/
+#wiki-body {padding:0 50px;}
 
 
 /*----------------------------------------------------------------
@@ -121,3 +134,7 @@ h2.homepage_quote {text-align:center;  color: white; margin: 100px auto; max-wid
 .see_more_link_holder a {color: #ec6719; font-weight:bold; text-decoration:none;}
 .see_more_link_holder a:hover {color: #9C3910;}
 .see_more_link_holder a .icon {position: relative; top: 2px;}
+
+
+
+
