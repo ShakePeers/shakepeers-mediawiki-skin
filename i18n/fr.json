@@ -4,5 +4,15 @@
 	},
 	"skinname-shakepeers": "Shakepeers",
 	"shakepeers-desc": "Skin pour l'association Shakepeers",
-    "shakepeers-welcome": "Bienvenue"
+    "shakepeers-welcome": "Bienvenue",
+    "home":"Accueil",
+    "themes":"Thématiques",
+    "articles":"Articles",
+    "slogan":"Diffuser la connaissance sous forme vulgarisée, libre, collaborative et ouverte.",
+    "articles-published-title":"Articles publiés",
+    "articles-revision-title":"Articles en révision",
+    "articles-draft-title":"Articles en brouillon",
+    "see-published-articles":"Voir tous les articles publiés",
+    "see-revision-articles":"Voir tous les articles en révision",
+    "see-draft-articles":"Voir tous les articles en brouillon"
 }
