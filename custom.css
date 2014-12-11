@@ -102,12 +102,22 @@ h2.homepage_quote {text-align:center;  color: white; margin: 100px auto; max-wid
 
 /* Articles boxes */
 .articles_widget {background-color: #EDEDED; padding:15px;margin-bottom: 30px;}
-.articles_widget h3 {background-color: #ec6719 ; padding: 5px 15px; margin: -15px -15px 15px -15px; color: white; font-size: 1.3em; font-weight:bold;}
-.articles_widget h3 a {color: white; position: relative; bottom: 8px;}
-.articles_widget h3 .icon {font-size: 2em; margin-right: 10px;}
+.articles_widget h3 {background-color: #ec6719 ; padding: 5px 15px; margin: -15px -15px 15px -15px; color: white; font-size: 1.2em; font-weight:bold; position:relative;}
+.articles_widget h3 a {color: white; position:relative; bottom: 8px;} 
+
+/*First icon*/
+.articles_widget h3 .icon {font-size: 2em; margin-right: 0vpx;}
+
+/*Rss Icon*/
+.articles_widget h3 .rss_button {position: absolute; top:12px; right:10px;}
+.articles_widget h3 .rss_button .icon {font-size:1.2em;}
+
+
 .articles_widget li {color: #2f99cc;}
 .articles_widget ul {padding-left: 17px;}
 .articles_widget:nth-child(2) h3 {background-color: rgba(236,103,25,0.7)}
 .articles_widget:nth-child(3) h3 {background-color: rgba(236,103,25,0.5)}
 
-.see_more_link_holder a {color: #ec6719; font-weight:bold;}
+.see_more_link_holder a {color: #ec6719; font-weight:bold; text-decoration:none;}
+.see_more_link_holder a:hover {color: #9C3910;}
+.see_more_link_holder a .icon {position: relative; top: 2px;}

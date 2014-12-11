@@ -279,21 +279,24 @@ class ShakepeersTemplate extends QuickTemplate {
                                     "namespace" => "Publication",
                                     "slug"      => "published",
                                     "pageTitle" => "Publication",
-                                    "icon"      => "icon-ok" 
+                                    "icon"      => "icon-ok-sign",
+                                    "feedUrl"   => "https://shakepeers.org/api.php?hidebots=1&action=feedrecentchanges&namespace=5000" 
                                 ),
                                 // Add Revision box
                                 array(
                                     "namespace" => "Revision",
                                     "slug"      => "revision",
                                     "pageTitle" => "Révision",
-                                    "icon"      => "icon-pencil" 
+                                    "icon"      => "icon-pencil",
+                                    "feedUrl"   => "https://shakepeers.org/api.php?hidebots=1&action=feedrecentchanges&namespace=4000" 
                                 ),
                                 // Add drafts box
                                 array(
                                     "namespace" => "Brouillon",
                                     "slug"      => "draft",
                                     "pageTitle" => "Brouillon",
-                                    "icon"      => "icon-book" 
+                                    "icon"      => "icon-file",
+                                    "feedUrl"   => "https://shakepeers.org/api.php?hidebots=1&action=feedrecentchanges&namespace=3000"
                                 )
                             
                             );
@@ -309,7 +312,11 @@ class ShakepeersTemplate extends QuickTemplate {
                             foreach ($categories as $category) : ?>
                                 <!-- <?php echo $category['slug'] ?> articles -->
                                     <div class="articles_widget articles_widget-<?php echo $category['slug'];?>">
-                                        <h3><span class="icon <?php echo $category['icon'] ?>"></span><?php echo Linker::linkKnown( Title::newFromText($category['pageTitle']) , wfMsg("articles-{$category['slug']}-title"));?></h3>
+                                        <h3>
+                                            <span class="icon <?php echo $category['icon'] ?>"></span>
+                                            <?php echo Linker::linkKnown( Title::newFromText($category['pageTitle']) , wfMsg("articles-{$category['slug']}-title"));?> 
+                                            <a class="rss_button" href="<?php echo $category['feedUrl']; ?>"><i class="icon fa fa-rss"></i></a>
+                                        </h3>
                                         <?php 
                                         // Build Wikicode Tag
                                         $text = "{{#tag:DynamicPageList|
@@ -326,7 +333,7 @@ class ShakepeersTemplate extends QuickTemplate {
                                         $parsed = $parser->parse($text, $wgTitle, new ParserOptions()); echo $parsed->getText();
                                         
                                         // Add link
-                                        echo '<p class="see_more_link_holder">'.Linker::linkKnown( Title::newFromText($category['pageTitle']) , wfMsg("see-{$category['slug']}-articles").' <span class="icon icon-arrows-right"></span>').'</p>';
+                                        echo '<p class="see_more_link_holder">'.Linker::linkKnown( Title::newFromText($category['pageTitle']) , wfMsg("see-{$category['slug']}-articles").' <span class="icon icon-chevron-right"></span>').'</p>';
                                         ?>
                                     </div>
                                     
