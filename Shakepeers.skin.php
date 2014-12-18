@@ -238,6 +238,19 @@ class ShakepeersTemplate extends QuickTemplate {
                         <!--Wiki Body -->
             			<div id="wiki-body" class="<?php if ($wgTitle->isMainPage() ) echo 'col-md-8'?>">                            
                             
+                            <!-- Page editing -->
+        					<?php 
+                            if ( $wgUser->isLoggedIn() ) {
+                                if ( count( $this->data['content_actions']) > 0 ) {
+            						$content_nav = $this->get_array_links( $this->data['content_actions'], 'Page', 'page' );
+            						?>
+            						<ul class="nav navbar-nav navbar-right content-actions"><?php echo $content_nav; ?></ul>
+            						<?php
+            					}
+                            }//end if ?>
+                            <!--/page editing -->
+                            
+                            
             				<?php
             					if ( 'sidebar' == $wgTOCLocation ) {
             						?>
@@ -263,17 +276,7 @@ class ShakepeersTemplate extends QuickTemplate {
             					<h1><?php $this->html( 'title' ) ?> <small><?php $this->html('subtitle') ?></small></h1>
             				</div>	
                         
-                            <!-- Page editing -->
-        					<?php 
-                            if ( $wgUser->isLoggedIn() ) {
-                                if ( count( $this->data['content_actions']) > 0 ) {
-            						$content_nav = $this->get_array_links( $this->data['content_actions'], 'Page', 'page' );
-            						?>
-            						<ul class="nav navbar-nav navbar-right content-actions"><?php echo $content_nav; ?></ul>
-            						<?php
-            					}
-                            }//end if ?>
-                            <!--/page editing -->
+                            
 
             				<div class="body">
             				<?php $this->html( 'bodytext' ) ?>
@@ -490,7 +493,7 @@ class ShakepeersTemplate extends QuickTemplate {
             'id' => 'tools',
             'link' => 'javascript:void(0)',
             'class' => 'collabspible dropdown',
-            'title' => '<i class="icon icon-wrench"></i> ' .wfMsg('Tools')
+            'title' => '<i class="icon icon-wrench"></i>'
         );
         
         // Add the information button
@@ -498,7 +501,7 @@ class ShakepeersTemplate extends QuickTemplate {
             'id' => 'information',
             'link' => 'javascript:void(0)',
             'class' => 'collabspible dropdown',
-            'title' => '<i class="icon icon-info-sign"></i> ' .wfMsg('Informations')
+            'title' => '<i class="icon icon-info-sign"></i>'
         );
         
         // Build the array
@@ -524,11 +527,18 @@ class ShakepeersTemplate extends QuickTemplate {
             } 
             
             elseif ($pageNavItem['id'] == 'information') {
-                // Add everything elses
+                
+                
+                // Add everything else
                 foreach ($nav as $navKey => $navItem) {
-
-                    $page_nav[$key]['sublinks'][] = $navItem;
-                    unset($nav[$navKey]);
+                    //Remove the empty title
+                    
+                    // Exclude the 'title' element which has no ID
+                    if (isset($navItem['id'])){
+                        $page_nav[$key]['sublinks'][] = $navItem;
+                        unset($nav[$navKey]); 
+                    } 
+                    
                 }
             }
 
@@ -540,7 +550,7 @@ class ShakepeersTemplate extends QuickTemplate {
         
         
         $output = '';
-        for ($i=1;$i<count($page_nav);$i++) {
+        for ($i=0;$i<count($page_nav);$i++) {
             
             if ($page_nav[$i]['id'] == 'information' || $page_nav[$i]['id'] == 'tools') {
                 $liAtts = 'class="dropdown"';
@@ -694,37 +704,40 @@ class ShakepeersTemplate extends QuickTemplate {
 			);
 
 			if( 'page' == $which ) {
-				// switch( $link['title'] ) {
-//                 case 'Page': $icon = 'file'; break;
-//                 case 'Discussion': $icon = 'comment'; break;
-//                 case 'Edit': $icon = 'pencil'; break;
-//                 case 'History': $icon = 'clock-o'; break;
-//                 case 'Delete': $icon = 'remove'; break;
-//                 case 'Move': $icon = 'arrows'; break;
-//                 case 'Protect': $icon = 'lock'; break;
-//                 case 'Watch': $icon = 'eye-open'; break;
-//                 case 'Unwatch': $icon = 'eye-slash'; break;
-//                 }//end switch
                 switch( $key ) {
-                    case 'nstab-revision': $icon = "pencil"; break;
-                    case 'talk': $icon = "comment"; break;
-                    case 've-edit': $icon = "pencil-square-o"; break;
-                    case 'edit': $icon = "code"; break;
-                    case 'history': $icon = "history"; break;
-                    case 'watch': $icon = "eye"; break;
+                    case 'nstab-revision': $icon = "fa fa-link"; break;
+                    case 'nstab-main':$icon = "fa fa-link"; break;
+                    case 'nstab-brouillon':$icon = "fa fa-link"; break;
+                    case 'talk': $icon = "icon icon-comment"; break;
+                    case 've-edit': $icon = "fa fa-pencil-square-o"; break;
+                    case 'edit': $icon = "icon icon-pencil"; break;
+                    case 'history': $icon = "fa fa-history"; break;
+                    case 'watch': $icon = "fa fa-eye"; break;
+                    case 'unwatch': $icon = "fa fa-eye-slash"; break;
+                    case 'move': $icon = 'fa fa-arrows'; break;
+                    case 'delete': $icon = 'fa fa-delete'; break;
+                    case 'protect': $icon = 'fa fa-lock'; break;
                 }// end switch
-
-				$link['title'] = '<i class="fa fa-' . $icon . '"></i> ' . $link['title'];
+                
+                
+                // Remove text for 'edit' and 'discuss'
+                if ($link['id'] == 'talk' || $link['id'] == 'edit') {
+    				$link['title'] = '<i class="' . $icon . '"></i>';
+                } elseif ($link['id'] == 'nstab-revision' || $link['id'] == 'nstab-main' || $link['id'] == 'nstab-brouillon') {
+                    $link['title'] = '<i class="' . $icon . '"></i> ' . wfMsg('this-page-link');
+                } else {
+    				$link['title'] = '<i class="' . $icon . '"></i> ' . $link['title'];
+                }
 			} elseif( 'user' == $which ) {
                 switch( $key ) {
-                    case 'userpage': $icon = 'user'; break;
-                    case 'mytalk': $icon = 'comments-o'; break;
-                    case 'preferences': $icon = 'cog'; break;
-                    case 'betafeatures': $icon = 'asterisk'; break;
-                    case 'watchlist': $icon = 'eye'; break;
-                    case 'newmessages': $icon = 'envelope'; break;
-                    case 'mycontris': $icon = 'list'; break;
-                    case 'logout': $icon = 'power-off'; break;
+                    case 'userpage': $icon = 'fa fa-user'; break;
+                    case 'mytalk': $icon = 'fa fa-comments-o'; break;
+                    case 'preferences': $icon = 'fa fa-cog'; break;
+                    case 'betafeatures': $icon = 'fa fa-asterisk'; break;
+                    case 'watchlist': $icon = 'fa fa-eye'; break;
+                    case 'newmessages': $icon = 'fa fa-envelope'; break;
+                    case 'mycontris': $icon = 'fa fa-list'; break;
+                    case 'logout': $icon = 'fa fa-power-off'; break;
                 }
                 
                 // Deal with special cases

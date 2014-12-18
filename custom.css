@@ -111,6 +111,18 @@ body {padding:0; background: #ededed; }
 */
 #wiki-body {padding:0 50px;}
 
+/* ----------- Page menu ------------ */
+
+.content-actions>li {background-color: rgba(47,153,204,0.4); color: white;margin-left: 5px; transition: all 0.2s; -webkit-transition: all 0.2s; -moz-transition: all 0.2s;}
+.content-actions:hover>li {background-color: rgba(47,153,204,0.7)}
+.content-actions>li:hover {background-color: rgba(47,153,204,1);}
+.content-actions>li.open {background-color: rgba(47,153,204,1) !important}
+
+.content-actions>li>a {color: white; font-size: 2em; padding: 5px; background-color:transparent !important;}
+
+.content-actions {margin-top: 20px;}
+
+
 
 /*----------------------------------------------------------------
     -------------- Homepage specific things ----------------
@@ -140,6 +152,10 @@ h2.homepage_quote {text-align:center;  color: white; margin: 100px auto; max-wid
 .see_more_link_holder a {color: #ec6719; font-weight:bold; text-decoration:none;}
 .see_more_link_holder a:hover {color: #9C3910;}
 .see_more_link_holder a .icon {position: relative; top: 2px;}
+
+
+/*------ widget sidebar ------*/
+.widget_sidebar {margin-top: 20px;padding-right: 35px;}
 
 
 
