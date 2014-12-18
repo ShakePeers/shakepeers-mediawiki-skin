@@ -47,11 +47,11 @@ class SkinShakepeers extends SkinTemplate {
 		$out->addModuleStyles( 'skins.shakepeers' );
 
 		// we need to include this here so the file pathing is right
-		$out->addStyle( 'bootstrap-mediawiki/font-awesome/css/font-awesome.min.css' );
+		$out->addStyle( 'shakepeers/fonts/font-awesome/css/font-awesome.min.css' );
         
         //Include Google Fonts
-        $out->addStyle( 'http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic' );
-        $out->addStyle( 'http://fonts.googleapis.com/css?family=Quicksand:300,400,600,700' );
+        $out->addStyle( 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic' );
+        $out->addStyle( 'https://fonts.googleapis.com/css?family=Quicksand:300,400,600,700' );
         
 	}//end setupSkinUserCss
 }
@@ -94,7 +94,7 @@ class ShakepeersTemplate extends QuickTemplate {
         <div class="background_container">
             
         </div>
-        <div class="container">
+        <div class="container" id="container">
             <div class="top_block">
                 <div class="navbar_secondary navbar navbar-default navbar-shakepeers-secondary" role="navigation">
                     <div class="container">
@@ -123,8 +123,8 @@ class ShakepeersTemplate extends QuickTemplate {
                         </div>
                     </div>
                 </div>
-        		<div class="navbar <?php echo $wgNavBarClasses; ?> navbar-primary" role="navigation">
-        				<div class="container">
+        		<div class="navbar <?php echo $wgNavBarClasses; ?> navbar-primary yamm" role="navigation">
+        				<div>
         					<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
         					<div class="navbar-header">
         						<button class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
@@ -149,26 +149,74 @@ class ShakepeersTemplate extends QuickTemplate {
         							<li>
         							<a href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>"><?php echo wfMessage( 'home' ) ;?></a>
         							</li>
-        							<li>
-        							<?php echo Linker::link( Title::newFromText('Thématiques'), wfMsg( 'themes' ) ); ?>
-        							</li>
-                                    <li>
-                                        <?php echo Linker::linkKnown( SpecialPage::getTitleFor('AllPages') , wfMsg('articles'));?>
+        							<li class="dropdown yamm-fw">
+        							    <?php echo Linker::link( Title::newFromText('Thématiques'), wfMsg( 'themes' ), array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role'=> 'button', 'aria-expanded' => 'false') ); ?>
+        							    <ul class="dropdown-menu">
+                                            <li>
+                                                <div class="yamm-content">
+                                                    <div class="row">
+                                                        
+                                                        <?php // get themes
+                                                        $themes = $this->getThemeCategories();
+                                                        
+                                                        //Split into two columns
+                                                        $len = count($themes);
+                                                        $half = round($len / 2);
+                                                        $themes = array_chunk($themes, $half);?>
+                                                        
+                                                        
+                                                        
+                                                        <?php // Loop through columns
+                                                        foreach ($themes as $themeColumn) :?>
+                                                            <div class="col-md-6">
+                                                                <ul class="themes_list">
+                                                                <?php // Loop through themes and build list
+                                                                    foreach ($themeColumn as $theme) :?>
+                                                                        <li class="themes_list_item">
+                                                                            <a href="<?php echo $theme['url'];?>"><?php echo $theme['title']?></a>
+                                                                        </li>
+                                                                    <?php endforeach;?>
+                                                                </ul>
+                                                            </div>
+                                                        <?php endforeach;?>
+                                                        
+                                                        
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
                                     </li>
-                                    <li>
+                                    
+                                    <li class="dropdown">
+                                        <?php echo Linker::linkKnown( SpecialPage::getTitleFor('AllPages') , wfMsg('articles'), array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role'=> 'button', 'aria-expanded' => 'false'));?>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <?php echo Linker::linkKnown( Title::newFromText('Brouillon') , wfMsg('link-draft'));?>
+                                            </li>
+                                            <li>
+                                                <?php echo Linker::linkKnown( Title::newFromText('Révision') , wfMsg('link-revision'));?>
+                                            </li>
+                                            <li>
+                                                <?php echo Linker::linkKnown( SpecialPage::getTitleFor('Publication') , wfMsg('link-published'));?>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
                                         <a href="#" class="dropdown-toggle info_menu_button" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-info-circle"></i></a>
                                         <ul class="dropdown-menu" role="menu">
-                                            <li> <?php echo Linker::linkKnown( Title::newFromText('ShakePeers') , wfMsg('ShakePeers'));?></li>
-                                            <li> <?php echo Linker::linkKnown( Title::newFromText('Contribuer') , wfMsg('Contribuer'));?></li>
-                                            <li> <?php echo Linker::linkKnown( Title::newFromText('Communauté') , wfMsg('Communauté'));?></li>
-                                            <li> <?php echo Linker::linkKnown( Title::newFromText('Aide') , wfMsg('Aide'));?></li>
-                                            <li> <?php echo Linker::linkKnown( Title::newFromText('Contact') , wfMsg('Contact'));?></li>
+                                            <li> <?php echo Linker::linkKnown( Title::newFromText('ShakePeers') , wfMsg('shakepeers'));?></li>
+                                            <li> <?php echo Linker::linkKnown( Title::newFromText('Contribuer') , wfMsg('contribuer'));?></li>
+                                            <li> <?php echo Linker::linkKnown( Title::newFromText('Communauté') , wfMsg('communauté'));?></li>
+                                            <li> <?php echo Linker::linkKnown( Title::newFromText('Aide') , wfMsg('aide'));?></li>
+                                            <li> <?php echo Linker::linkKnown( Title::newFromText('Contact') , wfMsg('contact'));?></li>
                                         </ul>
                                     </li>
         							
         						</ul>
                             <!-- End nav bar -->
         					
+                            
+                            
         					</div>
         				</div>
         		</div><!-- topbar -->
@@ -416,15 +464,114 @@ class ShakepeersTemplate extends QuickTemplate {
 		return $output;
 	}//end nav
     
+    
     private function page_nav( $nav ) {
-        $output = '';
+        global $wgTitle;
+                
+        // Build nav with 4 items : edit, discuss, options, information. Options and Information have subitems. 
+        $page_nav = array();
         
-        for ($i=1;$i<count($nav);$i++) {
-            $output .= "<li><a href='{$nav[$i]['link']}'>";
-            $output .= $nav[$i]['title'];
-            $output .= "</li></a>";
+        // Add the edit and discuss if present, and remove from nav array
+        foreach ($nav as $key => $nav_item) {
+            if ('edit' == $nav_item['id']) {
+                $page_nav[] = $nav_item;
+                unset($nav[$key]);
+            }
+            if ('talk' == $nav_item['id']) {
+                $page_nav[] = $nav_item;
+                unset($nav[$key]);
+            }
+            
             
         }
+        
+        // Add the tool button
+        $page_nav[] = array(
+            'id' => 'tools',
+            'link' => 'javascript:void(0)',
+            'class' => 'collabspible dropdown',
+            'title' => '<i class="icon icon-wrench"></i> ' .wfMsg('Tools')
+        );
+        
+        // Add the information button
+        $page_nav[] = array(
+            'id' => 'information',
+            'link' => 'javascript:void(0)',
+            'class' => 'collabspible dropdown',
+            'title' => '<i class="icon icon-info-sign"></i> ' .wfMsg('Informations')
+        );
+        
+        // Build the array
+        foreach ($page_nav as $key => $pageNavItem) {
+            if ($pageNavItem['id'] == 'tools') {
+                       
+                // Add the print button into 'Tools'
+                $page_nav[$key]['sublinks'][] = array(
+                    'id' => 'print',
+                    'linkTag' => Linker::link( $wgTitle,'<i class="icon icon-print"></i> '. wfMsg('print-version'), array(), array( 'printable' => 'yes' ) ),
+                );
+                
+                // Add the watch, unwatch and simple edit buttons
+                foreach ($nav as $navKey => $navItem) {
+                    if ( $navItem['id'] == 'watch' ||
+                         $navItem['id'] == 'unwatch' || 
+                         $navItem['id'] == 've-edit' 
+                    ) {
+                        $page_nav[$key]['sublinks'][] = $navItem;
+                        unset($nav[$navKey]);
+                    }
+                }
+            } 
+            
+            elseif ($pageNavItem['id'] == 'information') {
+                // Add everything elses
+                foreach ($nav as $navKey => $navItem) {
+
+                    $page_nav[$key]['sublinks'][] = $navItem;
+                    unset($nav[$navKey]);
+                }
+            }
+
+        }
+        
+        //echo '<pre>'; print_r($page_nav); echo "</pre>";
+        
+        
+        
+        
+        $output = '';
+        for ($i=1;$i<count($page_nav);$i++) {
+            
+            if ($page_nav[$i]['id'] == 'information' || $page_nav[$i]['id'] == 'tools') {
+                $liAtts = 'class="dropdown"';
+                $linkAtts = 'class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"';
+            } else {
+                $liAtts = '';
+                $linkAtts = '';
+            }
+            $output .= "<li $liAtts ><a href='{$page_nav[$i]['link']}' $linkAtts >";
+            $output .= $page_nav[$i]['title'];
+            $output .= "</a>";
+            
+            if (isset($page_nav[$i]['sublinks'])) {
+                $output .= '<ul class="dropdown-menu">';
+                foreach ($page_nav[$i]['sublinks'] as $item) {
+                    
+                    $output .= "<li>";
+                    if (isset($item['linkTag'])){
+                        $output .=  $item['linkTag'];
+                    } else {
+                        $output .=  "<a href='".$item['link']."' >".$item['title'].'</a>';
+                    }
+                    $output .=  "</li>";
+                }
+                $output .= '</ul>';
+                
+            }
+            $output .= "</li>";
+            
+        }
+        
         return $output;
     }
     
@@ -605,6 +752,28 @@ class ShakepeersTemplate extends QuickTemplate {
             
         }
 	}//end get_array_links
+    
+    
+    
+    /*
+        getThemeCategories
+        returns : array() of theme categories
+    */
+    private function getThemeCategories() {
+        $cat = Category::newFromName('Thématiques');
+        $members = $cat->getMembers();
+
+        $subcats = array();
+
+        for ($i = 0; $i < $members->count(); $i++) {
+            $cur = $members->current();
+            $subcats[$i]['title'] = $cur->getText();
+            $subcats[$i]['url'] = $cur->getFullURL();
+            $members->next();
+        }
+        
+        return $subcats;
+    }
 
 	function getPageRawText($title) {
 		global $wgParser, $wgUser;

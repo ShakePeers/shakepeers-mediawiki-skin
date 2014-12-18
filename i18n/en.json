@@ -4,5 +4,26 @@
 	},
 	"skinname-shakepeers": "Shakepeers",
 	"shakepeers-desc": "Skin for the Shakepeers assocation",
-    "welcome":"Welcome"
+    "shakepeers-welcome": "Welcome",
+    "home":"Home",
+    "themes":"Themes",
+    "articles":"Articles",
+    "slogan":"To spread knowledge in a simplified, free, open and collaborative way.",
+    "articles-published-title":"Published Articles",
+    "articles-revision-title":"Articles under Review",
+    "articles-draft-title":"Draft Articles",
+    "see-published-articles":"See published articles",
+    "see-revision-articles":"See articles under review",
+    "see-draft-articles":"See draft articles",
+    "link-draft":"Drafts",
+    "link-revision":"Under Review",
+    "link-published":"Published",
+    "ShakePeers":"Shakepeers",
+    "Contribuer":"Contribute",
+    "Communauté":"Community",
+    "Aide":"Help",
+    "Contact":"Contact",
+    "Informations":"Information",
+    "notifications":"Notifications"
+    
 }

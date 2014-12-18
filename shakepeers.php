@@ -33,7 +33,8 @@ $wgResourceModules['skins.shakepeers'] = array(
 		$skinDir . '/google-code-prettify/prettify.css'          => array( 'media' => 'all' ),
 		$skinDir . '/style.css'                                  => array( 'media' => 'all' ),
 		$skinDir . '/custom.css'                                 => array( 'media' => 'all' ),
-		$skinDir . '/flatline/style.css'                           => array( 'media' => 'all' ),
+		$skinDir . '/flatline/style.css'                         => array( 'media' => 'all' ),
+		$skinDir . '/vendor/yamm/yamm.css'                       => array( 'media' => 'all' ),
         
         
 	),
@@ -42,6 +43,7 @@ $wgResourceModules['skins.shakepeers'] = array(
 		$skinDir . '/google-code-prettify/prettify.js',
 		$skinDir . '/js/jquery.ba-dotimeout.min.js',
 		$skinDir . '/js/behavior.js',
+        $skinDir . '/myscripts.js'
 	),
 	'dependencies' => array(
 		'jquery',
