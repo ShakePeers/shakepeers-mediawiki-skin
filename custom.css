@@ -18,14 +18,16 @@ Colors =================
 
 
 /* Fonts */
-html, body {font-family: "Source Sans Pro", Helvetica, sans-serif;}
-h1, h2, h3, h4, h5, h6 {font-family: "Quicksand";}
+html, body {font-family: "Source Sans Pro", Helvetica, sans-serif; position:relative;}
+h1, h2, h3, h4, h5, h6 {font-family: "Quicksand"; ;}
 h1 {font-size:2.1em; font-weight: bold; color: #2f99cc;}
 h2 {font-size: 1.9em; font-weight: bold; color: #ec6719;}
 a {color: #2f99cc;}
+p {line-height: 1.8}
 
 /*  Overrides  */
 h2 .mw-headline {font-size: inherit; border-bottom: 0; text-shadow:none;}
+.mw-headline {text-shadow: none !important}
 #wiki-body h2 {border-bottom: 0; margin-bottom: 1.3em;}
 /*-------------------------------------------------------------- */
 /*-------------------------------------------------------------- */
@@ -39,7 +41,7 @@ input.form-control::-webkit-input-placeholder { color: #B0B0B0 ;}
 input.form-control::-moz-placeholder { color: #B0B0B0 ;}
 
 body {padding:0; background: #ededed; }
-.content_holder {background-color: white; padding: 20px; border-top: 1px dashed #ec6719 ; margin-top: 70px;}
+.content_holder {background-color: white; padding: 20px; border-top: 1px dashed #ec6719 ; margin-top: 70px; position: relative; z-index:10;}
 .page-Accueil .content_holder {margin-top: 0;}
 .background_container {
     background-color: #2f99cc;
@@ -78,20 +80,22 @@ body {padding:0; background: #ededed; }
     font-size: 12px;
     margin-bottom: 0;
 }
-.navbar_secondary .navbar-nav>.open>a, .navbar_secondary .navbar-nav>.open>a:hover, .navbar_secondary .navbar-nav>.open>a:focus {background-color: white; color: #ec6719;}
-.navbar_secondary .navbar-right:last-child {margin-right: 30px;}
-.navbar_secondary .nav > li > a {padding: 8px;}
-.navbar_secondary .navbar-nav>li>a {color: white;}
-.navbar_secondary .navbar-nav>li>a:hover, .navbar_secondary .navbar-nav>li>a:focus {background-color: white; color: #ec6719;}
 
-.navbar-nav-user .dropdown-menu>li>a {font-size: 12px;}
-.navbar-nav-user .dropdown-menu>li>a i.fa {color: #ec6719;}
+.navbar_secondary .navbar-nav>.open>a, .navbar_secondary .navbar-nav>.open>a:hover, .navbar_secondary .navbar-nav>.open>a:focus, .navbar_secondary .navbar-nav>li>a:hover, .navbar_secondary .navbar-nav>li>a:focus {background-color: #D15C17; color: white; }
+
+.navbar_secondary .navbar-right:last-child {margin-right: 30px;}
+.navbar_secondary .nav > li > a {padding: 8px; margin-top:-1px;}
+.navbar_secondary .navbar-nav>li>a {color: white;}
+
+
+
 /* ---------------- Primary Navigation ---------------*/
-.search_form {float: none !important;clear: both;text-align: right; margin-right: 30px; position: relative;}
+.search_form {float: none !important;clear: both;text-align: right; margin-right: 30px; position: relative; margin-left: 30%;}
 .search_form div:after {content: '\f002'; color: #B0B0B0; font-family: "FontAwesome"; display: inline-block; position: absolute; right: 24px; top:6px;}
 
 .navbar-nav.navbar-right:last-child {margin-right:15px;}
 
+.navbar-brand {z-index:10;}
 .navbar-brand img {max-height:120px;}
 .navbar .info_menu_button {font-size:1.5em !important; }
 
@@ -104,6 +108,23 @@ body {padding:0; background: #ededed; }
     min-width: 600px;
     left: auto;
 }
+
+
+
+/*================ Dropdown Menus =================*/
+.navbar-nav>li>.dropdown-menu {border-radius: 10px; border: none; background-color: #D15C17; margin-top: 5px; box-shadow: none; padding-top: 10px; padding-bottom:10px;
+}
+.navbar-nav .dropdown-menu>li>a {color: white;}
+
+.navbar-nav-user .dropdown-menu>li>a {font-size: 12px;}
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {background-color: #ec6719;}
+
+
+/* Specific for page menu */
+.navbar-nav.content-actions >li>.dropdown-menu {background-color: #1974A2;}
+
+.content-actions .dropdown-menu>li>a:hover, .content-actions .dropdown-menu>li>a:focus {background-color: #2F98CD;}
+
 
 /*----------------------------------------------------------------
     -------------- General Article things        ----------------
@@ -157,6 +178,28 @@ h2.homepage_quote {text-align:center;  color: white; margin: 100px auto; max-wid
 /*------ widget sidebar ------*/
 .widget_sidebar {margin-top: 20px;padding-right: 35px;}
 
+
+
+
+
+
+
+/*----------------------------------------------------------------
+            -------------- Footer ----------------
+  ----------------------------------------------------------------
+*/
+.bottom footer {margin-top:0;}
+.bottom {background:transparent;}
+.footer_background {background-color: #2f99cc; bottom:0 ; width:100%; margin-top:-100px; padding-top: 100px; position:relative;}
+.bottom p, .bottom a {color: white;}
+.bottom h3 {color:white;}
+.bottom .mw-headline {font-size: 20px;}
+
+.networks {font-size: 33px;}
+
+.partenaires img {margin: 10px 20px;}
+
+.logo_container-shakepeers {text-align:right; margin-top: -20px;}
 
 
 

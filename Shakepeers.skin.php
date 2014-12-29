@@ -387,29 +387,26 @@ class ShakepeersTemplate extends QuickTemplate {
                         <?php endif; ?>
                     </div>
         		</div>
-        		<div class="bottom">
-        			<div class="container">
-        				<?php $this->includePage('Bootstrap:Footer'); ?>
-        				<footer>
-        					<p>&copy; <?php echo date('Y'); ?> by <a href="<?php echo (isset($wgCopyrightLink) ? $wgCopyrightLink : 'http://borkweb.com'); ?>"><?php echo (isset($wgCopyright) ? $wgCopyright : 'BorkWeb'); ?></a> 
-        						&bull; Powered by <a href="http://mediawiki.org">MediaWiki</a> 
-                    			<li class="dropdown">
-                    				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <span class="caret"></span></a>
-                    				<ul class="dropdown-menu">
-                    					<li><a href="<?php echo $url_prefix; ?>Special:RecentChanges" class="recent-changes"><i class="fa fa-edit"></i> Recent Changes</a></li>
-                    					<li><a href="<?php echo $url_prefix; ?>Special:SpecialPages" class="special-pages"><i class="fa fa-star-o"></i> Special Pages</a></li>
-                    					<?php if ( $wgEnableUploads ) { ?>
-                    					<li><a href="<?php echo $url_prefix; ?>Special:Upload" class="upload-a-file"><i class="fa fa-upload"></i> Upload a File</a></li>
-                    					<?php } ?>
-                    				</ul>
-                    			</li>
-        					</p>
-        				</footer>
-        			</div><!-- container -->
-        		</div><!-- bottom -->
+        		
             </div>
             
         </div><!-- container -->
+        <div class="footer_background">
+        
+    		<div class="bottom">
+			<div class="container">
+                <div class="row">
+    				<?php $this->includePage('Shakepeers:Footer'); ?>
+                </div>
+            </div>   
+			<footer>
+                <div class="container text-right">
+    				<p>&copy; <?php echo date('Y'); ?> <a href="//www.shakepeers.org">Shakepeers</a> 
+    					&bull; Propulsé par <a href="http://mediawiki.org">MediaWiki</a> 
+    				</p>
+                </div>
+			</footer>
+		</div><!-- bottom -->
 		<?php
 		$this->html('bottomscripts'); /* JS call to runBodyOnloadHook */
 		$this->html('reporttime');
