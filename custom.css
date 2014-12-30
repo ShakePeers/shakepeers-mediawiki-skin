@@ -173,15 +173,16 @@ background-color: #ec6719;
 
 
 /*--------------- Infobox -------- */
-.infobox {padding: 20px; margin-left: 15px; margin-bottom:15px; margin-top:20px; width: 100%;}
+.infobox {padding: 20px; margin-left: 15px; margin-bottom:15px; margin-top:20px; width: 100%; font-size: 0.8em}
+.infobox p {margin-bottom:5px;}
 
 @media screen and (min-width:768px){
     .infobox {max-width: 40%; min-width:30%: auto;}
 }
 
-.infobox .contributors a {font-size: 1.3em;}
+.infobox .contributors a {font-size: 1.2em;}
 
-.infobox .icon_line {font-size: 1.2em;}
+.infobox .icon_line {font-size: 1em;}
 .infobox .icon_line .badge-shakepeers {font-size: 1.2em; opacity: 0.7; border-radius: 50%; padding:7px;margin-right:10px}
 .infobox .icon_line small {font-size: 12px;}
 
