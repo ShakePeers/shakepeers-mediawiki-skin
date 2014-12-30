@@ -22,6 +22,8 @@ html, body {font-family: "Source Sans Pro", Helvetica, sans-serif; position:rela
 h1, h2, h3, h4, h5, h6 {font-family: "Quicksand"; ;}
 h1 {font-size:2.1em; font-weight: bold; color: #2f99cc;}
 h2 {font-size: 1.9em; font-weight: bold; color: #ec6719;}
+h3 {font-size: 1.6em; font-weight: bold; color: #F38856; border-bottom: none;text-shadow:none; }
+
 a {color: #2f99cc;}
 p {line-height: 1.8}
 
@@ -64,6 +66,16 @@ body {padding:0; background: #ededed; }
 }
 
 
+/* Redefine panels */
+.panel {border-radius: 0; box-shadow: none; -webkit-box-shadow: none; -moz-box-shadow: none ; -ms-box-shadow: none; border:0 ; background-color: #EDEDED; }
+.panel-default {border: 3px solid #ACACAC; border-left: none;border-right: none;}
+.panel-primary {border: 3px solid #ec6719; border-left: none; border-right: none;}
+
+
+/* Badges */
+.badge-shakepeers {
+background-color: #ec6719;
+}
 
 /* --------------------------- ---------------------------------
 ---------------------- Header ----------------------------------
@@ -160,7 +172,39 @@ body {padding:0; background: #ededed; }
 .content-actions .dropdown-menu:before {content: url('images/menucallout-blue.png')}
 
 
+/*--------------- Infobox -------- */
+.infobox {padding: 20px; margin-left: 15px; margin-bottom:15px; margin-top:20px; width: 100%;}
 
+@media screen and (min-width:768px){
+    .infobox {max-width: 40%; min-width:30%: auto;}
+}
+
+.infobox .contributors a {font-size: 1.3em;}
+
+.infobox .icon_line {font-size: 1.2em;}
+.infobox .icon_line .badge-shakepeers {font-size: 1.2em; opacity: 0.7; border-radius: 50%; padding:7px;margin-right:10px}
+.infobox .icon_line small {font-size: 12px;}
+
+.infobox #toc_container li {list-style: none;}
+.infobox #toc_container>ul {padding:0;}
+
+.infobox hr {border: 1px solid #CFCFCF; border-bottom:0; margin: 20px -20px;}
+
+
+/* ------- Styles -------- */
+/*.mw-headline {font-size: inherit !important}*/
+h2 .mw-headline, 
+h3 .mw-headline, 
+h4 .mw-headline,
+h5 .mw-headline,
+h6 .mw-headline {font-size: inherit; font-weight: bold;}
+
+#wikibody h2 {color: #ec6719; border-bottom: none; text-shadow:none; }
+#wiki-body h3 {color: #F38856; border-bottom: none;text-shadow:none; }
+#wiki-body h4 {border-bottom: none; text-shadow:none; color: #ED8D66;}
+#wiki-body h5 {border-bottom: none; text-shadow:none; color:#2f99cc;}
+#wiki-body h6 {border-bottom: none; text-shadow:none; font-weight: normal; }
+ 
 /*----------------------------------------------------------------
     -------------- Homepage specific things ----------------
   ----------------------------------------------------------------

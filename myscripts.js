@@ -1,4 +1,4 @@
-// Parallax testing stuff
+// Parallax stuff
 var $window = $(window);
 var velocity = 0.6;
 
@@ -34,3 +34,12 @@ $(window).on('touchstart touchend touchmove mousewheel touchcancel gesturestart 
         //alert($(window).scrollTop());
         $(window).trigger('scroll');
     });
+    
+$(document).ready(function(){
+    if ($('#page-contents')) {
+        console.log('has page-contents');
+        $('.pagetitle .nav-pills').hide();
+        $('#toc_container').before('<hr>');
+        $('#page-contents .dropdown-menu').removeClass('dropdown-menu').appendTo('#toc_container');
+    }
+})

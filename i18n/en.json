@@ -26,6 +26,11 @@
     "Informations":"Information",
     "notifications":"Notifications",
     "this-page-link":"Permalink to this page",
-    "print-version":"Printable version"
+    "print-version":"Printable version",
+    "last-contributors":"Contributors",
+    "french":"French",
+    "english":"English",
+    "changed-on":"Last edited",
+    "created-on":"Created on"
     
 }

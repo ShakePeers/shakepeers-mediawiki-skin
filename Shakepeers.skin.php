@@ -238,6 +238,20 @@ class ShakepeersTemplate extends QuickTemplate {
                         <!--Wiki Body -->
             			<div id="wiki-body" class="<?php if ($wgTitle->isMainPage() ) echo 'col-md-8'?>">                            
                             
+                            
+                            <!-- Info Box -->
+                            <?php if ($wgTitle->isContentPage()) : ?>
+                                <div class="infobox panel panel-primary pull-right">
+                                    <?php echo $this->infoBox();?>
+                                    <!-- Box for the summary -->
+                                    <div id="toc_container">
+                                    </div>
+                                </div>
+                            <?php endif;?>
+                            <!-- /Info Box -->
+                            
+                            
+                            
                             <!-- Page editing -->
         					<?php 
                             if ( $wgUser->isLoggedIn() ) {
@@ -249,16 +263,8 @@ class ShakepeersTemplate extends QuickTemplate {
             					}
                             }//end if ?>
                             <!--/page editing -->
-                            
-                            
-                            <!-- Info Box -->
-                            <?php if ($wgTitle->isContentPage()) : ?>
-                                <div class="infobox panel">
-                                    <pre><?php print_r($this->infoBox());?></pre>
-                                </div>
-                            <?php endif;?>
-                            
-                            <!-- /Info Box -->
+            
+            
                             
             				<?php
             					if ( 'sidebar' == $wgTOCLocation ) {
@@ -839,7 +845,7 @@ class ShakepeersTemplate extends QuickTemplate {
         */
         
         $infoBoxHTML .= "";
-        $infoBoxHTML .= "<p>".wfMsg('last-contributors').': '.$infoBox['contributors']."</p>";
+        $infoBoxHTML .= "<p class='contributors'>".wfMsg('last-contributors').': '.$infoBox['contributors']."</p>";
         
         switch($infoBox['namespace']) {
             case '3000': $namespaceIcon = '<i class="icon icon-file"></i>'; break;
@@ -852,7 +858,7 @@ class ShakepeersTemplate extends QuickTemplate {
             case 'en': $language = wfMsg('english'); break;
         }
         
-        $infoBoxHTML .= "<div>".$namespaceIcon.'<small><i class="icon icon-flag"></i> '.$language.' <i class="icon icon-pencil"></i>'.wfMsg('changed-on').': '.$infoBox['date_modified'].' - '.wfMsg('created-on').': '.$infoBox['date_created']."</small></div>";
+        $infoBoxHTML .= "<div class='icon_line'><span class='badge badge-shakepeers'>".$namespaceIcon.'</span><small><i class="icon icon-flag"></i>&nbsp;'.$language.' &nbsp;&nbsp;<i class="icon icon-pencil"></i>'.wfMsg('changed-on').': '.$infoBox['date_modified'].' - '.wfMsg('created-on').': '.$infoBox['date_created']."</small></div>";
         
         
         
@@ -907,11 +913,7 @@ class ShakepeersTemplate extends QuickTemplate {
 		}
 	}
     
-    //Override existing TOC function and make my own
-    function tocList($toc) { 
-    $this->savedTOC = parent::tocList($toc); 
-    return "";
-    }
+    
 
 	public static function link() { }
 }

@@ -26,5 +26,10 @@
     "informations":"Informations",
     "notifications":"Notifications",
     "this-page-link":"Permalien de cette page",
-    "print-version":"Version imprimable"
+    "print-version":"Version imprimable",
+    "last-contributors":"Contributeurs",
+    "french":"français",
+    "english":"anglais",
+    "changed-on":"Dernière modification le",
+    "created-on":"Crée le"
 }
