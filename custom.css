@@ -99,7 +99,7 @@ body {padding:0; background: #ededed; }
 .navbar-brand img {max-height:120px;}
 .navbar .info_menu_button {font-size:1.5em !important; }
 
-.navbar-primary .navbar-nav a {color:#ec6719; font-size: 1.2em; }
+.navbar-primary .navbar-nav li a {color:#ec6719; font-size: 1.2em; }
 .navbar-primary {margin-bottom: 0;}
 
 
@@ -108,11 +108,16 @@ body {padding:0; background: #ededed; }
     min-width: 600px;
     left: auto;
 }
-
+.navbar-nav .yamm-content a {color: white !important;}
+.navbar-nav .yamm-content li {list-style:none;}
+.navbar-nav .yamm-content ul {padding-left: 10px;}
+.yamm .yamm-content {padding: 10px !important;}
+.yamm .dropdown {position: relative;}
+.yamm .yamm-fw {position: static;}
 
 
 /*================ Dropdown Menus =================*/
-.navbar-nav>li>.dropdown-menu {border-radius: 10px; border: none; background-color: #D15C17; margin-top: 5px; box-shadow: none; padding-top: 10px; padding-bottom:10px;
+.navbar-nav>li>.dropdown-menu {border-radius: 10px; border: none; background-color: #D15C17; margin-top: 10px; box-shadow: none; padding-top: 10px; padding-bottom:5px;
 }
 .navbar-nav .dropdown-menu>li>a {color: white;}
 
@@ -124,6 +129,14 @@ body {padding:0; background: #ededed; }
 .navbar-nav.content-actions >li>.dropdown-menu {background-color: #1974A2;}
 
 .content-actions .dropdown-menu>li>a:hover, .content-actions .dropdown-menu>li>a:focus {background-color: #2F98CD;}
+
+
+/* Arrow */
+.dropdown-menu:before {content: url('images/menucallout.png');display: block; position: absolute;top: -15px; right: 26px;
+}
+.navbar-primary .dropdown-menu {margin-top: 5px !important;}
+.yamm-fw .dropdown-menu:before {right:33%;}
+
 
 
 /*----------------------------------------------------------------
@@ -142,6 +155,9 @@ body {padding:0; background: #ededed; }
 .content-actions>li>a {color: white; font-size: 2em; padding: 5px; background-color:transparent !important;}
 
 .content-actions {margin-top: 20px;}
+
+/* Arrow colour */
+.content-actions .dropdown-menu:before {content: url('images/menucallout-blue.png')}
 
 
 

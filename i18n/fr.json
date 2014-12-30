@@ -24,5 +24,7 @@
     "aide":"Aide",
     "contact":"Contact",
     "informations":"Informations",
-    "notifications":"Notifications"
+    "notifications":"Notifications",
+    "this-page-link":"Permalien de cette page",
+    "print-version":"Version imprimable"
 }

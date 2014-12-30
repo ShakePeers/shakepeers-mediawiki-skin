@@ -150,7 +150,7 @@ class ShakepeersTemplate extends QuickTemplate {
         							<a href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>"><?php echo wfMessage( 'home' ) ;?></a>
         							</li>
         							<li class="dropdown yamm-fw">
-        							    <?php echo Linker::link( Title::newFromText('Thématiques'), wfMsg( 'themes' ), array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role'=> 'button', 'aria-expanded' => 'false') ); ?>
+        							    <?php echo Linker::link( Title::newFromText('Thématiques'), wfMsg( 'themes' ).' <span class="caret"></span>', array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role'=> 'button', 'aria-expanded' => 'false') ); ?>
         							    <ul class="dropdown-menu">
                                             <li>
                                                 <div class="yamm-content">
@@ -188,7 +188,7 @@ class ShakepeersTemplate extends QuickTemplate {
                                     </li>
                                     
                                     <li class="dropdown">
-                                        <?php echo Linker::linkKnown( SpecialPage::getTitleFor('AllPages') , wfMsg('articles'), array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role'=> 'button', 'aria-expanded' => 'false'));?>
+                                        <?php echo Linker::linkKnown( SpecialPage::getTitleFor('AllPages') , wfMsg('articles').' <span class="caret"></span>', array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role'=> 'button', 'aria-expanded' => 'false'));?>
                                         <ul class="dropdown-menu">
                                             <li>
                                                 <?php echo Linker::linkKnown( Title::newFromText('Brouillon') , wfMsg('link-draft'));?>
@@ -202,7 +202,7 @@ class ShakepeersTemplate extends QuickTemplate {
                                         </ul>
                                     </li>
                                     <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle info_menu_button" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-info-circle"></i></a>
+                                        <a href="#" class="dropdown-toggle info_menu_button" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-info-circle"></i><span class="caret"></span></a>
                                         <ul class="dropdown-menu" role="menu">
                                             <li> <?php echo Linker::linkKnown( Title::newFromText('ShakePeers') , wfMsg('shakepeers'));?></li>
                                             <li> <?php echo Linker::linkKnown( Title::newFromText('Contribuer') , wfMsg('contribuer'));?></li>
@@ -250,6 +250,15 @@ class ShakepeersTemplate extends QuickTemplate {
                             }//end if ?>
                             <!--/page editing -->
                             
+                            
+                            <!-- Info Box -->
+                            <?php if ($wgTitle->isContentPage()) : ?>
+                                <div class="infobox panel">
+                                    <pre><?php print_r($this->infoBox());?></pre>
+                                </div>
+                            <?php endif;?>
+                            
+                            <!-- /Info Box -->
                             
             				<?php
             					if ( 'sidebar' == $wgTOCLocation ) {
@@ -490,7 +499,7 @@ class ShakepeersTemplate extends QuickTemplate {
             'id' => 'tools',
             'link' => 'javascript:void(0)',
             'class' => 'collabspible dropdown',
-            'title' => '<i class="icon icon-wrench"></i>'
+            'title' => '<i class="icon icon-wrench"></i><span class="caret"></span>',
         );
         
         // Add the information button
@@ -498,7 +507,7 @@ class ShakepeersTemplate extends QuickTemplate {
             'id' => 'information',
             'link' => 'javascript:void(0)',
             'class' => 'collabspible dropdown',
-            'title' => '<i class="icon icon-info-sign"></i>'
+            'title' => '<i class="icon icon-info-sign"></i><span class="caret"></span>',
         );
         
         // Build the array
@@ -737,7 +746,7 @@ class ShakepeersTemplate extends QuickTemplate {
                     case 'logout': $icon = 'fa fa-power-off'; break;
                 }
                 
-                // Deal with special cases
+                // Deal with special case 'notifications'
                 if ($key == 'notifications') {
                     $link['title'] = '<i class="fa fa-exclamation"></i> &nbsp;' . wfMsg('notifications') .' &nbsp;&nbsp;<span class="badge">' . $link['title'] .'</span>';
                 } else {
@@ -764,6 +773,91 @@ class ShakepeersTemplate extends QuickTemplate {
 	}//end get_array_links
     
     
+    /*
+        Build and return the Info Box for the article
+    */
+    
+    private function infoBox() {
+        global $wgTitle;
+        $wikiPage = new WikiPage( $wgTitle );
+        
+        $infoBox = array();
+        
+        
+        /*
+            ====== Contributors ========
+        */
+        $contributors = $wikiPage->getContributors();
+        $contributorsString = '';
+        
+        //Add previous contributors
+        for ($i=0;$i < $contributors->count(); $i++) {
+            $curUser = $contributors->current();
+            $contributorsString .= Linker::link( $curUser->getUserPage() , $curUser->getName() ).', ';
+            
+            $contributors->next();
+        }
+        
+        //Add most recent contributor
+        //echo "<pre>";print_r($wikiPage->getUser());echo "</pre>";
+        $userID = $wikiPage->getUser();
+        $user = User::newFromID($userID);
+        $contributorsString .= Linker::link( $user->getUserPage() , $user->getName() );
+        
+        $infoBox['contributors'] = $contributorsString;
+        
+        /*
+            ====== Namespace ========
+            * 3000 = Brouillon
+            * 4000 = Révision
+            * 0 = Publié
+        */
+        
+        $infoBox['namespace'] = $wgTitle->getNamespace();
+        
+        /*
+            ====== Language ========
+        */
+        $infoBox['language'] = $wgTitle->getPageLanguage()->mCode;
+        
+        /*
+            ====== Get dates ========
+        */
+        // ---- Date Last Modified ----
+        $mostRecentRevisionID = $wgTitle->getLatestRevID();
+        $mostRecentRevisionTimestamp = Revision::getTimestampFromId($wgTitle, $mostRecentRevisionID);
+        $infoBox['date_modified'] = date( 'd/m/y' , strtotime($mostRecentRevisionTimestamp));
+        
+        // ---- Date Created ----
+        $firstRevisionTimestamp = $wgTitle->getFirstRevision()->getTimestamp();
+        $infoBox['date_created'] = date( 'd/m/y' , strtotime($firstRevisionTimestamp));
+        
+        
+        
+        /*
+            Create infoBox HTML
+        */
+        
+        $infoBoxHTML .= "";
+        $infoBoxHTML .= "<p>".wfMsg('last-contributors').': '.$infoBox['contributors']."</p>";
+        
+        switch($infoBox['namespace']) {
+            case '3000': $namespaceIcon = '<i class="icon icon-file"></i>'; break;
+            case '4000': $namespaceIcon = '<i class="icon icon-pencil"></i>'; break;
+            case '0': $namespaceIcon = '<i class="icon icon-ok-sign"></i>'; break;
+            default: $namespaceIcon = '<i class="icon icon-ok-sign"></i>'; break;
+        }
+        switch($infoBox['language']) {
+            case 'fr': $language = wfMsg('french'); break;
+            case 'en': $language = wfMsg('english'); break;
+        }
+        
+        $infoBoxHTML .= "<div>".$namespaceIcon.'<small><i class="icon icon-flag"></i> '.$language.' <i class="icon icon-pencil"></i>'.wfMsg('changed-on').': '.$infoBox['date_modified'].' - '.wfMsg('created-on').': '.$infoBox['date_created']."</small></div>";
+        
+        
+        
+        return $infoBoxHTML;
+    }
     
     /*
         getThemeCategories
@@ -812,6 +906,12 @@ class ShakepeersTemplate extends QuickTemplate {
 			echo $parserOutput->getText();
 		}
 	}
+    
+    //Override existing TOC function and make my own
+    function tocList($toc) { 
+    $this->savedTOC = parent::tocList($toc); 
+    return "";
+    }
 
 	public static function link() { }
 }
