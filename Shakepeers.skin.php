@@ -238,10 +238,12 @@ class ShakepeersTemplate extends QuickTemplate {
                         <!--Wiki Body -->
             			<div id="wiki-body" class="<?php if ($wgTitle->isMainPage() ) echo 'col-md-8'?>">                            
                             
-                            
                             <!-- Info Box -->
-                            <?php if ($wgTitle->isContentPage()) : ?>
-                                <div class="infobox panel panel-primary pull-right">
+                            <?php if (  $wgTitle->isContentPage() &&
+                                         !$wgTitle->isMainPage() &&
+                    ( $wgTitle->mNamespace == '3000' ||
+                      $wgTitle->mNamespace == '4000' ||                                                 $wgTitle->mNamespace == '5000')  ) : ?>
+                                <div class="infobox panel panel-primary pull-right">                        
                                     <?php echo $this->infoBox();?>
                                     <!-- Box for the summary -->
                                     <div id="toc_container">
@@ -850,7 +852,7 @@ class ShakepeersTemplate extends QuickTemplate {
         switch($infoBox['namespace']) {
             case '3000': $namespaceIcon = '<i class="icon icon-file"></i>'; break;
             case '4000': $namespaceIcon = '<i class="icon icon-pencil"></i>'; break;
-            case '0': $namespaceIcon = '<i class="icon icon-ok-sign"></i>'; break;
+            case '5000' || '0': $namespaceIcon = '<i class="icon icon-ok-sign"></i>'; break;
             default: $namespaceIcon = '<i class="icon icon-ok-sign"></i>'; break;
         }
         switch($infoBox['language']) {

@@ -42,4 +42,7 @@ $(document).ready(function(){
         $('#toc_container').before('<hr>');
         $('#page-contents .dropdown-menu').removeClass('dropdown-menu').appendTo('#toc_container');
     }
+    
+    $('#lqt_sort_select').addClass('form-control');
+    $('.ns-talk .lqt_toc').removeClass('table-bordered');
 })
