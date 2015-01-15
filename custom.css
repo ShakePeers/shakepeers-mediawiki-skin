@@ -63,12 +63,7 @@ body {padding:0; background: #ededed; }
     z-index:-10;
 }
 
-.page-Accueil .background_container {
-    background-image: url('images/background.jpg'); 
-    background-position: 50% 0; 
-    background-size: 100%;
-    height: 500px;
-}
+
 
 
 /* Redefine panels */
@@ -105,7 +100,7 @@ background-color: #ec6719;
 .navbar_secondary .navbar-nav>li>a {color: white;}
 
 .navbar-nav-user {float: right !important;margin-top: 0;}
-.navbar-nav-user .open .dropdown-menu {position:absolute !important; background-color: #D15C17 !important; margin-top: 10px; margin-right: 5px; z-index:20;}
+.navbar-nav-user .open .dropdown-menu {position:absolute !important; right:0; left: auto; background-color: #D15C17 !important; margin-top: 10px; margin-right: 5px; z-index:20;}
 .navbar-nav-user .open .dropdown-menu a {color: white !important;}
 
 @media screen and (max-width:787px) {
@@ -202,7 +197,9 @@ top: 25px;}
   ----------------------------------------------------------------
 */
 #wiki-body {padding:0 50px;}
-
+@media screen and (max-width:767px) {
+    #wiki-body {padding: 0;}
+} 
 /* ----------- Page menu ------------ */
 
 .content-actions>li {background-color: rgba(47,153,204,0.4); color: white;margin-left: 5px; transition: all 0.2s; -webkit-transition: all 0.2s; -moz-transition: all 0.2s;}
@@ -257,13 +254,31 @@ h6 .mw-headline {font-size: inherit; font-weight: bold;}
 #wiki-body h4 {border-bottom: none; text-shadow:none; color: #ED8D66;}
 #wiki-body h5 {border-bottom: none; text-shadow:none; color:#2f99cc;}
 #wiki-body h6 {border-bottom: none; text-shadow:none; font-weight: normal; }
- 
+
+
 /*----------------------------------------------------------------
     -------------- Homepage specific things ----------------
   ----------------------------------------------------------------
 */
 
 h2.homepage_quote {text-align:center;  color: white; margin: 100px auto; max-width: 80%; text-shadow: 0px 0px 20px rgba(44, 47, 71, 0.5);}
+@media screen and (max-width:767px) {
+    h2.homepage_quote {font-size: 1.4em; margin: 70px auto; }
+}
+.article_quick_links {
+    margin: -20px -20px 0 -20px;
+}
+.article_quick_links i {
+font-size: 2em;
+display: block;
+margin:auto;
+text-align: center;
+}
+.article_quick_links a {height: 80px; display: block; color: white; text-decoration: none;padding: 10px;}
+.article_quick_links .published {background-color : #ec6719;}
+.article_quick_links .revision {background-color : #EB8243;}
+.article_quick_links .draft {background-color : #ECA178;}
+
 
 /* Articles boxes */
 .articles_widget {background-color: #EDEDED; padding:15px;margin-bottom: 30px;}
@@ -286,6 +301,22 @@ h2.homepage_quote {text-align:center;  color: white; margin: 100px auto; max-wid
 .see_more_link_holder a {color: #ec6719; font-weight:bold; text-decoration:none;}
 .see_more_link_holder a:hover {color: #9C3910;}
 .see_more_link_holder a .icon {position: relative; top: 2px;}
+
+
+.page-Accueil .background_container {
+    background-image: url('images/background.jpg'); 
+    background-position: 50% 0; 
+    background-size: 100%;
+    height: 500px;
+}
+
+@media screen and (max-width:767px) {
+    .page-Accueil .background_container {
+        background-size: cover;
+        margin-top:163px;
+        height:300px;
+    }
+}
 
 
 /*------ widget sidebar ------*/

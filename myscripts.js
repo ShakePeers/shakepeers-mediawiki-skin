@@ -7,7 +7,9 @@ function update(){
     
 
     $('.background_container').each(function() {
-        if (pos < 550) {
+        var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+        
+        if (pos < 550 && width > 767) {
             var $element = $(this);
             var height = $element.height();
         
