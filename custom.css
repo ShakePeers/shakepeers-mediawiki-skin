@@ -35,6 +35,7 @@ h2 .mw-headline {font-size: inherit; border-bottom: 0; text-shadow:none;}
 #wiki-body h2 {border-bottom: 0; margin-bottom: 1.3em;}
 .btn {border-radius: 0; border: none;}
 .btn-primary {background-color: #2f99cc;}
+#container {padding:0;}
 /*-------------------------------------------------------------- */
 /*-------------------------------------------------------------- */
 /*----------------  GLOBAL THEME CUSTOMISATION------------------ */
@@ -103,7 +104,40 @@ background-color: #ec6719;
 .navbar_secondary .nav > li > a {padding: 8px; margin-top:-1px;}
 .navbar_secondary .navbar-nav>li>a {color: white;}
 
+.navbar-nav-user {float: right !important;margin-top: 0;}
+.navbar-nav-user .open .dropdown-menu {position:absolute !important; background-color: #D15C17 !important; margin-top: 10px; margin-right: 5px; z-index:20;}
+.navbar-nav-user .open .dropdown-menu a {color: white !important;}
+@media screen and (max-width:787px) {
+    .navbar_secondary .navbar-nav-user>li>a:focus,
+    .navbar_secondary .navbar-nav-user>.open>a, .navbar_secondary .navbar-nav>.open>a:hover, 
+    .navbar_secondary .navbar-nav-user>.open>a:focus, 
+    .navbar_secondary .navbar-nav-user>li>a:hover, 
+    .navbar_secondary .navbar-nav-user>li>a:focus {background-color: transparent;}
+}
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {border: 0;}
+.navbar_secondary .navbar-toggle {float: left; border: none; padding: 5px;}
+.navbar_secondary .navbar-toggle .icon-bar {background-color: white;}
+.navbar_secondary .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {background-color: #BF3D0C;}
 
+.navbar_secondary .navbar-collapse {display: block !important;} 
+
+/*---------- OffCanvas Navigation ---------------*/
+#off_canvas_menu {z-index:1; background-color: #ec6719; border:0;}
+.canvas {z-index:2;}
+#off_canvas_menu .navmenu-brand {color: white;}
+#off_canvas_menu .navmenu-nav>li>a {color:white;}
+#off_canvas_menu .navmenu-nav {background-color:#F3945E;}
+#off_canvas_menu .navmenu-nav>.open>a {background-color: #C4421B;}
+#off_canvas_menu .navmenu-nav>.dropdown>a .caret, #off_canvas_menu .navbar-offcanvas .navmenu-nav>.dropdown>a .caret {color: white; border-top-color: white;
+border-bottom-color: white;}
+#off_canvas_menu .navmenu-nav.dropdown-menu, #off_canvas_menu .navbar-offcanvas .navmenu-nav.dropdown-menu {background-color: #ED733C;}
+#off_canvas_menu .dropdown-menu:before {content: '';}
+
+.close_menu {position: absolute;
+right: 20px;
+font-size: 2em;
+color: white;
+top: 25px;}
 
 /* ---------------- Primary Navigation ---------------*/
 .search_form {float: none !important;clear: both;text-align: right; margin-right: 30px; position: relative; margin-left: 30%;}
