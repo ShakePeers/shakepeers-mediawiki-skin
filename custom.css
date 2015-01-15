@@ -107,12 +107,14 @@ background-color: #ec6719;
 .navbar-nav-user {float: right !important;margin-top: 0;}
 .navbar-nav-user .open .dropdown-menu {position:absolute !important; background-color: #D15C17 !important; margin-top: 10px; margin-right: 5px; z-index:20;}
 .navbar-nav-user .open .dropdown-menu a {color: white !important;}
+
 @media screen and (max-width:787px) {
     .navbar_secondary .navbar-nav-user>li>a:focus,
     .navbar_secondary .navbar-nav-user>.open>a, .navbar_secondary .navbar-nav>.open>a:hover, 
     .navbar_secondary .navbar-nav-user>.open>a:focus, 
     .navbar_secondary .navbar-nav-user>li>a:hover, 
     .navbar_secondary .navbar-nav-user>li>a:focus {background-color: transparent;}
+    
 }
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {border: 0;}
 .navbar_secondary .navbar-toggle {float: left; border: none; padding: 5px;}
@@ -165,6 +167,12 @@ top: 25px;}
 .yamm .dropdown {position: relative;}
 .yamm .yamm-fw {position: static;}
 
+@media screen and (max-width:767px) {
+    .top_block .navbar-brand {height: 120px; float:none; text-align: center; display:block ;}
+    .search_form {margin-left:0; margin-right:0; background-color : #ededed;}
+    .search_form div:after {top: 16px;}
+} 
+
 
 /*================ Dropdown Menus =================*/
 .navbar-nav>li>.dropdown-menu {border-radius: 10px; border: none; background-color: #D15C17; margin-top: 10px; box-shadow: none; padding-top: 10px; padding-bottom:5px;
@@ -204,7 +212,13 @@ top: 25px;}
 
 .content-actions>li>a {color: white; font-size: 2em; padding: 5px; background-color:transparent !important;}
 
-.content-actions {margin-top: 20px;}
+.content-actions {margin-top: 20px; float: right;}
+
+.content-actions li {float:left;}
+.content-actions .open .dropdown-menu {position:absolute !important; margin-top: 10px; margin-right: 5px; z-index:20; right: 0; left: auto;}
+@media screen and (max-width:768px){
+.content-actions {margin:0;}
+}
 
 /* Arrow colour */
 .content-actions .dropdown-menu:before {content: url('images/menucallout-blue.png')}
@@ -366,6 +380,9 @@ margin-left: 41px;
 .partenaires img {margin: 10px 20px;}
 
 .logo_container-shakepeers {text-align:right; margin-top: -20px;}
+@media screen and (max-width: 767px) {
+    .partenaires_column {text-align: center;}
+}
 
 
 

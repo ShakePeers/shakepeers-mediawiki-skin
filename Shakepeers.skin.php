@@ -182,12 +182,6 @@ class ShakepeersTemplate extends QuickTemplate {
                     <div>
                         <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
                         <div class="navbar-header">
-                            <button class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
                             <a class="navbar-brand" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo isset( $wgLogo ) && $wgLogo ? "<img src='{$wgLogo}' alt='{$wgSitename}'/> " : $wgSitename ; ?></a>
                         </div>
                         <!--Search -->
