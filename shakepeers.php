@@ -29,20 +29,22 @@ $wgMessagesDirs['shakepeers'] = __DIR__ . '/i18n';
 
 $wgResourceModules['skins.shakepeers'] = array(
 	'styles' => array(
-		$skinDir . '/bootstrap/css/bootstrap.min.css'            => array( 'media' => 'all' ),
-		$skinDir . '/google-code-prettify/prettify.css'          => array( 'media' => 'all' ),
-		$skinDir . '/style.css'                                  => array( 'media' => 'all' ),
-		$skinDir . '/flatline/style.css'                         => array( 'media' => 'all' ),
-		$skinDir . '/vendor/yamm/yamm.css'                       => array( 'media' => 'all' ),
-		$skinDir . '/custom.css'                                 => array( 'media' => 'all' ),
+		$skinDir . '/vendor/bootstrap/css/bootstrap.min.css'            => array( 'media' => 'all' ),
+		$skinDir . '/vendor/google-code-prettify/prettify.css'          => array( 'media' => 'all' ),
+		$skinDir . '/style.css'                                         => array( 'media' => 'all' ),
+		$skinDir . '/vendor/flatline/style.css'                         => array( 'media' => 'all' ),
+		$skinDir . '/vendor/yamm/yamm.css'                              => array( 'media' => 'all' ),
+        $skinDir . '/vendor/jansy/jasny-bootstrap.min.css'              => array( 'media' => 'all' ),
+		$skinDir . '/custom.css'                                        => array( 'media' => 'all' ),
         
         
         
 	),
 	'scripts' => array(
-		$skinDir . '/bootstrap/js/bootstrap.min.js',
-		$skinDir . '/google-code-prettify/prettify.js',
+		$skinDir . '/vendor/bootstrap/js/bootstrap.min.js',
+		$skinDir . '/vendor/google-code-prettify/prettify.js',
 		$skinDir . '/js/jquery.ba-dotimeout.min.js',
+		$skinDir . '/vendor/jansy/jasny-bootstrap.min.js',
 		$skinDir . '/js/behavior.js',
         $skinDir . '/myscripts.js'
 	),

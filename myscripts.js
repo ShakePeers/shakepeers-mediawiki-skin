@@ -37,7 +37,6 @@ $(window).on('touchstart touchend touchmove mousewheel touchcancel gesturestart 
     
 $(document).ready(function(){
     if ($('#page-contents')) {
-        console.log('has page-contents');
         $('.pagetitle .nav-pills').hide();
         $('#toc_container').before('<hr>');
         $('#page-contents .dropdown-menu').removeClass('dropdown-menu').appendTo('#toc_container');
