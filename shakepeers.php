@@ -35,6 +35,7 @@ $wgResourceModules['skins.shakepeers'] = array(
 		$skinDir . '/vendor/flatline/style.css'                         => array( 'media' => 'all' ),
 		$skinDir . '/vendor/yamm/yamm.css'                              => array( 'media' => 'all' ),
         $skinDir . '/vendor/jansy/jasny-bootstrap.min.css'              => array( 'media' => 'all' ),
+		$skinDir . '/print.css'                                         => array( 'media' => 'print' ),
 		$skinDir . '/custom.css'                                        => array( 'media' => 'all' ),
         
         

@@ -6,6 +6,10 @@
  
 */
 
+/* Fix Jansy Dropdown Nav Bug */
+.navmenu-nav.dropdown-menu { position:relative }
+
+
 /* =Theme customization starts here
 -------------------------------------------------------------- */
 
@@ -23,6 +27,7 @@ h1, h2, h3, h4, h5, h6 {font-family: "Quicksand"; ;}
 h1 {font-size:2.1em; font-weight: bold; color: #2f99cc;}
 h2 {font-size: 1.9em; font-weight: bold; color: #ec6719;}
 h3 {font-size: 1.6em; font-weight: bold; color: #F38856; border-bottom: none;text-shadow:none; }
+img {max-width: 100%;height: auto;}
 
 a {color: #2f99cc;}
 a.new {color: #B84212;}
@@ -36,6 +41,9 @@ h2 .mw-headline {font-size: inherit; border-bottom: 0; text-shadow:none;}
 .btn {border-radius: 0; border: none;}
 .btn-primary {background-color: #2f99cc;}
 #container {padding:0;}
+@media screen and (max-width:767px) {
+    #mw-content-text .floatright {margin-left: 0;}
+}
 /*-------------------------------------------------------------- */
 /*-------------------------------------------------------------- */
 /*----------------  GLOBAL THEME CUSTOMISATION------------------ */
@@ -99,7 +107,7 @@ background-color: #ec6719;
 .navbar_secondary .nav > li > a {padding: 8px; margin-top:-1px;}
 .navbar_secondary .navbar-nav>li>a {color: white;}
 
-.navbar-nav-user {float: right !important;margin-top: 0;}
+.navbar_secondary .navbar-right {float: right !important;margin-top: 0;}
 .navbar-nav-user .open .dropdown-menu {position:absolute !important; right:0; left: auto; background-color: #D15C17 !important; margin-top: 10px; margin-right: 5px; z-index:20;}
 .navbar-nav-user .open .dropdown-menu a {color: white !important;}
 
@@ -274,7 +282,15 @@ display: block;
 margin:auto;
 text-align: center;
 }
-.article_quick_links a {height: 80px; display: block; color: white; text-decoration: none;padding: 10px;}
+.article_quick_links a {height: 105px; display: block; color: white; text-decoration: none;padding: 10px;}
+@media screen and (min-width:480px) {
+    .article_quick_links a {height: 80px;}
+    
+}
+@media screen and (min-width:768px) {
+    .article_quick_links a {height: auto;}
+    
+}
 .article_quick_links .published {background-color : #ec6719;}
 .article_quick_links .revision {background-color : #EB8243;}
 .article_quick_links .draft {background-color : #ECA178;}
@@ -341,13 +357,15 @@ text-align: center;
     -webkit-justify-content: flex-start;
     justify-content: flex-start;
 }
+
 .ns-talk .lqt_start_discussion {display: inline-block;
 background-color: #2f99cc;
 font-family: "Quicksand";
 font-weight: normal; 
 padding:10px;
 flex: 1 0 0;
--webkit-flex: 1 0 0;}
+-webkit-flex: 1 0 0;
+margin: 15px;}
 .ns-talk .lqt_start_discussion a {color: white !important;}
 
 .ns-talk .lqt-talkpage-header label {color: #2f99cc;font-family: "Quicksand";}
@@ -365,11 +383,29 @@ flex: 1 0 0;
 .ns-talk .lqt-talkpage-header form input {max-height: 30px; margin-left:5px;}
 .ns-talk .lqt_view_options form {margin-top: 5px; padding-right:15px;}
 
+
 .ns-talk .lqt_toc {width: 100%; border-bottom: #ec6719 solid 5px;}
 
 .ns-talk .lqt_toc thead {background-color: #ec6719; color: white; font-family: "Quicksand"; font-size: 1.3em;}
 .ns-talk .lqt_toc td {border: 0 !important;}
 .ns-talk .lqt_toc th {border: 0 !important;}
+
+@media screen and (max-width:767px) {
+    .ns-talk .lqt-talkpage-header {
+        flex-direction: column;
+        height: 350px;
+    }
+    .ns-talk .lqt-talkpage-header form {flex-direction: column; height: 118px;}
+    .ns-talk .lqt-talkpage-header form label, 
+    .ns-talk .lqt-talkpage-header form input, 
+    .ns-talk .lqt-talkpage-header form select {flex: 1 0 0; -webkit-flex:1 0 0; max-width: 100%; margin: 5px;}
+    
+    .ns-talk .lqt_toc thead {font-size: 0.8em;}
+    .ns-talk .lqt-thread-toolbar {position: static;}
+    .ns-talk .lqt_thread .lqt-post-wrapper {margin: 0;}
+    
+    .lqt-thread-replies {padding : 2px;}
+}
 
 
 .ns-talk .lqt_threadlevel_commands {float: left; margin: 0;}

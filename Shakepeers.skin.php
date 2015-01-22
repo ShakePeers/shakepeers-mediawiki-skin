@@ -93,8 +93,8 @@ class ShakepeersTemplate extends QuickTemplate {
         ?>
         <!-- Off Canvas Menu -->
         <nav id="off_canvas_menu" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
-            <a href="#" class="close_menu" data-toggle="offcanvas" data-canvas=".canvas" data-target="#off_canvas_menu"><i class="fa fa-close"></i></a>
-            <a class="navmenu-brand" href="#"><img src="skins/shakepeers/images/shakepeers-white.png" alt="Shakepeers"/> <?php echo $wgSitename ?></a>
+            <a href="#" class="close_menu" data-toggle="offcanvas" data-target="#off_canvas_menu" data-canvas="body"><i class="fa fa-close"></i></a>
+            <a class="navmenu-brand" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>"><img src="skins/shakepeers/images/shakepeers-white.png" alt="Shakepeers"/> <?php echo $wgSitename ?></a>
             <ul class="nav navmenu-nav">
                 <li class="dropdown">
                     <?php echo Linker::link( Title::newFromText('Thématiques'), wfMsg( 'themes' ).' <b class="caret"></b>', array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown') ); ?>
@@ -136,7 +136,7 @@ class ShakepeersTemplate extends QuickTemplate {
         </ul>
     </nav>
     <!-- / Off Canvas Menu -->
-    <div class="canvas">
+    
         <div class="background_container">
             
         </div>
@@ -144,7 +144,7 @@ class ShakepeersTemplate extends QuickTemplate {
             <div class="top_block">
                 <div class="navbar_secondary navbar navbar-default navbar-shakepeers-secondary" role="navigation">
                     <div class="container">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvas" data-canvas=".canvas" data-target="#off_canvas_menu">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvas" data-canvas="body" data-target="#off_canvas_menu">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
@@ -285,7 +285,7 @@ class ShakepeersTemplate extends QuickTemplate {
             
             <!--Add mainpage blocks at page top (in mobile only)-->
             <?php if ($wgTitle->isMainPage() ) : ?>
-                <div class="row article_quick_links visible-xs-block text-center">
+                <div class="row article_quick_links visible-sm-block visible-xs-block text-center">
                     <div class="col-xs-4 published">
                         <a href="#published">
                             <i class="icon-ok-sign"></i>
@@ -316,10 +316,11 @@ class ShakepeersTemplate extends QuickTemplate {
                     <div id="wiki-body" class="<?php if ($wgTitle->isMainPage() ) echo 'col-md-8'?>">                            
                             
                         <!-- Info Box -->
-                        <?php if (  $wgTitle->isContentPage() &&
+                        <?php 
+                        if (  $wgTitle->isContentPage() &&
                         !$wgTitle->isMainPage() &&
                             ( $wgTitle->mNamespace == '3000' ||
-                                $wgTitle->mNamespace == '4000' ||                                                 $wgTitle->mNamespace == '5000')  ) : ?>
+                                $wgTitle->mNamespace == '4000' || $wgTitle->mNamespace == '5000')  ) : ?>
                         <div class="infobox panel panel-primary pull-right">                        
                             <?php echo $this->infoBox();?>
                             <!-- Box for the summary -->
@@ -502,7 +503,6 @@ class ShakepeersTemplate extends QuickTemplate {
         </div>
     </footer>
 </div><!-- bottom -->
-</div><!-- Close canvas -->
 <?php
 $this->html('bottomscripts'); /* JS call to runBodyOnloadHook */
 $this->html('reporttime');
@@ -515,6 +515,7 @@ if ( $this->data['debug'] ) {
     <?php
 }//end if
 ?>
+</div>
 </body>
 </html>
 <?php

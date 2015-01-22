@@ -38,7 +38,7 @@ $(window).on('touchstart touchend touchmove mousewheel touchcancel gesturestart 
     });
     
 $(document).ready(function(){
-    if ($('#page-contents')) {
+    if ($('#page-contents').length > 0) {
         $('.pagetitle .nav-pills').hide();
         $('#toc_container').before('<hr>');
         $('#page-contents .dropdown-menu').removeClass('dropdown-menu').appendTo('#toc_container');
