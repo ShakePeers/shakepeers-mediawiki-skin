@@ -35,14 +35,25 @@ a.new {color: #B84212;}
 p {line-height: 1.8}
 
 /*  Overrides  */
+@media screen and (min-width: 1200px) {
+    .container {width: 970px;}
+    
+}
+
 h2 .mw-headline {font-size: inherit; border-bottom: 0; text-shadow:none;}
 .mw-headline {text-shadow: none !important}
+
+#wiki-body {font-size: 16px;}
 #wiki-body h2 {border-bottom: 0; margin-bottom: 1.3em;}
 .btn {border-radius: 0; border: none;}
 .btn-primary {background-color: #2f99cc;}
 #container {padding:0;}
 @media screen and (max-width:767px) {
     #mw-content-text .floatright {margin-left: 0;}
+}
+@media screen and (max-width: 767px){
+    body {font-size: 12px;}
+    #wiki-body {font-size: 12px;}
 }
 /*-------------------------------------------------------------- */
 /*-------------------------------------------------------------- */
@@ -282,7 +293,7 @@ display: block;
 margin:auto;
 text-align: center;
 }
-.article_quick_links a {height: 105px; display: block; color: white; text-decoration: none;padding: 10px;}
+.article_quick_links a {height: 83px; display: block; color: white; text-decoration: none;padding: 10px;}
 @media screen and (min-width:480px) {
     .article_quick_links a {height: 80px;}
     

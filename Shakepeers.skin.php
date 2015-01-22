@@ -313,14 +313,16 @@ class ShakepeersTemplate extends QuickTemplate {
             <div id="wiki-outer-body">
                 <div class="row">
                     <!--Wiki Body -->
-                    <div id="wiki-body" class="<?php if ($wgTitle->isMainPage() ) echo 'col-md-8'?>">                            
+                    <div id="wiki-body" class="<?php if ($wgTitle->isMainPage() && $_GET['action'] != 'edit') echo 'col-md-8';?>">                            
                             
                         <!-- Info Box -->
                         <?php 
-                        if (  $wgTitle->isContentPage() &&
-                        !$wgTitle->isMainPage() &&
-                            ( $wgTitle->mNamespace == '3000' ||
-                                $wgTitle->mNamespace == '4000' || $wgTitle->mNamespace == '5000')  ) : ?>
+                        if (    $wgTitle->isContentPage() &&
+                                !$wgTitle->isMainPage() &&
+                                    ( $wgTitle->mNamespace == '3000' ||
+                                        $wgTitle->mNamespace == '4000' || 
+                                            $wgTitle->mNamespace == '5000')  &&
+                                $_GET['action'] != 'edit') : ?>
                         <div class="infobox panel panel-primary pull-right">                        
                             <?php echo $this->infoBox();?>
                             <!-- Box for the summary -->
@@ -403,7 +405,7 @@ class ShakepeersTemplate extends QuickTemplate {
                     <!-- Display Article boxes on Homepage -->
                         
                         
-                    <?php if ( $wgTitle->isMainPage() ) : ?>
+                    <?php if ( $wgTitle->isMainPage() && $_GET['action'] != 'edit' ) : ?>
                             
                         <?php
                             
@@ -492,7 +494,7 @@ class ShakepeersTemplate extends QuickTemplate {
 <div class="bottom">
     <div class="container">
         <div class="row">
-            <?php $this->includePage('Shakepeers:Footer'); ?>
+            <?php $this->includePage('ShakePeers:Footer'); ?>
         </div>
     </div>   
     <footer>
