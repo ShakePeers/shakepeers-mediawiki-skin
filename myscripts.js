@@ -38,12 +38,34 @@ $(window).on('touchstart touchend touchmove mousewheel touchcancel gesturestart 
     });
     
 $(document).ready(function(){
+    
+    //Push the TOC to the box in the infobox
     if ($('#page-contents').length > 0) {
         $('.pagetitle .nav-pills').hide();
         $('#toc_container').before('<hr>');
         $('#page-contents .dropdown-menu').removeClass('dropdown-menu').appendTo('#toc_container');
     }
     
+    
+    // Add form classes in the 'ns-talk' page
     $('#lqt_sort_select').addClass('form-control');
     $('.ns-talk .lqt_toc').removeClass('table-bordered');
-})
+    
+    
+    // In the Diff page add the correct elements to - and + signs and remove extra lines
+    $('table.diff td.diff-marker').each(function(){
+        if ($(this).text() == '+') {
+            var content = $(this).html();
+            $(this).html('<span class="diff-badge diff-add-marker">'+content+'</div>');
+        } else if ($(this).text() == '−'){
+            var content = $(this).html();
+            $(this).html('<span class="diff-badge diff-subtract-marker">'+content+'</div>');
+        }
+    });
+    $('table.diff tr').each(function(){
+        // Test if is table line has content 
+        if ( !/\S/.test( $(this).text() ) ) {
+            $(this).hide();
+        }
+    });
+});

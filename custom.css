@@ -26,7 +26,9 @@ html, body {font-family: "Source Sans Pro", Helvetica, sans-serif; position:rela
 h1, h2, h3, h4, h5, h6 {font-family: "Quicksand"; ;}
 h1 {font-size:2.1em; font-weight: bold; color: #2f99cc;}
 h2 {font-size: 1.9em; font-weight: bold; color: #ec6719;}
+h2 a {color: #ec6719;}
 h3 {font-size: 1.6em; font-weight: bold; color: #F38856; border-bottom: none;text-shadow:none; }
+h3 a {color : #F38856;}
 img {max-width: 100%;height: auto;}
 
 a {color: #2f99cc;}
@@ -233,7 +235,7 @@ top: 25px;}
 .content-actions li {float:left;}
 .content-actions .open .dropdown-menu {position:absolute !important; margin-top: 10px; margin-right: 5px; z-index:20; right: 0; left: auto;}
 @media screen and (max-width:768px){
-.content-actions {margin:0;}
+.content-actions {margin:0 0 0 15px;}
 }
 
 /* Arrow colour */
@@ -440,6 +442,59 @@ margin: 15px;}
 #mw-pages h3+ul {
 margin-top: -25px;
 margin-left: 41px;
+}
+
+/*----------------------------------------------------------------
+    --------------      Page Révision         ----------------
+  ----------------------------------------------------------------
+*/
+
+button#toggleInlineDiff {margin-bottom: 15px; background-color: #2f99cc; color: white; border: none;padding: 10px;}
+
+table.diff td {border: none !important; background: none !important;}
+table.diff tr:first-child {border-bottom: none;}
+table.diff td.diff-otitle {background-color: #ec6719 !important; font-family: "Quicksand";}
+table.diff td.diff-ntitle {background-color: #2f99cc !important; font-family: "Quicksand";}
+table.diff td.diff-otitle a, table.diff td.diff-ntitle a {color: white;}
+table.diff {font-size: 0.85em;}
+table.diff tr {border-bottom: 3px solid #ededed;}
+table.diff .diff-badge {
+    color: white;
+    border-radius: 50%;
+    display: block;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    
+}
+table.diff .diff-add-marker {
+    background-color: #2f99cc;
+}
+table.diff .diff-subtract-marker {
+    background-color: #ec6719;
+}
+table.diff .diff-marker {
+    line-height: 20px;
+    position: relative;
+    right: 5px;
+    top: 5px;
+}
+table.diff td:first-child .diff-add-marker {
+    background-color: #ec6719;
+}
+
+
+/* responsive stuff */
+@media screen and (max-width:767px) {
+    table.diff .diff-badge {
+        position: relative;
+        right: 4px;
+        width:15px;
+        height:15px;
+    }
+    table.diff .diff-marker {
+        line-height: 15px;
+    }
 }
 
 /*----------------------------------------------------------------
