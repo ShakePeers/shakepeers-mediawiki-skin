@@ -103,7 +103,7 @@ background-color: #ec6719;
 -----------------------------------------------------------------*/
 .top_block {background: white; min-height: 170px; border-bottom: 1px dashed #ec6719;}
 
-.page-header {margin-top: 0; border-bottom:0; margin-bottom:0; }
+.page-header {margin-top: 0; border-bottom:0; margin-bottom:0; max-width:55%; }
 
 
 /* ---------- Secondary Navigation ---------------*/
@@ -243,7 +243,7 @@ top: 25px;}
 
 
 /*--------------- Infobox -------- */
-.infobox {padding: 20px; margin-left: 15px; margin-bottom:15px; margin-top:20px; width: 100%; font-size: 0.8em}
+.infobox {padding: 20px; margin-left: 15px; margin-bottom:15px; margin-top:20px; width: 100%; font-size: 0.8em; clear:right;}
 .infobox p {margin-bottom:5px;}
 
 @media screen and (min-width:768px){

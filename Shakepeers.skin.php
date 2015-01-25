@@ -313,9 +313,19 @@ class ShakepeersTemplate extends QuickTemplate {
             <div id="wiki-outer-body">
                 <div class="row">
                     <!--Wiki Body -->
-                    <div id="wiki-body" class="<?php if ($wgTitle->isMainPage() && $_GET['action'] != 'edit') echo 'col-md-8';?>">                            
-                            
-                        <!-- Info Box -->
+                    <div id="wiki-body" class="<?php if ($wgTitle->isMainPage() && $_GET['action'] != 'edit') echo 'col-md-8';?>">
+	            <!-- Page editing -->
+                    <?php
+                    if ( $wgUser->isLoggedIn() ) {
+                        if ( count( $this->data['content_actions']) > 0 ) {
+                            $content_nav = $this->get_array_links( $this->data['content_actions'], 'Page', 'page' );
+                            ?>
+                            <ul class="nav navbar-nav navbar-right content-actions"><?php echo $content_nav; ?></ul>
+                            <?php
+                        }
+                    }//end if ?>
+                    <!--/page editing -->
+		        <!-- Info Box -->
                         <?php 
                         if (    $wgTitle->isContentPage() &&
                                 !$wgTitle->isMainPage() &&
@@ -333,18 +343,7 @@ class ShakepeersTemplate extends QuickTemplate {
                     <!-- /Info Box -->
                             
                             
-                            
-                    <!-- Page editing -->
-                    <?php 
-                    if ( $wgUser->isLoggedIn() ) {
-                        if ( count( $this->data['content_actions']) > 0 ) {
-                            $content_nav = $this->get_array_links( $this->data['content_actions'], 'Page', 'page' );
-                            ?>
-                            <ul class="nav navbar-nav navbar-right content-actions"><?php echo $content_nav; ?></ul>
-                            <?php
-                        }
-                    }//end if ?>
-                    <!--/page editing -->
+                    
             
             
                             
