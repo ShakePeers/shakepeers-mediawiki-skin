@@ -201,7 +201,7 @@ top: 25px;}
 
 /* Specific for page menu */
 .navbar-nav.content-actions >li>.dropdown-menu {background-color: #1974A2;}
-
+.navbar-nav.content-actions .dropdown-menu > li {float: none;}
 .content-actions .dropdown-menu>li>a:hover, .content-actions .dropdown-menu>li>a:focus {background-color: #2F98CD;}
 
 
