@@ -119,7 +119,7 @@ class ShakepeersTemplate extends QuickTemplate {
                         <?php echo Linker::linkKnown( Title::newFromText('Révision') , wfMsg('link-revision'));?>
                     </li>
                     <li>
-                        <?php echo Linker::linkKnown( SpecialPage::getTitleFor('Publication') , wfMsg('link-published'));?>
+                        <?php echo Linker::linkKnown( Title::newFromText('Publication') , wfMsg('link-published'));?>
                     </li>
                 </ul>
             </li>
@@ -246,7 +246,7 @@ class ShakepeersTemplate extends QuickTemplate {
                                 <?php echo Linker::linkKnown( Title::newFromText('Révision') , wfMsg('link-revision'));?>
                             </li>
                             <li>
-                                <?php echo Linker::linkKnown( SpecialPage::getTitleFor('Publication') , wfMsg('link-published'));?>
+                                <?php echo Linker::linkKnown( Title::newFromText('Publication') , wfMsg('link-published'));?>
                             </li>
                         </ul>
                     </li>
