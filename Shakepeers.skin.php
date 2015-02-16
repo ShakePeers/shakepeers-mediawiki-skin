@@ -12,7 +12,9 @@ if (! defined('MEDIAWIKI') ) {
     die( -1 );
 }//end if
 
-require_once'includes/skins/SkinTemplate.php';
+if (is_file('includes/skins/SkinTemplate.php')) {
+    require_once 'includes/skins/SkinTemplate.php';
+}
 
 /**
 * Inherit main code from SkinTemplate, set the CSS and template filter.
