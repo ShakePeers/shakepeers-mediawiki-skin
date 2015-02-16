@@ -31,6 +31,14 @@ h3 {font-size: 1.6em; font-weight: bold; color: #F38856; border-bottom: none;tex
 h3 a {color : #F38856;}
 img {max-width: 100%;height: auto;}
 
+.btn-primary a {
+    color:white;
+}
+
+.btn-primary a:hover {
+    text-decoration:none;
+}
+
 a {color: #2f99cc;}
 a.new {color: #B84212;}
 .btn-primary
