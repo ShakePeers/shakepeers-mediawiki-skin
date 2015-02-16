@@ -39,6 +39,15 @@ img {max-width: 100%;height: auto;}
     text-decoration:none;
 }
 
+.btn-false {
+    padding:0;
+}
+
+.btn-false a {
+    padding: 6px 12px;
+    display:block;
+}
+
 a {color: #2f99cc;}
 a.new {color: #B84212;}
 .btn-primary
