@@ -13,7 +13,7 @@ if (! defined('MEDIAWIKI') ) {
 }//end if
 
 if (is_file('includes/skins/SkinTemplate.php')) {
-    require_once 'includes/skins/SkinTemplate.php';
+    include_once 'includes/skins/SkinTemplate.php';
 }
 
 /**
@@ -174,10 +174,18 @@ class ShakepeersTemplate extends QuickTemplate
                                 <?php
                                 }
                             } else {  // else if is not logged in
+                                if (isset($_GET['returnto'])) {
+                                    $returnto = $_GET['returnto'];
+                                } else {
+                                    $returnto = $wgTitle;
+                                }
                                 ?>
                                 <ul class="nav navbar-nav navbar-right">
                                 <li>
-                                    <?php echo Linker::linkKnown(SpecialPage::getTitleFor('Userlogin'), wfMsg('login')); ?>
+                                    <?php echo Linker::link(SpecialPage::getTitleFor('Userlogin'), wfMsg('createaccount'), null, array('returnto'=>$returnto, 'type'=>'signup')); ?>
+                                </li>
+                                <li>
+                                    <?php echo Linker::link(SpecialPage::getTitleFor('Userlogin'), wfMsg('login'), null, array('returnto'=>$returnto)); ?>
                                 </li>
                             </ul>
                             <?php
