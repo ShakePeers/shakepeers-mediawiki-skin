@@ -337,6 +337,7 @@ endif;?>
                         <?php
                         if ($wgTitle->isContentPage()
                             && !$wgTitle->isMainPage()
+                            && $wgTitle->exists()
                             && ( $wgTitle->mNamespace == '3000'
                             || $wgTitle->mNamespace == '4000'
                             || $wgTitle->mNamespace == '5000')
