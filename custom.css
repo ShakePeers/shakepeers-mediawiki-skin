@@ -85,6 +85,10 @@ input.form-control {box-shadow: none; background-color: white; color: #2f99cc; }
 input.form-control::-webkit-input-placeholder { color: #B0B0B0 ;}
 input.form-control::-moz-placeholder { color: #B0B0B0 ;}
 
+.radio, .checkbox {
+    display:inline-block;
+}
+
 body {padding:0; background: #ededed; }
 .content_holder {background-color: white; padding: 20px; border-top: 1px dashed #ec6719 ; margin-top: 70px; position: relative; z-index:10;}
 .page-Accueil .content_holder {margin-top: 0;}
