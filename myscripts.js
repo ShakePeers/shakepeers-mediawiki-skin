@@ -42,8 +42,9 @@ $(document).ready(function(){
     //Push the TOC to the box in the infobox
     if ($('#page-contents').length > 0) {
         $('.pagetitle .nav-pills').hide();
-        $('#toc_container').before('<hr>');
         $('#page-contents .dropdown-menu').removeClass('dropdown-menu').appendTo('#toc_container');
+    } else {
+        $('#infobox').remove();
     }
     
     
