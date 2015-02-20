@@ -89,6 +89,10 @@ input.form-control::-moz-placeholder { color: #B0B0B0 ;}
     display:inline-block;
 }
 
+.subpages {
+    display:none;
+}
+
 body {padding:0; background: #ededed; }
 .content_holder {background-color: white; padding: 20px; border-top: 1px dashed #ec6719 ; margin-top: 70px; position: relative; z-index:10;}
 .page-Accueil .content_holder {margin-top: 0;}
