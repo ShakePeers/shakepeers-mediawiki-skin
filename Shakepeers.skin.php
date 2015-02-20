@@ -395,7 +395,10 @@ endif; ?>
                             <div class="pagetitle page-header">
                                 <h1><?php
                                     $title = Title::newFromText($wgOut->getPageTitle());
-                                    echo '<small>', MWNamespace::getCanonicalName($title->getNamespace()), ':</small>';
+                                    $ns = $title->getNsText();
+                                    if (!empty($ns)) {
+                                        echo '<small>', $title->getNsText(), ':</small>';
+                                    }
                                     echo $title->getText();
                                 ?> <small><?php $this->html('subtitle') ?></small></h1>
                             </div>
