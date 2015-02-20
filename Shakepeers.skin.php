@@ -84,7 +84,7 @@ class ShakepeersTemplate extends QuickTemplate
     */
     public function execute()
     {
-        global $wgRequest, $wgUser, $wgSitename, $wgSitenameshort, $wgCopyrightLink, $wgCopyright, $wgBootstrap, $wgArticlePath, $wgGoogleAnalyticsID, $wgSiteCSS, $wgLang, $wgTitle;
+        global $wgRequest, $wgUser, $wgSitename, $wgSitenameshort, $wgCopyrightLink, $wgCopyright, $wgBootstrap, $wgArticlePath, $wgGoogleAnalyticsID, $wgSiteCSS, $wgLang, $wgTitle, $wgOut;
         global $wgEnableUploads;
         global $wgLogo;
         global $wgTOCLocation;
@@ -393,7 +393,11 @@ endif; ?>
 endif; ?>
 
                             <div class="pagetitle page-header">
-                                <h1><?php $this->html('title') ?> <small><?php $this->html('subtitle') ?></small></h1>
+                                <h1><?php
+                                    $title = Title::newFromText($wgOut->getPageTitle());
+                                    echo '<small>', MWNamespace::getCanonicalName($title->getNamespace()), ':</small>';
+                                    echo $title->getText();
+                                ?> <small><?php $this->html('subtitle') ?></small></h1>
                             </div>
 
 
