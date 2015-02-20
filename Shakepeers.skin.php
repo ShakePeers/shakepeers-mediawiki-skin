@@ -395,9 +395,9 @@ endif; ?>
                             <div class="pagetitle page-header">
                                 <h1><?php
                                     $title = Title::newFromText($wgOut->getPageTitle());
-                                    $ns = $title->getNsText();
+                                    $ns = str_replace('_', ' ', $title->getNsText());
                                     if (!empty($ns)) {
-                                        echo '<small>', $title->getNsText(), ':</small>';
+                                        echo '<small>', $ns, ':</small>';
                                     }
                                     echo $title->getText();
                                 ?> <small><?php $this->html('subtitle') ?></small></h1>
