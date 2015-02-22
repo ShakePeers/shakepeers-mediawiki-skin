@@ -685,7 +685,7 @@ if ($this->data['debug'] ) {
                 $liAtts = '';
                 $linkAtts = '';
             }
-            $output .= "<li $liAtts ><a href='{$page_nav[$i]['link']}' $linkAtts >";
+            $output .= "<li $liAtts ><a title='{$page_nav[$i]['text']}' href='{$page_nav[$i]['link']}' $linkAtts >";
             $output .= $page_nav[$i]['title'];
             $output .= "</a>";
 
@@ -831,6 +831,7 @@ if ($this->data['debug'] ) {
             'key' => $item['key'],
             'class' => htmlspecialchars($item['class']),
             'title' => htmlspecialchars($item['text']),
+            'text' => $item['text']
             );
 
             if('page' == $which ) {
