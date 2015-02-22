@@ -95,6 +95,8 @@ input.form-control::-moz-placeholder { color: #B0B0B0 ;}
 
 .subtitle {
     font-size:50%;
+    display:inline-block;
+    line-height:normal;
 }
 
 body {padding:0; background: #ededed; }
