@@ -544,5 +544,22 @@ table.diff .autocomment {color: white;}
     .partenaires_column {text-align: center;}
 }
 
+/*Visual editor*/
+.mediawiki .ve-ui-overlay {
+    z-index: 20;
+}
+
+.oo-ui-window-isolated .oo-ui-processDialog-location {
+    height:auto;
+}
+
+html,
+body.oo-ui-window-isolated {
+    height:100%;
+}
+
+body.oo-ui-window-isolated {
+    font-size:1em;
+}
 
 
