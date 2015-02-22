@@ -622,6 +622,7 @@ if ($this->data['debug'] ) {
         'link' => 'javascript:void(0)',
         'class' => 'collabspible dropdown',
         'title' => '<i class="icon icon-wrench"></i><span class="caret"></span>',
+        'text' => wfMsg('toolbox')
         );
         // Add the information button
         $page_nav[] = array(
@@ -629,6 +630,7 @@ if ($this->data['debug'] ) {
         'link' => 'javascript:void(0)',
         'class' => 'collabspible dropdown',
         'title' => '<i class="icon icon-info-sign"></i><span class="caret"></span>',
+        'text' => wfMsg('pageinfo-title', $wgTitle->getText())
         );
         // Build the array
         foreach ($page_nav as $key => $pageNavItem) {
@@ -685,7 +687,7 @@ if ($this->data['debug'] ) {
                 $liAtts = '';
                 $linkAtts = '';
             }
-            $output .= "<li $liAtts ><a href='{$page_nav[$i]['link']}' $linkAtts >";
+            $output .= "<li $liAtts ><a title='{$page_nav[$i]['text']}' href='{$page_nav[$i]['link']}' $linkAtts >";
             $output .= $page_nav[$i]['title'];
             $output .= "</a>";
 
@@ -831,6 +833,7 @@ if ($this->data['debug'] ) {
             'key' => $item['key'],
             'class' => htmlspecialchars($item['class']),
             'title' => htmlspecialchars($item['text']),
+            'text' => $item['text']
             );
 
             if('page' == $which ) {
