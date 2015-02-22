@@ -328,7 +328,7 @@ endif;?>
             <!--End mainpage blocks-->
 
             <div id="wiki-outer-body">
-                <div class="row">
+                <div class="row mw-body" id="content">
                     <!--Wiki Body -->
                     <div id="wiki-body" class="<?php if ($wgTitle->isMainPage() && $_GET['action'] != 'edit') { echo 'col-md-8';
 }?>">
@@ -405,7 +405,7 @@ endif; ?>
 
 
 
-                            <div class="body">
+                            <div class="body mw-body-content" id="bodyContent">
                                 <?php $this->html('bodytext') ?>
                             </div>
 
