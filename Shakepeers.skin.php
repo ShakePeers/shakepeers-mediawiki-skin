@@ -622,6 +622,7 @@ if ($this->data['debug'] ) {
         'link' => 'javascript:void(0)',
         'class' => 'collabspible dropdown',
         'title' => '<i class="icon icon-wrench"></i><span class="caret"></span>',
+        'text' => wfMsg('toolbox')
         );
         // Add the information button
         $page_nav[] = array(
@@ -629,6 +630,7 @@ if ($this->data['debug'] ) {
         'link' => 'javascript:void(0)',
         'class' => 'collabspible dropdown',
         'title' => '<i class="icon icon-info-sign"></i><span class="caret"></span>',
+        'text' => wfMsg('pageinfo-title', $wgTitle->getText())
         );
         // Build the array
         foreach ($page_nav as $key => $pageNavItem) {
