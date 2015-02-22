@@ -400,7 +400,7 @@ endif; ?>
                                         echo '<small>', $ns, ':</small>';
                                     }
                                     echo $title->getText();
-                                ?> <small><?php $this->html('subtitle') ?></small></h1>
+                                ?><br/><small class="subtitle"><?php $this->html('subtitle') ?></small></h1>
                             </div>
 
 
