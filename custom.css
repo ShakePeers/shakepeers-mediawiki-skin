@@ -514,6 +514,11 @@ table.diff td:first-child .diff-add-marker {
     background-color: #ec6719;
 }
 
+.keepEdit {
+    text-align:center;
+    font-size:1.1em;
+}
+
 
 /* responsive stuff */
 @media screen and (max-width:767px) {
