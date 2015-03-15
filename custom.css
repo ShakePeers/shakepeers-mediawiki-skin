@@ -427,7 +427,7 @@ margin: 15px;}
 .ns-talk .lqt-talkpage-header form input {margin-left:5px;}
 .ns-talk .lqt_view_options form {padding-right:15px;}
 .ns-talk [id=lqt-search-box] {
-	padding:3px;
+    padding:3px;
 }
 
 .ns-talk .lqt_toc {width: 100%; border-bottom: #ec6719 solid 5px;}
@@ -466,19 +466,19 @@ margin: 15px;}
 .ns-talk .lqt_thread_heading {border : 0; margin: 50px 0 30px 0;;} 
 
 .mw-subject-editor input[type=button] {
-	font-size: 14px;
-	background-color: #2f99cc;
-	font-family: "Source Sans Pro",Helvetica,sans-serif;
-	color: white;
-	padding: 6px 12px;
-	border: 1px solid transparent;
+    font-size: 14px;
+    background-color: #2f99cc;
+    font-family: "Source Sans Pro",Helvetica,sans-serif;
+    color: white;
+    padding: 6px 12px;
+    border: 1px solid transparent;
 }
 
 .mw-subject-editor [id=lqt-subject-input-130] {
-	font-size: 16px;
-	font-weight: normal;
-	color: #222;
-	font-family: "Source Sans Pro",Helvetica,sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    color: #222;
+    font-family: "Source Sans Pro",Helvetica,sans-serif;
 }
 
 /*----------------------------------------------------------------
@@ -489,7 +489,7 @@ margin: 15px;}
 */
 
 #mw-pages h3+ul {
-margin-top: -25px;
+margin-top: -10px;
 margin-left: 41px;
 }
 
