@@ -1,6 +1,6 @@
 {
-	"name": "shakeepers/shakepeers-mediawiki-skin",
+	"name": "shakeepers/shakepeers-skin",
 	"description": "Fork of bootstrap-mediawiki used on shakepeers.org",
 	"license": "Apache-2.0",
-	"type": "mediawiki-extension"
+	"type": "mediawiki-skin"
 }
