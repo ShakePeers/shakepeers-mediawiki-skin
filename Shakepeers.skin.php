@@ -605,7 +605,7 @@ if ($this->data['debug'] ) {
         $page_nav = array();
         // Add the edit and discuss if present, and remove from nav array
         foreach ($nav as $key => $nav_item) {
-            if ('edit' == $nav_item['id']) {
+            if ('ve-edit' == $nav_item['id']) {
                 $page_nav[] = $nav_item;
                 unset($nav[$key]);
             }
@@ -646,7 +646,7 @@ if ($this->data['debug'] ) {
                 foreach ($nav as $navKey => $navItem) {
                     if ($navItem['id'] == 'watch'
                         || $navItem['id'] == 'unwatch'
-                        || $navItem['id'] == 've-edit'
+                        || $navItem['id'] == 'edit'
                     ) {
                         $page_nav[$key]['sublinks'][] = $navItem;
                         unset($nav[$navKey]);
@@ -846,9 +846,9 @@ if ($this->data['debug'] ) {
                     break;
                 case 'talk': $icon = "icon icon-comment";
                     break;
-                case 've-edit': $icon = "fa fa-pencil-square-o";
+                case 've-edit': $icon = "icon icon-pencil";
                     break;
-                case 'edit': $icon = "icon icon-pencil";
+                case 'edit': $icon = "fa fa-pencil-square-o";
                     break;
                 case 'history': $icon = "fa fa-history";
                     break;
@@ -865,8 +865,8 @@ if ($this->data['debug'] ) {
                 }// end switch
 
 
-                // Remove text for 'edit' and 'discuss'
-                if ($link['id'] == 'talk' || $link['id'] == 'edit') {
+                // Remove text for 've-edit' and 'discuss'
+                if ($link['id'] == 'talk' || $link['id'] == 've-edit') {
                     $link['title'] = '<i class="' . $icon . '"></i>';
                 } elseif ($link['id'] == 'nstab-revision' || $link['id'] == 'nstab-main' || $link['id'] == 'nstab-brouillon') {
                     $link['title'] = '<i class="' . $icon . '"></i> ' . wfMsg('this-page-link');
@@ -1067,4 +1067,3 @@ if ($this->data['debug'] ) {
 
 
 }
-
