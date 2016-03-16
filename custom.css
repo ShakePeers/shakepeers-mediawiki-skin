@@ -85,6 +85,10 @@ input.form-control {box-shadow: none; background-color: white; color: #2f99cc; }
 input.form-control::-webkit-input-placeholder { color: #B0B0B0 ;}
 input.form-control::-moz-placeholder { color: #B0B0B0 ;}
 
+.client-js .mw-ui-checkbox:not(#noop) label input[type="checkbox"] {
+    opacity: 1;
+}
+
 .radio, .checkbox {
     display:inline-block;
 }
