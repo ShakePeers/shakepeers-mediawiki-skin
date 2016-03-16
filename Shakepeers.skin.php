@@ -613,7 +613,10 @@ if ($this->data['debug'] ) {
                 $page_nav[] = $nav_item;
                 unset($nav[$key]);
             }
-
+            if ('back' == $nav_item['id']) {
+                $page_nav[] = $nav_item;
+                unset($nav[$key]);
+            }
 
         }
         // Add the tool button
@@ -823,8 +826,19 @@ if ($this->data['debug'] ) {
 
     private function get_array_links( $array, $title, $which )
     {
+        global $wgTitle;
         $nav = array();
         $nav[] = array('title' => $title );
+        if ($wgTitle->mNamespace%2) {
+            unset($array['talk']);
+            $parentTitle = Title::newFromTitleValue(new TitleValue($wgTitle->getNamespace() - 1, $wgTitle->getDBKey()));
+            $array['back'] = array(
+                'href'=>$parentTitle->getLocalURL(),
+                'primary'=>true,
+                'context'=>'back',
+                'text'=>'Retour à la page parente'
+            );
+        }
         foreach( $array as $key => $item ) {
             $link = array(
             'id' => Sanitizer::escapeId($key),
@@ -862,11 +876,13 @@ if ($this->data['debug'] ) {
                     break;
                 case 'protect': $icon = 'fa fa-lock';
                     break;
+                case 'back': $icon = 'icon icon-arrow-left';
+                    break;
                 }// end switch
 
 
                 // Remove text for 've-edit' and 'discuss'
-                if ($link['id'] == 'talk' || $link['id'] == 've-edit') {
+                if ($link['id'] == 'talk' || $link['id'] == 've-edit' || $link['id'] == 'back') {
                     $link['title'] = '<i class="' . $icon . '"></i>';
                 } elseif ($link['id'] == 'nstab-revision' || $link['id'] == 'nstab-main' || $link['id'] == 'nstab-brouillon') {
                     $link['title'] = '<i class="' . $icon . '"></i> ' . wfMsg('this-page-link');
