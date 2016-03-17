@@ -627,37 +627,10 @@ if ($this->data['debug'] ) {
         'title' => '<i class="icon icon-wrench"></i><span class="caret"></span>',
         'text' => wfMsg('toolbox')
         );
-        // Add the information button
-        $page_nav[] = array(
-        'id' => 'information',
-        'link' => 'javascript:void(0)',
-        'class' => 'collabspible dropdown',
-        'title' => '<i class="icon icon-info-sign"></i><span class="caret"></span>',
-        'text' => wfMsg('pageinfo-title', $wgTitle->getText())
-        );
+
         // Build the array
         foreach ($page_nav as $key => $pageNavItem) {
             if ($pageNavItem['id'] == 'tools') {
-
-                // Add the print button into 'Tools'
-                $page_nav[$key]['sublinks'][] = array(
-                'id' => 'print',
-                'linkTag' => Linker::link($wgTitle, '<i class="icon icon-print"></i> '. wfMsg('print-version'), array(), array( 'printable' => 'yes' )),
-                );
-
-                // Add the watch, unwatch and simple edit buttons
-                foreach ($nav as $navKey => $navItem) {
-                    if ($navItem['id'] == 'watch'
-                        || $navItem['id'] == 'unwatch'
-                        || $navItem['id'] == 'edit'
-                    ) {
-                        $page_nav[$key]['sublinks'][] = $navItem;
-                        unset($nav[$navKey]);
-                    }
-                }
-            }
-
-            elseif ($pageNavItem['id'] == 'information') {
 
 
                 // Add everything else
