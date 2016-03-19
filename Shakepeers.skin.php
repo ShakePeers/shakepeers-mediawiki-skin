@@ -801,7 +801,7 @@ if ($this->data['debug'] ) {
         global $wgTitle;
         $nav = array();
         $nav[] = array('title' => $title );
-        if ($wgTitle->mNamespace%2) {
+        if ($wgTitle->mNamespace%2 && $wgTitle->mNamespace != -1) {
             unset($array['talk']);
             $parentTitle = Title::newFromTitleValue(new TitleValue($wgTitle->getNamespace() - 1, $wgTitle->getDBKey()));
             $array['back'] = array(
