@@ -643,6 +643,12 @@ if ($this->data['debug'] ) {
                     }
 
                 }
+                if ($wgTitle->getNsText() == 'Utilisateur') {
+                    $page_nav[$key]['sublinks'][] = array(
+                        'link' => 'Spécial:Contributions/'.rawurlencode($wgTitle->getText()),
+                        'title' => 'Contributions'
+                    );
+                }
             }
 
         }
