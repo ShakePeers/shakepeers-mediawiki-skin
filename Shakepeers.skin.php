@@ -610,7 +610,12 @@ if ($this->data['debug']) {
                 foreach ($nav as $navKey => $navItem) {
                     // Exclude the 'title' element which has no ID
                     if (isset($navItem['id'])) {
-                        $page_nav[$key]['sublinks'][] = $navItem;
+                        if ($navItem['id'] == 'history') {
+                            //History is always first
+                            array_unshift($page_nav[$key]['sublinks'], $navItem);
+                        } else {
+                            $page_nav[$key]['sublinks'][] = $navItem;
+                        }
                         unset($nav[$navKey]);
                     }
                 }
