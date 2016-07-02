@@ -595,10 +595,19 @@ if ($this->data['debug']) {
         // Build the array
         foreach ($page_nav as $key => $pageNavItem) {
             if ($pageNavItem['id'] == 'tools') {
+                //Add the print button
+                $page_nav[$key]['sublinks'][] = array(
+                    'id' => 'print',
+                    'linkTag' => Linker::link(
+                        $wgTitle,
+                        '<i class="icon icon-print"></i> '. wfMsg('print-version'),
+                        array(),
+                        array( 'printable' => 'yes' )
+                    ),
+                );
+
                 // Add everything else
                 foreach ($nav as $navKey => $navItem) {
-                    //Remove the empty title
-
                     // Exclude the 'title' element which has no ID
                     if (isset($navItem['id'])) {
                         $page_nav[$key]['sublinks'][] = $navItem;
