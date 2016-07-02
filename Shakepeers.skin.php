@@ -216,45 +216,6 @@ class ShakepeersTemplate extends QuickTemplate
                             <li>
                                 <a href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>"><?php echo wfMessage('home');?></a>
                             </li>
-                            <li class="dropdown yamm-fw">
-                                <?php echo Linker::link(Title::newFromText('Thématiques'), wfMsg('themes').' <span class="caret"></span>', array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role'=> 'button', 'aria-expanded' => 'false')); ?>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <div class="yamm-content">
-                                            <div class="row">
-
-                                                <?php // get themes
-                                                $themes = $this->getThemeCategories();
-
-                                                //Split into two columns
-                                                $len = count($themes);
-                                                $half = round($len / 2);
-                                                $themes = array_chunk($themes, $half);?>
-
-
-
-                                                <?php // Loop through columns
-                                                foreach ($themes as $themeColumn) :?>
-                                                <div class="col-md-6">
-                                                    <ul class="themes_list">
-                                                        <?php // Loop through themes and build list
-                                                        foreach ($themeColumn as $theme) :?>
-                                                        <li class="themes_list_item">
-                                                            <a href="<?php echo $theme['url'];?>"><?php echo $theme['title']?></a>
-                                                        </li>
-                                                    <?php
-                                                        endforeach;?>
-                                                </ul>
-                                            </div>
-                                        <?php
-                                                endforeach;?>
-
-
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
 
                     <li class="dropdown">
                         <?php echo Linker::linkKnown(SpecialPage::getTitleFor('AllPages'), wfMsg('articles').' <span class="caret"></span>', array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role'=> 'button', 'aria-expanded' => 'false'));?>
@@ -271,15 +232,16 @@ class ShakepeersTemplate extends QuickTemplate
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle info_menu_button" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-info-circle"></i><span class="caret"></span></a>
+                        <?php echo Linker::linkKnown(SpecialPage::getTitleFor('ShakePeers'), 'ShakePeers'.' <span class="caret"></span>', array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role'=> 'button', 'aria-expanded' => 'false'));?>
                         <ul class="dropdown-menu" role="menu">
-                            <li> <?php echo Linker::linkKnown(Title::newFromText('ShakePeers'), wfMsg('shakepeers'));?></li>
-                            <li> <?php echo Linker::linkKnown(Title::newFromText('Contribuer'), wfMsg('contribuer'));?></li>
+                            <li> <?php echo Linker::linkKnown(Title::newFromText('ShakePeers'), wfMsg('objectifs'));?></li>
                             <li> <?php echo Linker::linkKnown(Title::newFromText('Communauté'), wfMsg('communauté'));?></li>
-                            <li> <?php echo Linker::linkKnown(Title::newFromText('Aide'), wfMsg('aide'));?></li>
+                            <li> <?php echo Linker::linkKnown(Title::newFromText('ShakePeers:Association'), wfMsg('association'));?></li>
+                            <li> <?php echo Linker::linkKnown(Title::newFromText('ShakePeers:Contribuer'), wfMsg('contribuer'));?></li>
                             <li> <?php echo Linker::linkKnown(Title::newFromText('Contact'), wfMsg('contact'));?></li>
                         </ul>
                     </li>
+                    <li> <?php echo Linker::linkKnown(Title::newFromText('Aide'), wfMsg('aide'));?></li>
                 </ul>
                 <!-- End nav bar -->
             </div>
