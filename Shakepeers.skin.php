@@ -8,8 +8,8 @@
 * @License:  GPLv2 (http://www.gnu.org/copyleft/gpl.html)
 */
 
-if (! defined('MEDIAWIKI') ) {
-    die( -1 );
+if (! defined('MEDIAWIKI')) {
+    die(-1);
 }//end if
 
 if (is_file('includes/skins/SkinTemplate.php')) {
@@ -34,7 +34,7 @@ class SkinShakepeers extends SkinTemplate
     /**
     * initialize the page
     */
-    public function initPage( OutputPage $out )
+    public function initPage(OutputPage $out)
     {
         global $wgSiteJS;
         parent::initPage($out);
@@ -45,7 +45,7 @@ class SkinShakepeers extends SkinTemplate
     /**
     * prepares the skin's CSS
     */
-    public function setupSkinUserCss( OutputPage $out )
+    public function setupSkinUserCss(OutputPage $out)
     {
         global $wgSiteCSS;
 
@@ -162,8 +162,8 @@ class ShakepeersTemplate extends QuickTemplate
                         </button>
                         <div class="collapse navbar-collapse">
                             <?php
-                            if ($wgUser->isLoggedIn() ) {
-                                if (count($this->data['personal_urls']) > 0 ) {
+                            if ($wgUser->isLoggedIn()) {
+                                if (count($this->data['personal_urls']) > 0) {
                                     $user_icon = '<i class="fa fa-user"></i>&nbsp; ';
                                     $name = wfMessage('shakepeers-welcome')->inContentLanguage() . ' ' .strtolower($wgUser->getName());
                                     $user_nav = $this->get_array_links($this->data['personal_urls'], $user_icon . $name, 'user');
@@ -200,7 +200,7 @@ class ShakepeersTemplate extends QuickTemplate
                 <div>
                     <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo isset( $wgLogo ) && $wgLogo ? "<img src='{$wgLogo}' alt='{$wgSitename}'/> " : $wgSitename ; ?></a>
+                        <a class="navbar-brand" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo isset($wgLogo) && $wgLogo ? "<img src='{$wgLogo}' alt='{$wgSitename}'/> " : $wgSitename ; ?></a>
                     </div>
                     <!--Search -->
                     <form class="search_form navbar-search navbar-form navbar-right" action="<?php $this->text('wgScript') ?>" id="searchform" role="search">
@@ -216,45 +216,6 @@ class ShakepeersTemplate extends QuickTemplate
                             <li>
                                 <a href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>"><?php echo wfMessage('home');?></a>
                             </li>
-                            <li class="dropdown yamm-fw">
-                                <?php echo Linker::link(Title::newFromText('Thématiques'), wfMsg('themes').' <span class="caret"></span>', array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role'=> 'button', 'aria-expanded' => 'false')); ?>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <div class="yamm-content">
-                                            <div class="row">
-
-                                                <?php // get themes
-                                                $themes = $this->getThemeCategories();
-
-                                                //Split into two columns
-                                                $len = count($themes);
-                                                $half = round($len / 2);
-                                                $themes = array_chunk($themes, $half);?>
-
-
-
-                                                <?php // Loop through columns
-                                                foreach ($themes as $themeColumn) :?>
-                                                <div class="col-md-6">
-                                                    <ul class="themes_list">
-                                                        <?php // Loop through themes and build list
-                                                        foreach ($themeColumn as $theme) :?>
-                                                        <li class="themes_list_item">
-                                                            <a href="<?php echo $theme['url'];?>"><?php echo $theme['title']?></a>
-                                                        </li>
-                                                    <?php
-                                                        endforeach;?>
-                                                </ul>
-                                            </div>
-                                        <?php
-                                                endforeach;?>
-
-
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
 
                     <li class="dropdown">
                         <?php echo Linker::linkKnown(SpecialPage::getTitleFor('AllPages'), wfMsg('articles').' <span class="caret"></span>', array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role'=> 'button', 'aria-expanded' => 'false'));?>
@@ -271,15 +232,16 @@ class ShakepeersTemplate extends QuickTemplate
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle info_menu_button" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-info-circle"></i><span class="caret"></span></a>
+                        <?php echo Linker::linkKnown(SpecialPage::getTitleFor('ShakePeers'), 'ShakePeers'.' <span class="caret"></span>', array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role'=> 'button', 'aria-expanded' => 'false'));?>
                         <ul class="dropdown-menu" role="menu">
-                            <li> <?php echo Linker::linkKnown(Title::newFromText('ShakePeers'), wfMsg('shakepeers'));?></li>
-                            <li> <?php echo Linker::linkKnown(Title::newFromText('Contribuer'), wfMsg('contribuer'));?></li>
+                            <li> <?php echo Linker::linkKnown(Title::newFromText('ShakePeers'), wfMsg('objectifs'));?></li>
                             <li> <?php echo Linker::linkKnown(Title::newFromText('Communauté'), wfMsg('communauté'));?></li>
-                            <li> <?php echo Linker::linkKnown(Title::newFromText('Aide'), wfMsg('aide'));?></li>
+                            <li> <?php echo Linker::linkKnown(Title::newFromText('ShakePeers:Association'), wfMsg('association'));?></li>
+                            <li> <?php echo Linker::linkKnown(Title::newFromText('ShakePeers:Contribuer'), wfMsg('contribuer'));?></li>
                             <li> <?php echo Linker::linkKnown(Title::newFromText('Contact'), wfMsg('contact'));?></li>
                         </ul>
                     </li>
+                    <li> <?php echo Linker::linkKnown(Title::newFromText('Aide'), wfMsg('aide'));?></li>
                 </ul>
                 <!-- End nav bar -->
             </div>
@@ -289,7 +251,8 @@ class ShakepeersTemplate extends QuickTemplate
     <!--
     Add mainpage central quote block
     -->
-    <?php if ($wgTitle->isMainPage() ) { echo "<h2 class='homepage_quote'>".wfMsg("slogan")."</h2>";
+    <?php if ($wgTitle->isMainPage()) {
+        echo "<h2 class='homepage_quote'>".wfMsg("slogan")."</h2>";
 }?>
     <!--
     End mainpage block
@@ -300,7 +263,7 @@ class ShakepeersTemplate extends QuickTemplate
         <div class="content_holder">
 
             <!--Add mainpage blocks at page top (in mobile only)-->
-            <?php if ($wgTitle->isMainPage() ) : ?>
+            <?php if ($wgTitle->isMainPage()) : ?>
                 <div class="row article_quick_links visible-sm-block visible-xs-block text-center">
                     <div class="col-xs-4 published">
                         <a href="#published">
@@ -330,18 +293,18 @@ endif;?>
             <div id="wiki-outer-body">
                 <div class="row mw-body" id="content">
                     <!--Wiki Body -->
-                    <div id="wiki-body" class="<?php if ($wgTitle->isMainPage() && $_GET['action'] != 'edit') { echo 'col-md-8';
+                    <div id="wiki-body" class="<?php if ($wgTitle->isMainPage() && $_GET['action'] != 'edit') {
+                        echo 'col-md-8';
 }?>">
                 <!-- Page editing -->
                     <?php
-                    if ($wgUser->isLoggedIn() ) {
-                        if (count($this->data['content_actions']) > 0 ) {
-                            $content_nav = $this->get_array_links($this->data['content_actions'], 'Page', 'page');
-                            ?>
-                            <ul class="nav navbar-nav navbar-right content-actions"><?php echo $content_nav; ?></ul>
-                            <?php
-                        }
-                    }//end if ?>
+                    if (count($this->data['content_actions']) > 0) {
+                        $content_nav = $this->get_array_links($this->data['content_actions'], 'Page', 'page');
+                        ?>
+                        <ul class="nav navbar-nav navbar-right content-actions"><?php echo $content_nav; ?></ul>
+                        <?php
+                    }
+                    ?>
                     <!--/page editing -->
                 <!-- Info Box -->
                 <div id="infobox" class="infobox panel panel-primary pull-right">
@@ -369,7 +332,7 @@ endif;?>
 
 
                     <?php
-                    if ('sidebar' == $wgTOCLocation ) {
+                    if ('sidebar' == $wgTOCLocation) {
                         ?>
                         <div class="row">
                             <section class="col-md-3 toc-sidebar"></section>
@@ -377,15 +340,16 @@ endif;?>
                                 <?php
                     }//end if
                             ?>
-                            <?php if($this->data['sitenotice'] ) { ?><div id="siteNotice" class="alert-message warning"><?php $this->html('sitenotice') ?></div><?php
+                            <?php if ($this->data['sitenotice']) {
+?><div id="siteNotice" class="alert-message warning"><?php $this->html('sitenotice') ?></div><?php
 } ?>
-                            <?php if ($this->data['undelete'] ) : ?>
+                            <?php if ($this->data['undelete']) : ?>
                                 <!-- undelete -->
                                 <div id="contentSub2"><?php $this->html('undelete') ?></div>
                                 <!-- /undelete -->
                             <?php
 endif; ?>
-                            <?php if($this->data['newtalk'] ) : ?>
+                            <?php if ($this->data['newtalk']) : ?>
                                 <!-- newtalk -->
                                 <div class="usermessage"><?php $this->html('newtalk')  ?></div>
                                 <!-- /newtalk -->
@@ -396,9 +360,9 @@ endif; ?>
                                 <h1><?php
                                     $title = Title::newFromText($wgOut->getPageTitle());
                                     $ns = str_replace('_', ' ', $title->getNsText());
-                                    if (!empty($ns)) {
-                                        echo '<small>', $ns, ':</small>';
-                                    }
+                                if (!empty($ns)) {
+                                    echo '<small>', $ns, ':</small>';
+                                }
                                     echo $title->getText();
                                 ?><br/><small class="subtitle"><?php $this->html('subtitle') ?></small></h1>
                             </div>
@@ -409,7 +373,7 @@ endif; ?>
                                 <?php $this->html('bodytext') ?>
                             </div>
 
-                            <?php if ($this->data['catlinks'] ) : ?>
+                            <?php if ($this->data['catlinks']) : ?>
                                 <div class="category-links">
                                     <!-- catlinks -->
                                     <?php $this->html('catlinks'); ?>
@@ -417,7 +381,7 @@ endif; ?>
                                 </div>
                             <?php
 endif; ?>
-                            <?php if ($this->data['dataAfterContent'] ) : ?>
+                            <?php if ($this->data['dataAfterContent']) : ?>
                                 <div class="data-after-content">
                                     <!-- dataAfterContent -->
                                     <?php $this->html('dataAfterContent'); ?>
@@ -426,7 +390,7 @@ endif; ?>
                             <?php
 endif; ?>
                             <?php
-                            if ('sidebar' == $wgTOCLocation ) {
+                            if ('sidebar' == $wgTOCLocation) {
                                 ?>
                             </section></section>
                             <?php
@@ -437,7 +401,7 @@ endif; ?>
                     <!-- Display Article boxes on Homepage -->
 
 
-                    <?php if ($wgTitle->isMainPage() && $_GET['action'] != 'edit' ) : ?>
+                    <?php if ($wgTitle->isMainPage() && $_GET['action'] != 'edit') : ?>
 
                         <?php
 
@@ -501,7 +465,8 @@ endif; ?>
                             $parser = new Parser;
 
                             // Output
-                            $parsed = $parser->parse($text, $wgTitle, new ParserOptions()); echo $parsed->getText();
+                            $parsed = $parser->parse($text, $wgTitle, new ParserOptions());
+                            echo $parsed->getText();
 
                             // Add link
                             echo '<p class="see_more_link_holder">'.Linker::linkKnown(Title::newFromText($category['pageTitle']), wfMsg("see-{$category['slug']}-articles").' <span class="icon icon-chevron-right"></span>').'</p>';
@@ -541,7 +506,7 @@ endif; ?>
 $this->html('bottomscripts'); /* JS call to runBodyOnloadHook */
 $this->html('reporttime');
 
-if ($this->data['debug'] ) {
+if ($this->data['debug']) {
 ?>
 <!-- Debug output:
     <?php $this->text('debug'); ?>
@@ -559,23 +524,23 @@ if ($this->data['debug'] ) {
 * Render one or more navigations elements by name, automatically reveresed
 * when UI is in RTL mode
 */
-    private function nav( $nav )
+    private function nav($nav)
     {
         $output = '';
-        foreach ( $nav as $topItem ) {
+        foreach ($nav as $topItem) {
             $pageTitle = Title::newFromText($topItem['link'] ?: $topItem['title']);
-            if (array_key_exists('sublinks', $topItem) ) {
+            if (array_key_exists('sublinks', $topItem)) {
                 $output .= '<li class="dropdown">';
                 $output .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $topItem['title'] . ' <b class="caret"></b></a>';
                 $output .= '<ul class="dropdown-menu">';
 
-                foreach ( $topItem['sublinks'] as $subLink ) {
-                    if ('divider' == $subLink ) {
+                foreach ($topItem['sublinks'] as $subLink) {
+                    if ('divider' == $subLink) {
                         $output .= "<li class='divider'></li>\n";
-                    } elseif ($subLink['textonly'] ) {
+                    } elseif ($subLink['textonly']) {
                         $output .= "<li class='nav-header'>{$subLink['title']}</li>\n";
                     } else {
-                        if($subLink['local'] && $pageTitle = Title::newFromText($subLink['link']) ) {
+                        if ($subLink['local'] && $pageTitle = Title::newFromText($subLink['link'])) {
                             $href = $pageTitle->getLocalURL();
                         } else {
                             $href = $subLink['link'];
@@ -588,7 +553,7 @@ if ($this->data['debug'] ) {
                 $output .= '</ul>';
                 $output .= '</li>';
             } else {
-                if($pageTitle ) {
+                if ($pageTitle) {
                     $output .= '<li' . ($this->data['title'] == $topItem['title'] ? ' class="active"' : '') . '><a href="' . ( $topItem['external'] ? $topItem['link'] : $pageTitle->getLocalURL() ) . '">' . $topItem['title'] . '</a></li>';
                 }//end if
             }//end else
@@ -597,7 +562,7 @@ if ($this->data['debug'] ) {
     }//end nav
 
 
-    private function page_nav( $nav )
+    private function page_nav($nav)
     {
         global $wgTitle;
 
@@ -605,7 +570,7 @@ if ($this->data['debug'] ) {
         $page_nav = array();
         // Add the edit and discuss if present, and remove from nav array
         foreach ($nav as $key => $nav_item) {
-            if ('edit' == $nav_item['id']) {
+            if ('ve-edit' == $nav_item['id']) {
                 $page_nav[] = $nav_item;
                 unset($nav[$key]);
             }
@@ -613,8 +578,10 @@ if ($this->data['debug'] ) {
                 $page_nav[] = $nav_item;
                 unset($nav[$key]);
             }
-
-
+            if ('back' == $nav_item['id']) {
+                $page_nav[] = $nav_item;
+                unset($nav[$key]);
+            }
         }
         // Add the tool button
         $page_nav[] = array(
@@ -624,52 +591,41 @@ if ($this->data['debug'] ) {
         'title' => '<i class="icon icon-wrench"></i><span class="caret"></span>',
         'text' => wfMsg('toolbox')
         );
-        // Add the information button
-        $page_nav[] = array(
-        'id' => 'information',
-        'link' => 'javascript:void(0)',
-        'class' => 'collabspible dropdown',
-        'title' => '<i class="icon icon-info-sign"></i><span class="caret"></span>',
-        'text' => wfMsg('pageinfo-title', $wgTitle->getText())
-        );
+
         // Build the array
         foreach ($page_nav as $key => $pageNavItem) {
             if ($pageNavItem['id'] == 'tools') {
-
-                // Add the print button into 'Tools'
+                //Add the print button
                 $page_nav[$key]['sublinks'][] = array(
-                'id' => 'print',
-                'linkTag' => Linker::link($wgTitle, '<i class="icon icon-print"></i> '. wfMsg('print-version'), array(), array( 'printable' => 'yes' )),
+                    'id' => 'print',
+                    'linkTag' => Linker::link(
+                        $wgTitle,
+                        '<i class="icon icon-print"></i> '. wfMsg('print-version'),
+                        array(),
+                        array( 'printable' => 'yes' )
+                    ),
                 );
-
-                // Add the watch, unwatch and simple edit buttons
-                foreach ($nav as $navKey => $navItem) {
-                    if ($navItem['id'] == 'watch'
-                        || $navItem['id'] == 'unwatch'
-                        || $navItem['id'] == 've-edit'
-                    ) {
-                        $page_nav[$key]['sublinks'][] = $navItem;
-                        unset($nav[$navKey]);
-                    }
-                }
-            }
-
-            elseif ($pageNavItem['id'] == 'information') {
-
 
                 // Add everything else
                 foreach ($nav as $navKey => $navItem) {
-                    //Remove the empty title
-
                     // Exclude the 'title' element which has no ID
                     if (isset($navItem['id'])) {
-                        $page_nav[$key]['sublinks'][] = $navItem;
+                        if ($navItem['id'] == 'history') {
+                            //History is always first
+                            array_unshift($page_nav[$key]['sublinks'], $navItem);
+                        } else {
+                            $page_nav[$key]['sublinks'][] = $navItem;
+                        }
                         unset($nav[$navKey]);
                     }
-
+                }
+                if ($wgTitle->getNsText() == 'Utilisateur') {
+                    $page_nav[$key]['sublinks'][] = array(
+                        'link' => 'Spécial:Contributions/'.rawurlencode($wgTitle->getText()),
+                        'title' => 'Contributions'
+                    );
                 }
             }
-
         }
 
         //echo '<pre>'; print_r($page_nav); echo "</pre>";
@@ -678,8 +634,7 @@ if ($this->data['debug'] ) {
 
 
         $output = '';
-        for ($i=0;$i<count($page_nav);$i++) {
-
+        for ($i=0; $i<count($page_nav); $i++) {
             if ($page_nav[$i]['id'] == 'information' || $page_nav[$i]['id'] == 'tools') {
                 $liAtts = 'class="dropdown"';
                 $linkAtts = 'class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"';
@@ -694,7 +649,6 @@ if ($this->data['debug'] ) {
             if (isset($page_nav[$i]['sublinks'])) {
                 $output .= '<ul class="dropdown-menu">';
                 foreach ($page_nav[$i]['sublinks'] as $item) {
-
                     $output .= "<li>";
                     if (isset($item['linkTag'])) {
                         $output .=  $item['linkTag'];
@@ -704,10 +658,8 @@ if ($this->data['debug'] ) {
                     $output .=  "</li>";
                 }
                 $output .= '</ul>';
-
             }
             $output .= "</li>";
-
         }
 
         return $output;
@@ -719,20 +671,20 @@ if ($this->data['debug'] ) {
 * Render one or more navigations elements by name, automatically reveresed
 * when UI is in RTL mode
 */
-    private function nav_select( $nav )
+    private function nav_select($nav)
     {
         $output = '';
-        foreach ( $nav as $topItem ) {
+        foreach ($nav as $topItem) {
             $pageTitle = Title::newFromText($topItem['link'] ?: $topItem['title']);
             $output .= '<optgroup label="'.strip_tags($topItem['title']).'">';
-            if (array_key_exists('sublinks', $topItem) ) {
-                foreach ( $topItem['sublinks'] as $subLink ) {
-                    if ('divider' == $subLink ) {
+            if (array_key_exists('sublinks', $topItem)) {
+                foreach ($topItem['sublinks'] as $subLink) {
+                    if ('divider' == $subLink) {
                         $output .= "<option value='' disabled='disabled' class='unclickable'>----</option>\n";
-                    } elseif ($subLink['textonly'] ) {
+                    } elseif ($subLink['textonly']) {
                         $output .= "<option value='' disabled='disabled' class='unclickable'>{$subLink['title']}</option>\n";
                     } else {
-                        if($subLink['local'] && $pageTitle = Title::newFromText($subLink['link']) ) {
+                        if ($subLink['local'] && $pageTitle = Title::newFromText($subLink['link'])) {
                             $href = $pageTitle->getLocalURL();
                         } else {
                             $href = $subLink['link'];
@@ -741,7 +693,7 @@ if ($this->data['debug'] ) {
                         $output .= "<option value='{$href}'>{$subLink['title']}</option>";
                     }//end else
                 }//end foreach
-            } elseif ($pageTitle ) {
+            } elseif ($pageTitle) {
                 $output .= '<option value="' . $pageTitle->getLocalURL() . '">' . $topItem['title'] . '</option>';
             }//end else
             $output .= '</optgroup>';
@@ -750,14 +702,15 @@ if ($this->data['debug'] ) {
         return $output;
     }//end nav_select
 
-    private function get_page_links( $source )
+    private function get_page_links($source)
     {
         $titleBar = $this->getPageRawText($source);
         $nav = array();
-        foreach(explode("\n", $titleBar) as $line) {
-            if(trim($line) == '') { continue;
+        foreach (explode("\n", $titleBar) as $line) {
+            if (trim($line) == '') {
+                continue;
             }
-            if(preg_match('/^\*\*\s*divider/', $line) ) {
+            if (preg_match('/^\*\*\s*divider/', $line)) {
                 $nav[ count($nav) - 1]['sublinks'][] = 'divider';
                 continue;
             }//end if
@@ -766,29 +719,29 @@ if ($this->data['debug'] ) {
             $link = false;
             $external = false;
 
-            if(preg_match('/^\*\s*([^\*]*)\[\[:?(.+)\]\]/', $line, $match)) {
+            if (preg_match('/^\*\s*([^\*]*)\[\[:?(.+)\]\]/', $line, $match)) {
                 $sub = false;
                 $link = true;
-            }elseif(preg_match('/^\*\s*([^\*\[]*)\[([^\[ ]+) (.+)\]/', $line, $match)) {
+            } elseif (preg_match('/^\*\s*([^\*\[]*)\[([^\[ ]+) (.+)\]/', $line, $match)) {
                 $sub = false;
                 $link = true;
                 $external = true;
-            }elseif(preg_match('/^\*\*\s*([^\*\[]*)\[([^\[ ]+) (.+)\]/', $line, $match)) {
+            } elseif (preg_match('/^\*\*\s*([^\*\[]*)\[([^\[ ]+) (.+)\]/', $line, $match)) {
                 $sub = true;
                 $link = true;
                 $external = true;
-            }elseif(preg_match('/\*\*\s*([^\*]*)\[\[:?(.+)\]\]/', $line, $match)) {
+            } elseif (preg_match('/\*\*\s*([^\*]*)\[\[:?(.+)\]\]/', $line, $match)) {
                 $sub = true;
                 $link = true;
-            }elseif(preg_match('/\*\*\s*([^\* ]*)(.+)/', $line, $match)) {
+            } elseif (preg_match('/\*\*\s*([^\* ]*)(.+)/', $line, $match)) {
                 $sub = true;
                 $link = false;
-            }elseif(preg_match('/^\*\s*(.+)/', $line, $match)) {
+            } elseif (preg_match('/^\*\s*(.+)/', $line, $match)) {
                 $sub = false;
                 $link = false;
             }
 
-            if(strpos($match[2], '|') !== false ) {
+            if (strpos($match[2], '|') !== false) {
                 $item = explode('|', $match[2]);
                 $item = array(
                 'title' => $match[1] . $item[1],
@@ -796,7 +749,7 @@ if ($this->data['debug'] ) {
                 'local' => true,
                 );
             } else {
-                if($external ) {
+                if ($external) {
                     $item = $match[2];
                     $title = $match[1] . $match[3];
                 } else {
@@ -804,14 +757,14 @@ if ($this->data['debug'] ) {
                     $title = $item;
                 }//end else
 
-                if($link ) {
+                if ($link) {
                     $item = array('title'=> $title, 'link' => $item, 'local' => ! $external , 'external' => $external );
                 } else {
                     $item = array('title'=> $title, 'link' => $item, 'textonly' => true, 'external' => $external );
                 }//end else
             }//end else
 
-            if($sub ) {
+            if ($sub) {
                 $nav[count($nav) - 1]['sublinks'][] = $item;
             } else {
                 $nav[] = $item;
@@ -821,11 +774,22 @@ if ($this->data['debug'] ) {
         return $nav;
     }//end get_page_links
 
-    private function get_array_links( $array, $title, $which )
+    private function get_array_links($array, $title, $which)
     {
+        global $wgTitle;
         $nav = array();
         $nav[] = array('title' => $title );
-        foreach( $array as $key => $item ) {
+        if ($wgTitle->mNamespace%2 && $wgTitle->mNamespace != -1) {
+            unset($array['talk']);
+            $parentTitle = Title::newFromTitleValue(new TitleValue($wgTitle->getNamespace() - 1, $wgTitle->getDBKey()));
+            $array['back'] = array(
+                'href'=>$parentTitle->getLocalURL(),
+                'primary'=>true,
+                'context'=>'back',
+                'text'=>'Retour à la page parente'
+            );
+        }
+        foreach ($array as $key => $item) {
             $link = array(
             'id' => Sanitizer::escapeId($key),
             'attributes' => $item['attributes'],
@@ -836,61 +800,84 @@ if ($this->data['debug'] ) {
             'text' => $item['text']
             );
 
-            if('page' == $which ) {
-                switch( $key ) {
-                case 'nstab-revision': $icon = "fa fa-link";
-                    break;
-                case 'nstab-main':$icon = "fa fa-link";
-                    break;
-                case 'nstab-brouillon':$icon = "fa fa-link";
-                    break;
-                case 'talk': $icon = "icon icon-comment";
-                    break;
-                case 've-edit': $icon = "fa fa-pencil-square-o";
-                    break;
-                case 'edit': $icon = "icon icon-pencil";
-                    break;
-                case 'history': $icon = "fa fa-history";
-                    break;
-                case 'watch': $icon = "fa fa-eye";
-                    break;
-                case 'unwatch': $icon = "fa fa-eye-slash";
-                    break;
-                case 'move': $icon = 'fa fa-arrows';
-                    break;
-                case 'delete': $icon = 'fa fa-delete';
-                    break;
-                case 'protect': $icon = 'fa fa-lock';
-                    break;
+            if ('page' == $which) {
+                switch ($key) {
+                    case 'nstab-revision':
+                        $icon = "fa fa-link";
+                        break;
+                    case 'nstab-main':
+                        $icon = "fa fa-link";
+                        break;
+                    case 'nstab-brouillon':
+                        $icon = "fa fa-link";
+                        break;
+                    case 'talk':
+                        $icon = "icon icon-comment";
+                        break;
+                    case 've-edit':
+                        $icon = "icon icon-pencil";
+                        break;
+                    case 'edit':
+                        $icon = "fa fa-pencil-square-o";
+                        break;
+                    case 'history':
+                        $icon = "fa fa-history";
+                        break;
+                    case 'watch':
+                        $icon = "fa fa-eye";
+                        break;
+                    case 'unwatch':
+                        $icon = "fa fa-eye-slash";
+                        break;
+                    case 'move':
+                        $icon = 'fa fa-arrows';
+                        break;
+                    case 'delete':
+                        $icon = 'fa fa-delete';
+                        break;
+                    case 'protect':
+                        $icon = 'fa fa-lock';
+                        break;
+                    case 'back':
+                        $icon = 'icon icon-arrow-left';
+                        break;
                 }// end switch
 
 
-                // Remove text for 'edit' and 'discuss'
-                if ($link['id'] == 'talk' || $link['id'] == 'edit') {
+                // Remove text for 've-edit' and 'discuss'
+                if ($link['id'] == 'talk' || $link['id'] == 've-edit' || $link['id'] == 'back') {
                     $link['title'] = '<i class="' . $icon . '"></i>';
                 } elseif ($link['id'] == 'nstab-revision' || $link['id'] == 'nstab-main' || $link['id'] == 'nstab-brouillon') {
                     $link['title'] = '<i class="' . $icon . '"></i> ' . wfMsg('this-page-link');
                 } else {
                     $link['title'] = '<i class="' . $icon . '"></i> ' . $link['title'];
                 }
-            } elseif('user' == $which ) {
-                switch( $key ) {
-                case 'userpage': $icon = 'fa fa-user';
-                    break;
-                case 'mytalk': $icon = 'fa fa-comments-o';
-                    break;
-                case 'preferences': $icon = 'fa fa-cog';
-                    break;
-                case 'betafeatures': $icon = 'fa fa-asterisk';
-                    break;
-                case 'watchlist': $icon = 'fa fa-eye';
-                    break;
-                case 'newmessages': $icon = 'fa fa-envelope';
-                    break;
-                case 'mycontris': $icon = 'fa fa-list';
-                    break;
-                case 'logout': $icon = 'fa fa-power-off';
-                    break;
+            } elseif ('user' == $which) {
+                switch ($key) {
+                    case 'userpage':
+                        $icon = 'fa fa-user';
+                        break;
+                    case 'mytalk':
+                        $icon = 'fa fa-comments-o';
+                        break;
+                    case 'preferences':
+                        $icon = 'fa fa-cog';
+                        break;
+                    case 'betafeatures':
+                        $icon = 'fa fa-asterisk';
+                        break;
+                    case 'watchlist':
+                        $icon = 'fa fa-eye';
+                        break;
+                    case 'newmessages':
+                        $icon = 'fa fa-envelope';
+                        break;
+                    case 'mycontris':
+                        $icon = 'fa fa-list';
+                        break;
+                    case 'logout':
+                        $icon = 'fa fa-power-off';
+                        break;
                 }
 
                 // Deal with special case 'notifications'
@@ -899,23 +886,17 @@ if ($this->data['debug'] ) {
                 } else {
                     $link['title'] = '<i class="fa fa-' . $icon . '"></i> ' . $link['title'];
                 }
-
-
-
-
             }//end elseif
             if ('page' == $which) {
                 $nav[] = $link;
             } else {
                 $nav[0]['sublinks'][] = $link;
-
             }
         }//end foreach
-        if ('page' == $which ) {
+        if ('page' == $which) {
             return $this->page_nav($nav);
         } else {
             return $this->nav($nav);
-
         }
     }//end get_array_links
 
@@ -939,7 +920,7 @@ if ($this->data['debug'] ) {
         $contributorsString = '';
 
         //Add previous contributors
-        for ($i=0;$i < $contributors->count(); $i++) {
+        for ($i=0; $i < $contributors->count(); $i++) {
             $curUser = $contributors->current();
             $contributorsString .= Linker::link($curUser->getUserPage(), $curUser->getName()).', ';
 
@@ -989,21 +970,27 @@ if ($this->data['debug'] ) {
         $infoBoxHTML .= "";
         $infoBoxHTML .= "<p class='contributors'>".wfMsg('last-contributors').': '.$infoBox['contributors']."</p>";
 
-        switch($infoBox['namespace']) {
-        case '3000': $namespaceIcon = '<i class="icon icon-file"></i>';
-            break;
-        case '4000': $namespaceIcon = '<i class="icon icon-pencil"></i>';
-            break;
-        case '5000' || '0': $namespaceIcon = '<i class="icon icon-ok-sign"></i>';
-            break;
-        default: $namespaceIcon = '<i class="icon icon-ok-sign"></i>';
-            break;
+        switch ($infoBox['namespace']) {
+            case '3000':
+                $namespaceIcon = '<i class="icon icon-file"></i>';
+                break;
+            case '4000':
+                $namespaceIcon = '<i class="icon icon-pencil"></i>';
+                break;
+            case '5000' || '0':
+                $namespaceIcon = '<i class="icon icon-ok-sign"></i>';
+                break;
+            default:
+                $namespaceIcon = '<i class="icon icon-ok-sign"></i>';
+                break;
         }
-        switch($infoBox['language']) {
-        case 'fr': $language = wfMsg('french');
-            break;
-        case 'en': $language = wfMsg('english');
-            break;
+        switch ($infoBox['language']) {
+            case 'fr':
+                $language = wfMsg('french');
+                break;
+            case 'en':
+                $language = wfMsg('english');
+                break;
         }
 
         $infoBoxHTML .= "<div class='icon_line'><span class='badge badge-shakepeers'>".$namespaceIcon.'</span><small><i class="icon icon-flag"></i>&nbsp;'.$language.' &nbsp;&nbsp;<i class="icon icon-pencil"></i>'.wfMsg('changed-on').': '.$infoBox['date_modified'].' - '.wfMsg('created-on').': '.$infoBox['date_created']."</small></div>";
@@ -1038,7 +1025,7 @@ if ($this->data['debug'] ) {
     {
         global $wgParser, $wgUser;
         $pageTitle = Title::newFromText($title);
-        if(!$pageTitle->exists()) {
+        if (!$pageTitle->exists()) {
             return 'Create the page [[Bootstrap:TitleBar]]';
         } else {
             $article = new Article($pageTitle);
@@ -1054,7 +1041,7 @@ if ($this->data['debug'] ) {
     {
         global $wgParser, $wgUser;
         $pageTitle = Title::newFromText($title);
-        if(!$pageTitle->exists()) {
+        if (!$pageTitle->exists()) {
             echo 'The page [[' . $title . ']] was not found.';
         } else {
             $article = new Article($pageTitle);
@@ -1063,8 +1050,4 @@ if ($this->data['debug'] ) {
             echo $parserOutput->getText();
         }
     }
-
-
-
 }
-
