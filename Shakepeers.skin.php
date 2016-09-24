@@ -1,14 +1,13 @@
 <?php
 /**
-* Bootstrap - A basic MediaWiki skin based on Twitter's excellent Bootstrap CSS framework
+* Bootstrap - A basic MediaWiki skin based on Twitter's excellent Bootstrap CSS framework.
 *
 * @Version   1.0.0
 * @Author    Matthew Batchelder <borkweb@gmail.com>
 * @Copyright Matthew Batchelder 2012 - http://borkweb.com/
 * @License:  GPLv2 (http://www.gnu.org/copyleft/gpl.html)
 */
-
-if (! defined('MEDIAWIKI')) {
+if (!defined('MEDIAWIKI')) {
     die(-1);
 }//end if
 
@@ -17,34 +16,34 @@ if (is_file('includes/skins/SkinTemplate.php')) {
 }
 
 /**
-* Inherit main code from SkinTemplate, set the CSS and template filter.
-* @package MediaWiki
-* @subpackage Skins
-*/
+ * Inherit main code from SkinTemplate, set the CSS and template filter.
+ */
 class SkinShakepeers extends SkinTemplate
 {
     /**
- * Using Bootstrap
-*/
+     * Using Bootstrap.
+     */
     public $skinname = 'shakepeers';
     public $stylename = 'shakepeers';
     public $template = 'ShakepeersTemplate';
     public $useHeadElement = true;
 
     /**
-    * initialize the page
-    */
+     * initialize the page.
+     */
     public function initPage(OutputPage $out)
     {
         global $wgSiteJS;
         parent::initPage($out);
         $out->addModuleScripts('skins.shakepeers');
         $out->addMeta('viewport', 'width=device-width, initial-scale=1, maximum-scale=1');
-    }//end initPage
+    }
+
+//end initPage
 
     /**
-    * prepares the skin's CSS
-    */
+     * prepares the skin's CSS.
+     */
     public function setupSkinUserCss(OutputPage $out)
     {
         global $wgSiteCSS;
@@ -59,29 +58,25 @@ class SkinShakepeers extends SkinTemplate
         //Include Google Fonts
         $out->addStyle('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic');
         $out->addStyle('https://fonts.googleapis.com/css?family=Quicksand:300,400,600,700');
+    }
 
-    }//end setupSkinUserCss
+//end setupSkinUserCss
 }
 
-/**
-* @package MediaWiki
-* @subpackage Skins
-*/
+
 class ShakepeersTemplate extends QuickTemplate
 {
     /**
-    * @var Cached skin object
-    */
+     * @var Cached skin object
+     */
     public $skin;
 
     /**
-    * Template filter callback for Bootstrap skin.
-    * Takes an associative array of data set from a SkinTemplate-based
-    * class, and a wrapper for MediaWiki's localization database, and
-    * outputs a formatted page.
-    *
-    * @access private
-    */
+     * Template filter callback for Bootstrap skin.
+     * Takes an associative array of data set from a SkinTemplate-based
+     * class, and a wrapper for MediaWiki's localization database, and
+     * outputs a formatted page.
+     */
     public function execute()
     {
         global $wgRequest, $wgUser, $wgSitename, $wgSitenameshort, $wgCopyrightLink, $wgCopyright, $wgBootstrap, $wgArticlePath, $wgGoogleAnalyticsID, $wgSiteCSS, $wgLang, $wgTitle, $wgOut;
@@ -98,49 +93,48 @@ class ShakepeersTemplate extends QuickTemplate
         // Suppress warnings to prevent notices about missing indexes in $this->data
         wfSuppressWarnings();
 
-        $this->html('headelement');
-        ?>
+        $this->html('headelement'); ?>
         <!-- Off Canvas Menu -->
         <nav id="off_canvas_menu" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
             <a href="#" class="close_menu" data-toggle="offcanvas" data-target="#off_canvas_menu" data-canvas="body"><i class="fa fa-close"></i></a>
             <a class="navmenu-brand" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>"><img src="skins/shakepeers/images/shakepeers-white.png" alt="Shakepeers"/> <?php echo $wgSitename ?></a>
             <ul class="nav navmenu-nav">
                 <li class="dropdown">
-                    <?php echo Linker::link(Title::newFromText('Thématiques'), wfMsg('themes').' <b class="caret"></b>', array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown')); ?>
+                    <?php echo Linker::link(Title::newFromText('Thématiques'), wfMsg('themes').' <b class="caret"></b>', ['class' => 'dropdown-toggle', 'data-toggle' => 'dropdown']); ?>
                     <ul class="dropdown-menu navmenu-nav" role="menu">
                         <?php // get themes
                         $themes = $this->getThemeCategories();
-                        foreach ($themes as $theme) :?>
+        foreach ($themes as $theme) :?>
                         <li>
-                            <a href="<?php echo $theme['url'];?>"><?php echo $theme['title']?></a>
+                            <a href="<?php echo $theme['url']; ?>"><?php echo $theme['title']?></a>
                         </li>
                     <?php
-                        endforeach;?>
+                        endforeach; ?>
                 </ul>
             </li>
 
             <li class="dropdown">
-                <?php echo Linker::linkKnown(SpecialPage::getTitleFor('AllPages'), wfMsg('articles').' <span class="caret"></span>', array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown'));?>
+                <?php echo Linker::linkKnown(SpecialPage::getTitleFor('AllPages'), wfMsg('articles').' <span class="caret"></span>', ['class' => 'dropdown-toggle', 'data-toggle' => 'dropdown']); ?>
                 <ul class="dropdown-menu navmenu-nav">
                     <li>
-                        <?php echo Linker::linkKnown(Title::newFromText('Brouillon'), wfMsg('link-draft'));?>
+                        <?php echo Linker::linkKnown(Title::newFromText('Brouillon'), wfMsg('link-draft')); ?>
                     </li>
                     <li>
-                        <?php echo Linker::linkKnown(Title::newFromText('Révision'), wfMsg('link-revision'));?>
+                        <?php echo Linker::linkKnown(Title::newFromText('Révision'), wfMsg('link-revision')); ?>
                     </li>
                     <li>
-                        <?php echo Linker::linkKnown(Title::newFromText('Publication'), wfMsg('link-published'));?>
+                        <?php echo Linker::linkKnown(Title::newFromText('Publication'), wfMsg('link-published')); ?>
                     </li>
                 </ul>
             </li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle info_menu_button" data-toggle="dropdown"><?php echo wfMsg('information') ?> <span class="caret"></span></a>
                 <ul class="dropdown-menu navmenu-nav" role="menu">
-                    <li> <?php echo Linker::linkKnown(Title::newFromText('ShakePeers'), wfMsg('shakepeers'));?></li>
-                    <li> <?php echo Linker::linkKnown(Title::newFromText('Contribuer'), wfMsg('contribuer'));?></li>
-                    <li> <?php echo Linker::linkKnown(Title::newFromText('Communauté'), wfMsg('communauté'));?></li>
-                    <li> <?php echo Linker::linkKnown(Title::newFromText('Aide'), wfMsg('aide'));?></li>
-                    <li> <?php echo Linker::linkKnown(Title::newFromText('Contact'), wfMsg('contact'));?></li>
+                    <li> <?php echo Linker::linkKnown(Title::newFromText('ShakePeers'), wfMsg('shakepeers')); ?></li>
+                    <li> <?php echo Linker::linkKnown(Title::newFromText('Contribuer'), wfMsg('contribuer')); ?></li>
+                    <li> <?php echo Linker::linkKnown(Title::newFromText('Communauté'), wfMsg('communauté')); ?></li>
+                    <li> <?php echo Linker::linkKnown(Title::newFromText('Aide'), wfMsg('aide')); ?></li>
+                    <li> <?php echo Linker::linkKnown(Title::newFromText('Contact'), wfMsg('contact')); ?></li>
                 </ul>
             </li>
         </ul>
@@ -165,31 +159,31 @@ class ShakepeersTemplate extends QuickTemplate
                             if ($wgUser->isLoggedIn()) {
                                 if (count($this->data['personal_urls']) > 0) {
                                     $user_icon = '<i class="fa fa-user"></i>&nbsp; ';
-                                    $name = wfMessage('shakepeers-welcome')->inContentLanguage() . ' ' .strtolower($wgUser->getName());
-                                    $user_nav = $this->get_array_links($this->data['personal_urls'], $user_icon . $name, 'user');
-                                    ?>
+                                    $name = wfMessage('shakepeers-welcome')->inContentLanguage().' '.strtolower($wgUser->getName());
+                                    $user_nav = $this->get_array_links($this->data['personal_urls'], $user_icon.$name, 'user'); ?>
                                     <ul<?php $this->html('userlangattributes') ?> class="nav navbar-nav navbar-right navbar-nav-user">
                                     <?php echo $user_nav; ?>
                                 </ul>
                                 <?php
+
                                 }
                             } else {  // else if is not logged in
                                 if (isset($_GET['returnto'])) {
                                     $returnto = $_GET['returnto'];
                                 } else {
                                     $returnto = $wgTitle;
-                                }
-                                ?>
+                                } ?>
                                 <ul class="nav navbar-nav navbar-right">
                                 <li>
-                                    <?php echo Linker::link(SpecialPage::getTitleFor('Userlogin'), wfMsg('createaccount'), null, array('returnto'=>$returnto, 'type'=>'signup')); ?>
+                                    <?php echo Linker::link(SpecialPage::getTitleFor('Userlogin'), wfMsg('createaccount'), null, ['returnto' => $returnto, 'type' => 'signup']); ?>
                                 </li>
                                 <li>
-                                    <?php echo Linker::link(SpecialPage::getTitleFor('Userlogin'), wfMsg('login'), null, array('returnto'=>$returnto)); ?>
+                                    <?php echo Linker::link(SpecialPage::getTitleFor('Userlogin'), wfMsg('login'), null, ['returnto' => $returnto]); ?>
                                 </li>
                             </ul>
                             <?php
-                            }//end if ?>
+
+                            }//end if?>
                     </div>
                 </div>
             </div>
@@ -200,7 +194,7 @@ class ShakepeersTemplate extends QuickTemplate
                 <div>
                     <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo isset($wgLogo) && $wgLogo ? "<img src='{$wgLogo}' alt='{$wgSitename}'/> " : $wgSitename ; ?></a>
+                        <a class="navbar-brand" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>" title="<?php echo $wgSitename ?>"><?php echo isset($wgLogo) && $wgLogo ? "<img src='{$wgLogo}' alt='{$wgSitename}'/> " : $wgSitename; ?></a>
                     </div>
                     <!--Search -->
                     <form class="search_form navbar-search navbar-form navbar-right" action="<?php $this->text('wgScript') ?>" id="searchform" role="search">
@@ -214,34 +208,34 @@ class ShakepeersTemplate extends QuickTemplate
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <a href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>"><?php echo wfMessage('home');?></a>
+                                <a href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>"><?php echo wfMessage('home'); ?></a>
                             </li>
 
                     <li class="dropdown">
-                        <?php echo Linker::linkKnown(SpecialPage::getTitleFor('AllPages'), wfMsg('articles').' <span class="caret"></span>', array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role'=> 'button', 'aria-expanded' => 'false'));?>
+                        <?php echo Linker::linkKnown(SpecialPage::getTitleFor('AllPages'), wfMsg('articles').' <span class="caret"></span>', ['class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role' => 'button', 'aria-expanded' => 'false']); ?>
                         <ul class="dropdown-menu">
                             <li>
-                                <?php echo Linker::linkKnown(Title::newFromText('Brouillon'), wfMsg('link-draft'));?>
+                                <?php echo Linker::linkKnown(Title::newFromText('Brouillon'), wfMsg('link-draft')); ?>
                             </li>
                             <li>
-                                <?php echo Linker::linkKnown(Title::newFromText('Révision'), wfMsg('link-revision'));?>
+                                <?php echo Linker::linkKnown(Title::newFromText('Révision'), wfMsg('link-revision')); ?>
                             </li>
                             <li>
-                                <?php echo Linker::linkKnown(Title::newFromText('Publication'), wfMsg('link-published'));?>
+                                <?php echo Linker::linkKnown(Title::newFromText('Publication'), wfMsg('link-published')); ?>
                             </li>
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <?php echo Linker::linkKnown(SpecialPage::getTitleFor('ShakePeers'), 'ShakePeers'.' <span class="caret"></span>', array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role'=> 'button', 'aria-expanded' => 'false'));?>
+                        <?php echo Linker::linkKnown(SpecialPage::getTitleFor('ShakePeers'), 'ShakePeers'.' <span class="caret"></span>', ['class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role' => 'button', 'aria-expanded' => 'false']); ?>
                         <ul class="dropdown-menu" role="menu">
-                            <li> <?php echo Linker::linkKnown(Title::newFromText('ShakePeers'), wfMsg('objectifs'));?></li>
-                            <li> <?php echo Linker::linkKnown(Title::newFromText('Communauté'), wfMsg('communauté'));?></li>
-                            <li> <?php echo Linker::linkKnown(Title::newFromText('ShakePeers:Association'), wfMsg('association'));?></li>
-                            <li> <?php echo Linker::linkKnown(Title::newFromText('ShakePeers:Contribuer'), wfMsg('contribuer'));?></li>
-                            <li> <?php echo Linker::linkKnown(Title::newFromText('Contact'), wfMsg('contact'));?></li>
+                            <li> <?php echo Linker::linkKnown(Title::newFromText('ShakePeers'), wfMsg('objectifs')); ?></li>
+                            <li> <?php echo Linker::linkKnown(Title::newFromText('Communauté'), wfMsg('communauté')); ?></li>
+                            <li> <?php echo Linker::linkKnown(Title::newFromText('ShakePeers:Association'), wfMsg('association')); ?></li>
+                            <li> <?php echo Linker::linkKnown(Title::newFromText('ShakePeers:Contribuer'), wfMsg('contribuer')); ?></li>
+                            <li> <?php echo Linker::linkKnown(Title::newFromText('Contact'), wfMsg('contact')); ?></li>
                         </ul>
                     </li>
-                    <li> <?php echo Linker::linkKnown(Title::newFromText('Aide'), wfMsg('aide'));?></li>
+                    <li> <?php echo Linker::linkKnown(Title::newFromText('Aide'), wfMsg('aide')); ?></li>
                 </ul>
                 <!-- End nav bar -->
             </div>
@@ -252,8 +246,8 @@ class ShakepeersTemplate extends QuickTemplate
     Add mainpage central quote block
     -->
     <?php if ($wgTitle->isMainPage()) {
-        echo "<h2 class='homepage_quote'>".wfMsg("slogan")."</h2>";
-}?>
+                                echo "<h2 class='homepage_quote'>".wfMsg('slogan').'</h2>';
+                            } ?>
     <!--
     End mainpage block
     -->
@@ -287,24 +281,23 @@ class ShakepeersTemplate extends QuickTemplate
                     </div>
                 </div>
             <?php
-endif;?>
+endif; ?>
             <!--End mainpage blocks-->
 
             <div id="wiki-outer-body">
                 <div class="row mw-body" id="content">
                     <!--Wiki Body -->
                     <div id="wiki-body" class="<?php if ($wgTitle->isMainPage() && $_GET['action'] != 'edit') {
-                        echo 'col-md-8';
-}?>">
+                                echo 'col-md-8';
+                            } ?>">
                 <!-- Page editing -->
                     <?php
                     if (count($this->data['content_actions']) > 0) {
-                        $content_nav = $this->get_array_links($this->data['content_actions'], 'Page', 'page');
-                        ?>
+                        $content_nav = $this->get_array_links($this->data['content_actions'], 'Page', 'page'); ?>
                         <ul class="nav navbar-nav navbar-right content-actions"><?php echo $content_nav; ?></ul>
                         <?php
-                    }
-                    ?>
+
+                    } ?>
                     <!--/page editing -->
                 <!-- Info Box -->
                 <div id="infobox" class="infobox panel panel-primary pull-right">
@@ -312,14 +305,13 @@ endif;?>
                     if ($wgTitle->isContentPage()
                         && !$wgTitle->isMainPage()
                         && $wgTitle->exists()
-                        && ( $wgTitle->mNamespace == '3000'
+                        && ($wgTitle->mNamespace == '3000'
                         || $wgTitle->mNamespace == '4000'
                         || $wgTitle->mNamespace == '5000')
                         && $_GET['action'] != 'edit'
                     ) {
                         echo $this->infoBox(), '<hr />';
-                    }
-                    ?>
+                    } ?>
                         <!-- Box for the summary -->
                         <div id="toc_container">
                         </div>
@@ -338,11 +330,13 @@ endif;?>
                             <section class="col-md-3 toc-sidebar"></section>
                             <section class="col-md-9 wiki-body-section">
                                 <?php
+
                     }//end if
                             ?>
                             <?php if ($this->data['sitenotice']) {
-?><div id="siteNotice" class="alert-message warning"><?php $this->html('sitenotice') ?></div><?php
-} ?>
+                                ?><div id="siteNotice" class="alert-message warning"><?php $this->html('sitenotice') ?></div><?php
+
+                            } ?>
                             <?php if ($this->data['undelete']) : ?>
                                 <!-- undelete -->
                                 <div id="contentSub2"><?php $this->html('undelete') ?></div>
@@ -359,12 +353,11 @@ endif; ?>
                             <div class="pagetitle page-header">
                                 <h1><?php
                                     $title = Title::newFromText($wgOut->getPageTitle());
-                                    $ns = str_replace('_', ' ', $title->getNsText());
-                                if (!empty($ns)) {
-                                    echo '<small>', $ns, ':</small>';
-                                }
-                                    echo $title->getText();
-                                ?><br/><small class="subtitle"><?php $this->html('subtitle') ?></small></h1>
+        $ns = str_replace('_', ' ', $title->getNsText());
+        if (!empty($ns)) {
+            echo '<small>', $ns, ':</small>';
+        }
+        echo $title->getText(); ?><br/><small class="subtitle"><?php $this->html('subtitle') ?></small></h1>
                             </div>
 
 
@@ -394,6 +387,7 @@ endif; ?>
                                 ?>
                             </section></section>
                             <?php
+
                             }//end if
                         ?>
                     </div><!-- wikibody -->
@@ -407,32 +401,32 @@ endif; ?>
 
                         // Build boxes via associative arrays (because DRY)
                         $categories = [];
-                        array_push(
+        array_push(
                             $categories,
                             // Add publication box
-                            array(
-                            "namespace" => "Publication",
-                            "slug"      => "published",
-                            "pageTitle" => "Publication",
-                            "icon"      => "icon-ok-sign",
-                            "feedUrl"   => "https://shakepeers.org/api.php?hidebots=1&action=feedrecentchanges&namespace=5000"
-                            ),
+                            [
+                            'namespace' => 'Publication',
+                            'slug'      => 'published',
+                            'pageTitle' => 'Publication',
+                            'icon'      => 'icon-ok-sign',
+                            'feedUrl'   => 'https://shakepeers.org/api.php?hidebots=1&action=feedrecentchanges&namespace=5000',
+                            ],
                             // Add Revision box
-                            array(
-                            "namespace" => "Revision",
-                            "slug"      => "revision",
-                            "pageTitle" => "Révision",
-                            "icon"      => "icon-pencil",
-                            "feedUrl"   => "https://shakepeers.org/api.php?hidebots=1&action=feedrecentchanges&namespace=4000"
-                            ),
+                            [
+                            'namespace' => 'Revision',
+                            'slug'      => 'revision',
+                            'pageTitle' => 'Révision',
+                            'icon'      => 'icon-pencil',
+                            'feedUrl'   => 'https://shakepeers.org/api.php?hidebots=1&action=feedrecentchanges&namespace=4000',
+                            ],
                             // Add drafts box
-                            array(
-                            "namespace" => "Brouillon",
-                            "slug"      => "draft",
-                            "pageTitle" => "Brouillon",
-                            "icon"      => "icon-file",
-                            "feedUrl"   => "https://shakepeers.org/api.php?hidebots=1&action=feedrecentchanges&namespace=3000"
-                            )
+                            [
+                            'namespace' => 'Brouillon',
+                            'slug'      => 'draft',
+                            'pageTitle' => 'Brouillon',
+                            'icon'      => 'icon-file',
+                            'feedUrl'   => 'https://shakepeers.org/api.php?hidebots=1&action=feedrecentchanges&namespace=3000',
+                            ]
                         );
 
                         // Debug
@@ -445,11 +439,11 @@ endif; ?>
                         // Build content box
                         foreach ($categories as $category) : ?>
                         <!-- <?php echo $category['slug'] ?> articles -->
-                        <a name="<?php echo $category['slug'];?>"></a>
-                        <div class="articles_widget articles_widget-<?php echo $category['slug'];?>">
+                        <a name="<?php echo $category['slug']; ?>"></a>
+                        <div class="articles_widget articles_widget-<?php echo $category['slug']; ?>">
                             <h3>
                                 <span class="icon <?php echo $category['icon'] ?>"></span>
-                                <?php echo Linker::linkKnown(Title::newFromText($category['pageTitle']), wfMsg("articles-{$category['slug']}-title"));?>
+                                <?php echo Linker::linkKnown(Title::newFromText($category['pageTitle']), wfMsg("articles-{$category['slug']}-title")); ?>
                                 <a class="rss_button" href="<?php echo $category['feedUrl']; ?>"><i class="icon fa fa-rss"></i></a>
                             </h3>
                             <?php
@@ -462,15 +456,14 @@ endif; ?>
 
                             //  Parse
                             $title = $wgTitle;
-                            $parser = new Parser;
+        $parser = new Parser();
 
                             // Output
                             $parsed = $parser->parse($text, $wgTitle, new ParserOptions());
-                            echo $parsed->getText();
+        echo $parsed->getText();
 
                             // Add link
-                            echo '<p class="see_more_link_holder">'.Linker::linkKnown(Title::newFromText($category['pageTitle']), wfMsg("see-{$category['slug']}-articles").' <span class="icon icon-chevron-right"></span>').'</p>';
-                            ?>
+                            echo '<p class="see_more_link_holder">'.Linker::linkKnown(Title::newFromText($category['pageTitle']), wfMsg("see-{$category['slug']}-articles").' <span class="icon icon-chevron-right"></span>').'</p>'; ?>
                             </div>
 
                         <?php
@@ -506,24 +499,28 @@ endif; ?>
 $this->html('bottomscripts'); /* JS call to runBodyOnloadHook */
 $this->html('reporttime');
 
-if ($this->data['debug']) {
-?>
+        if ($this->data['debug']) {
+            ?>
 <!-- Debug output:
     <?php $this->text('debug'); ?>
     -->
     <?php
-}//end if
+
+        }//end if
 ?>
 </div>
 </body>
 </html>
 <?php
-    }//end execute
+
+    }
+
+//end execute
 
     /**
-* Render one or more navigations elements by name, automatically reveresed
-* when UI is in RTL mode
-*/
+     * Render one or more navigations elements by name, automatically reveresed
+     * when UI is in RTL mode.
+     */
     private function nav($nav)
     {
         $output = '';
@@ -531,7 +528,7 @@ if ($this->data['debug']) {
             $pageTitle = Title::newFromText($topItem['link'] ?: $topItem['title']);
             if (array_key_exists('sublinks', $topItem)) {
                 $output .= '<li class="dropdown">';
-                $output .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $topItem['title'] . ' <b class="caret"></b></a>';
+                $output .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown">'.$topItem['title'].' <b class="caret"></b></a>';
                 $output .= '<ul class="dropdown-menu">';
 
                 foreach ($topItem['sublinks'] as $subLink) {
@@ -554,20 +551,21 @@ if ($this->data['debug']) {
                 $output .= '</li>';
             } else {
                 if ($pageTitle) {
-                    $output .= '<li' . ($this->data['title'] == $topItem['title'] ? ' class="active"' : '') . '><a href="' . ( $topItem['external'] ? $topItem['link'] : $pageTitle->getLocalURL() ) . '">' . $topItem['title'] . '</a></li>';
+                    $output .= '<li'.($this->data['title'] == $topItem['title'] ? ' class="active"' : '').'><a href="'.($topItem['external'] ? $topItem['link'] : $pageTitle->getLocalURL()).'">'.$topItem['title'].'</a></li>';
                 }//end if
             }//end else
         }//end foreach
         return $output;
-    }//end nav
+    }
 
+//end nav
 
     private function page_nav($nav)
     {
         global $wgTitle;
 
         // Build nav with 4 items : edit, discuss, options, information. Options and Information have subitems.
-        $page_nav = array();
+        $page_nav = [];
         // Add the edit and discuss if present, and remove from nav array
         foreach ($nav as $key => $nav_item) {
             if ('ve-edit' == $nav_item['id']) {
@@ -584,27 +582,27 @@ if ($this->data['debug']) {
             }
         }
         // Add the tool button
-        $page_nav[] = array(
-        'id' => 'tools',
-        'link' => 'javascript:void(0)',
+        $page_nav[] = [
+        'id'    => 'tools',
+        'link'  => 'javascript:void(0)',
         'class' => 'collabspible dropdown',
         'title' => '<i class="icon icon-wrench"></i><span class="caret"></span>',
-        'text' => wfMsg('toolbox')
-        );
+        'text'  => wfMsg('toolbox'),
+        ];
 
         // Build the array
         foreach ($page_nav as $key => $pageNavItem) {
             if ($pageNavItem['id'] == 'tools') {
                 //Add the print button
-                $page_nav[$key]['sublinks'][] = array(
-                    'id' => 'print',
+                $page_nav[$key]['sublinks'][] = [
+                    'id'      => 'print',
                     'linkTag' => Linker::link(
                         $wgTitle,
-                        '<i class="icon icon-print"></i> '. wfMsg('print-version'),
-                        array(),
-                        array( 'printable' => 'yes' )
+                        '<i class="icon icon-print"></i> '.wfMsg('print-version'),
+                        [],
+                        ['printable' => 'yes']
                     ),
-                );
+                ];
 
                 // Add everything else
                 foreach ($nav as $navKey => $navItem) {
@@ -620,10 +618,10 @@ if ($this->data['debug']) {
                     }
                 }
                 if ($wgTitle->getNsText() == 'Utilisateur') {
-                    $page_nav[$key]['sublinks'][] = array(
-                        'link' => 'Spécial:Contributions/'.rawurlencode($wgTitle->getText()),
-                        'title' => 'Contributions'
-                    );
+                    $page_nav[$key]['sublinks'][] = [
+                        'link'  => 'Spécial:Contributions/'.rawurlencode($wgTitle->getText()),
+                        'title' => 'Contributions',
+                    ];
                 }
             }
         }
@@ -634,7 +632,7 @@ if ($this->data['debug']) {
 
 
         $output = '';
-        for ($i=0; $i<count($page_nav); $i++) {
+        for ($i = 0; $i < count($page_nav); $i++) {
             if ($page_nav[$i]['id'] == 'information' || $page_nav[$i]['id'] == 'tools') {
                 $liAtts = 'class="dropdown"';
                 $linkAtts = 'class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"';
@@ -644,33 +642,31 @@ if ($this->data['debug']) {
             }
             $output .= "<li $liAtts ><a title='{$page_nav[$i]['text']}' href='{$page_nav[$i]['link']}' $linkAtts >";
             $output .= $page_nav[$i]['title'];
-            $output .= "</a>";
+            $output .= '</a>';
 
             if (isset($page_nav[$i]['sublinks'])) {
                 $output .= '<ul class="dropdown-menu">';
                 foreach ($page_nav[$i]['sublinks'] as $item) {
-                    $output .= "<li>";
+                    $output .= '<li>';
                     if (isset($item['linkTag'])) {
                         $output .=  $item['linkTag'];
                     } else {
                         $output .=  "<a href='".$item['link']."' >".$item['title'].'</a>';
                     }
-                    $output .=  "</li>";
+                    $output .=  '</li>';
                 }
                 $output .= '</ul>';
             }
-            $output .= "</li>";
+            $output .= '</li>';
         }
 
         return $output;
     }
 
-
-
     /**
-* Render one or more navigations elements by name, automatically reveresed
-* when UI is in RTL mode
-*/
+     * Render one or more navigations elements by name, automatically reveresed
+     * when UI is in RTL mode.
+     */
     private function nav_select($nav)
     {
         $output = '';
@@ -694,24 +690,26 @@ if ($this->data['debug']) {
                     }//end else
                 }//end foreach
             } elseif ($pageTitle) {
-                $output .= '<option value="' . $pageTitle->getLocalURL() . '">' . $topItem['title'] . '</option>';
+                $output .= '<option value="'.$pageTitle->getLocalURL().'">'.$topItem['title'].'</option>';
             }//end else
             $output .= '</optgroup>';
         }//end foreach
 
         return $output;
-    }//end nav_select
+    }
+
+//end nav_select
 
     private function get_page_links($source)
     {
         $titleBar = $this->getPageRawText($source);
-        $nav = array();
+        $nav = [];
         foreach (explode("\n", $titleBar) as $line) {
             if (trim($line) == '') {
                 continue;
             }
             if (preg_match('/^\*\*\s*divider/', $line)) {
-                $nav[ count($nav) - 1]['sublinks'][] = 'divider';
+                $nav[count($nav) - 1]['sublinks'][] = 'divider';
                 continue;
             }//end if
 
@@ -743,24 +741,24 @@ if ($this->data['debug']) {
 
             if (strpos($match[2], '|') !== false) {
                 $item = explode('|', $match[2]);
-                $item = array(
-                'title' => $match[1] . $item[1],
-                'link' => $item[0],
+                $item = [
+                'title' => $match[1].$item[1],
+                'link'  => $item[0],
                 'local' => true,
-                );
+                ];
             } else {
                 if ($external) {
                     $item = $match[2];
-                    $title = $match[1] . $match[3];
+                    $title = $match[1].$match[3];
                 } else {
-                    $item = $match[1] . $match[2];
+                    $item = $match[1].$match[2];
                     $title = $item;
                 }//end else
 
                 if ($link) {
-                    $item = array('title'=> $title, 'link' => $item, 'local' => ! $external , 'external' => $external );
+                    $item = ['title' => $title, 'link' => $item, 'local' => !$external, 'external' => $external];
                 } else {
-                    $item = array('title'=> $title, 'link' => $item, 'textonly' => true, 'external' => $external );
+                    $item = ['title' => $title, 'link' => $item, 'textonly' => true, 'external' => $external];
                 }//end else
             }//end else
 
@@ -772,62 +770,64 @@ if ($this->data['debug']) {
         }
 
         return $nav;
-    }//end get_page_links
+    }
+
+//end get_page_links
 
     private function get_array_links($array, $title, $which)
     {
         global $wgTitle;
-        $nav = array();
-        $nav[] = array('title' => $title );
-        if ($wgTitle->mNamespace%2 && $wgTitle->mNamespace != -1) {
+        $nav = [];
+        $nav[] = ['title' => $title];
+        if ($wgTitle->mNamespace % 2 && $wgTitle->mNamespace != -1) {
             unset($array['talk']);
             $parentTitle = Title::newFromTitleValue(new TitleValue($wgTitle->getNamespace() - 1, $wgTitle->getDBKey()));
-            $array['back'] = array(
-                'href'=>$parentTitle->getLocalURL(),
-                'primary'=>true,
-                'context'=>'back',
-                'text'=>'Retour à la page parente'
-            );
+            $array['back'] = [
+                'href'    => $parentTitle->getLocalURL(),
+                'primary' => true,
+                'context' => 'back',
+                'text'    => 'Retour à la page parente',
+            ];
         }
         foreach ($array as $key => $item) {
-            $link = array(
-            'id' => Sanitizer::escapeId($key),
+            $link = [
+            'id'         => Sanitizer::escapeId($key),
             'attributes' => $item['attributes'],
-            'link' => htmlspecialchars($item['href']),
-            'key' => $item['key'],
-            'class' => htmlspecialchars($item['class']),
-            'title' => htmlspecialchars($item['text']),
-            'text' => $item['text']
-            );
+            'link'       => htmlspecialchars($item['href']),
+            'key'        => $item['key'],
+            'class'      => htmlspecialchars($item['class']),
+            'title'      => htmlspecialchars($item['text']),
+            'text'       => $item['text'],
+            ];
 
             if ('page' == $which) {
                 switch ($key) {
                     case 'nstab-revision':
-                        $icon = "fa fa-link";
+                        $icon = 'fa fa-link';
                         break;
                     case 'nstab-main':
-                        $icon = "fa fa-link";
+                        $icon = 'fa fa-link';
                         break;
                     case 'nstab-brouillon':
-                        $icon = "fa fa-link";
+                        $icon = 'fa fa-link';
                         break;
                     case 'talk':
-                        $icon = "icon icon-comment";
+                        $icon = 'icon icon-comment';
                         break;
                     case 've-edit':
-                        $icon = "icon icon-pencil";
+                        $icon = 'icon icon-pencil';
                         break;
                     case 'edit':
-                        $icon = "fa fa-pencil-square-o";
+                        $icon = 'fa fa-pencil-square-o';
                         break;
                     case 'history':
-                        $icon = "fa fa-history";
+                        $icon = 'fa fa-history';
                         break;
                     case 'watch':
-                        $icon = "fa fa-eye";
+                        $icon = 'fa fa-eye';
                         break;
                     case 'unwatch':
-                        $icon = "fa fa-eye-slash";
+                        $icon = 'fa fa-eye-slash';
                         break;
                     case 'move':
                         $icon = 'fa fa-arrows';
@@ -846,11 +846,11 @@ if ($this->data['debug']) {
 
                 // Remove text for 've-edit' and 'discuss'
                 if ($link['id'] == 'talk' || $link['id'] == 've-edit' || $link['id'] == 'back') {
-                    $link['title'] = '<i class="' . $icon . '"></i>';
+                    $link['title'] = '<i class="'.$icon.'"></i>';
                 } elseif ($link['id'] == 'nstab-revision' || $link['id'] == 'nstab-main' || $link['id'] == 'nstab-brouillon') {
-                    $link['title'] = '<i class="' . $icon . '"></i> ' . wfMsg('this-page-link');
+                    $link['title'] = '<i class="'.$icon.'"></i> '.wfMsg('this-page-link');
                 } else {
-                    $link['title'] = '<i class="' . $icon . '"></i> ' . $link['title'];
+                    $link['title'] = '<i class="'.$icon.'"></i> '.$link['title'];
                 }
             } elseif ('user' == $which) {
                 switch ($key) {
@@ -882,9 +882,9 @@ if ($this->data['debug']) {
 
                 // Deal with special case 'notifications'
                 if ($key == 'notifications') {
-                    $link['title'] = '<i class="fa fa-exclamation"></i> &nbsp;' . wfMsg('notifications') .' &nbsp;&nbsp;<span class="badge">' . $link['title'] .'</span>';
+                    $link['title'] = '<i class="fa fa-exclamation"></i> &nbsp;'.wfMsg('notifications').' &nbsp;&nbsp;<span class="badge">'.$link['title'].'</span>';
                 } else {
-                    $link['title'] = '<i class="fa fa-' . $icon . '"></i> ' . $link['title'];
+                    $link['title'] = '<i class="fa fa-'.$icon.'"></i> '.$link['title'];
                 }
             }//end elseif
             if ('page' == $which) {
@@ -898,7 +898,9 @@ if ($this->data['debug']) {
         } else {
             return $this->nav($nav);
         }
-    }//end get_array_links
+    }
+
+//end get_array_links
 
 
     /*
@@ -910,7 +912,7 @@ if ($this->data['debug']) {
         global $wgTitle;
         $wikiPage = new WikiPage($wgTitle);
 
-        $infoBox = array();
+        $infoBox = [];
 
 
         /*
@@ -920,7 +922,7 @@ if ($this->data['debug']) {
         $contributorsString = '';
 
         //Add previous contributors
-        for ($i=0; $i < $contributors->count(); $i++) {
+        for ($i = 0; $i < $contributors->count(); $i++) {
             $curUser = $contributors->current();
             $contributorsString .= Linker::link($curUser->getUserPage(), $curUser->getName()).', ';
 
@@ -967,8 +969,8 @@ if ($this->data['debug']) {
         Create infoBox HTML
         */
 
-        $infoBoxHTML .= "";
-        $infoBoxHTML .= "<p class='contributors'>".wfMsg('last-contributors').': '.$infoBox['contributors']."</p>";
+        $infoBoxHTML .= '';
+        $infoBoxHTML .= "<p class='contributors'>".wfMsg('last-contributors').': '.$infoBox['contributors'].'</p>';
 
         switch ($infoBox['namespace']) {
             case '3000':
@@ -993,7 +995,7 @@ if ($this->data['debug']) {
                 break;
         }
 
-        $infoBoxHTML .= "<div class='icon_line'><span class='badge badge-shakepeers'>".$namespaceIcon.'</span><small><i class="icon icon-flag"></i>&nbsp;'.$language.' &nbsp;&nbsp;<i class="icon icon-pencil"></i>'.wfMsg('changed-on').': '.$infoBox['date_modified'].' - '.wfMsg('created-on').': '.$infoBox['date_created']."</small></div>";
+        $infoBoxHTML .= "<div class='icon_line'><span class='badge badge-shakepeers'>".$namespaceIcon.'</span><small><i class="icon icon-flag"></i>&nbsp;'.$language.' &nbsp;&nbsp;<i class="icon icon-pencil"></i>'.wfMsg('changed-on').': '.$infoBox['date_modified'].' - '.wfMsg('created-on').': '.$infoBox['date_created'].'</small></div>';
 
 
 
@@ -1009,7 +1011,7 @@ if ($this->data['debug']) {
         $cat = Category::newFromName('Thématiques');
         $members = $cat->getMembers();
 
-        $subcats = array();
+        $subcats = [];
 
         for ($i = 0; $i < $members->count(); $i++) {
             $cur = $members->current();
@@ -1021,7 +1023,7 @@ if ($this->data['debug']) {
         return $subcats;
     }
 
-    function getPageRawText($title)
+    public function getPageRawText($title)
     {
         global $wgParser, $wgUser;
         $pageTitle = Title::newFromText($title);
@@ -1033,16 +1035,17 @@ if ($this->data['debug']) {
             // get the text as static wiki text, but with already expanded templates,
             // which also e.g. to use {{#dpl}} (DPL third party extension) for dynamic menus.
             $parserOutput = $wgParser->preprocess($article->getRawText(), $pageTitle, $wgParserOptions);
+
             return $parserOutput;
         }
     }
 
-    function includePage($title)
+    public function includePage($title)
     {
         global $wgParser, $wgUser;
         $pageTitle = Title::newFromText($title);
         if (!$pageTitle->exists()) {
-            echo 'The page [[' . $title . ']] was not found.';
+            echo 'The page [['.$title.']] was not found.';
         } else {
             $article = new Article($pageTitle);
             $wgParserOptions = new ParserOptions($wgUser);
