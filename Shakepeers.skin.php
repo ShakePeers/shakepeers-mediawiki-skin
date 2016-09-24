@@ -649,11 +649,11 @@ $this->html('reporttime');
                 foreach ($page_nav[$i]['sublinks'] as $item) {
                     $output .= '<li>';
                     if (isset($item['linkTag'])) {
-                        $output .=  $item['linkTag'];
+                        $output .= $item['linkTag'];
                     } else {
-                        $output .=  "<a href='".$item['link']."' >".$item['title'].'</a>';
+                        $output .= "<a href='".$item['link']."' >".$item['title'].'</a>';
                     }
-                    $output .=  '</li>';
+                    $output .= '</li>';
                 }
                 $output .= '</ul>';
             }
