@@ -12,10 +12,9 @@ body {background: white;}
 .content_holder {margin-top: 0; border-top: 0;}
 
 .infobox {border-top: 2px black solid; border-bottom: 2px black solid; background: transparent;}
-.infobox .badge {background: transparent;} 
+.infobox .badge {background: transparent;}
 .infobox .icon {color: black;}
 
 h1, h2, h3, h4, h5, h6 {color: black !important;}
 
 .footer_background {display: none;}
-
