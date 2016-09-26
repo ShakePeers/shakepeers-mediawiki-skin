@@ -175,7 +175,6 @@ option.unclickable {
 }
 
 #toc:not(.toc-sidebar) {
-    display: none;
     float: right;
     margin: 0 0 1em 1em;
 }
@@ -811,4 +810,8 @@ display:none;
 
 .infobox {
  display:none;
+}
+
+#toc > ul > li {
+    list-style-type: none;
 }

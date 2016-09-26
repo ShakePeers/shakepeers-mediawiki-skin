@@ -1,0 +1,24 @@
+{
+  "name": "shakepeers-mediawiki-skin",
+  "description": "MediaWiki skin used on shakepeers.org",
+  "version": "1.0.0",
+  "author": "Mark Nightingale",
+  "bugs": "https://github.com/ShakePeers/shakepeers-mediawiki-skin/issues",
+  "devDependencies": {
+    "grunt": "~1.0.1",
+    "grunt-fixpack": "~0.1.0",
+    "grunt-jslint": "~1.1.14",
+    "grunt-jsonlint": "~1.1.0"
+  },
+  "homepage": "https://shakepeers.org/Accueil",
+  "keywords": [
+    "mediawiki",
+    "skin"
+  ],
+  "license": "GPL-2.0+",
+  "main": "shakepeers.php",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ShakePeers/shakepeers-mediawiki-skin.git"
+  }
+}

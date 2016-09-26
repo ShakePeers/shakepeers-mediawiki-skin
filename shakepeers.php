@@ -16,7 +16,7 @@ $wgExtensionCredits['skin'][] = [
     'path'        => __FILE__,
     'name'        => 'Shakepeers Skin',
     'url'         => 'http://shakepeers.org',
-    'author'      => '[http://marknightingale.net Mark Nightingale',
+    'author'      => '[http://marknightingale.net Mark Nightingale]',
     'description' => 'MediaWiki skin for Shakepeers using Bootstrap 3',
 ];
 

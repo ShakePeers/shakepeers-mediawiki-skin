@@ -1,0 +1,26 @@
+{
+  "name": "sourcesanspro-googlefont",
+  "license": "OFL",
+  "authors": [
+    "Paul D. Hunt"
+  ],
+  "homepage": "https://fonts.google.com/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/google-fonts-bower/sourcesanspro-bower.git"
+  },
+  "description": "Source Sans Pro font",
+  "keywords": [
+    "font",
+    "SANS_SERIF"
+  ],
+  "_release": "5136a2ba8b",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "5136a2ba8bde4f2f9e39bc5a149dbdf1f353c0c5"
+  },
+  "_source": "https://github.com/google-fonts-bower/sourcesanspro-bower.git",
+  "_target": "*",
+  "_originalSource": "sourcesanspro-googlefont"
+}
