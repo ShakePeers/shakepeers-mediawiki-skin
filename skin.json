@@ -51,22 +51,22 @@
         "fonts.css": {
           "media": "all"
         }
-      }
-    },
-    "script": [
-      "vendor/bootstrap/js/bootstrap.min.js",
-      "vendor/google-code-prettify/prettify.js",
-      "js/jquery.ba-dotimeout.min.js",
-      "vendor/jansy/jasny-bootstrap.min.js",
-      "js/behavior.js",
-      "myscripts.js"
-    ],
-    "dependencies": [
-      "jquery",
-      "jquery.mwExtension",
-      "jquery.client",
-      "jquery.cookie"
-    ]
+      },
+      "scripts": [
+        "vendor/bootstrap/js/bootstrap.min.js",
+        "vendor/google-code-prettify/prettify.js",
+        "js/jquery.ba-dotimeout.min.js",
+        "vendor/jansy/jasny-bootstrap.min.js",
+        "js/behavior.js",
+        "myscripts.js"
+      ],
+      "dependencies": [
+        "jquery",
+        "jquery.mwExtension",
+        "jquery.client",
+        "jquery.cookie"
+      ]
+    }
   },
   "ResourceFileModulePaths": {
     "localBasePath": "",
