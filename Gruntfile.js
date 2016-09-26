@@ -10,7 +10,7 @@ module.exports = function (grunt) {
             },
             jsonlint: {
                 manifests: {
-                    src: ['*.json'],
+                    src: ['*.json', '.bowerrc'],
                     options: {
                         format: true
                     }

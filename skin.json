@@ -47,6 +47,9 @@
         },
         "custom.css": {
           "media": "all"
+        },
+        "fonts.css": {
+          "media": "all"
         }
       }
     },

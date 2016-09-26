@@ -54,10 +54,6 @@ class SkinShakepeers extends SkinTemplate
 
         // we need to include this here so the file pathing is right
         $out->addStyle('shakepeers/fonts/font-awesome/css/font-awesome.min.css');
-
-        //Include Google Fonts
-        $out->addStyle('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic');
-        $out->addStyle('https://fonts.googleapis.com/css?family=Quicksand:300,400,600,700');
     }
 
 //end setupSkinUserCss
