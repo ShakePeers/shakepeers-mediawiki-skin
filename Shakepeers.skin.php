@@ -290,7 +290,7 @@ endif; ?>
                     <?php
                     if (count($this->data['content_actions']) > 0) {
                         $content_nav = $this->get_array_links($this->data['content_actions'], 'Page', 'page'); ?>
-                        <ul class="nav navbar-nav navbar-right content-actions"><?php echo $content_nav; ?></ul>
+                        <ul class="nav navbar-nav navbar-right content-actions <?php echo $this->data['loggedin'] ? 'loggedin' : '' ?>"><?php echo $content_nav; ?></ul>
                         <?php
 
                     } ?>

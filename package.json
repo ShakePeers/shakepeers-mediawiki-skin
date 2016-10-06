@@ -1,7 +1,7 @@
 {
   "name": "shakepeers-mediawiki-skin",
   "description": "MediaWiki skin used on shakepeers.org",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Mark Nightingale",
   "bugs": "https://github.com/ShakePeers/shakepeers-mediawiki-skin/issues",
   "devDependencies": {

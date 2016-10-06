@@ -598,3 +598,8 @@ body.oo-ui-window-isolated {
 body.oo-ui-window-isolated {
     font-size:1em;
 }
+
+/*Publication*/
+.ns-5000 .content-actions:not(.loggedin) {
+    display: none;
+}
