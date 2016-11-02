@@ -130,7 +130,7 @@ class ShakepeersTemplate extends QuickTemplate
                     <li> <?php echo Linker::linkKnown(Title::newFromText('Contribuer'), wfMessage('contribuer')->text()); ?></li>
                     <li> <?php echo Linker::linkKnown(Title::newFromText('Communauté'), wfMessage('communauté')->text()); ?></li>
                     <li> <?php echo Linker::linkKnown(Title::newFromText('Aide'), wfMessage('aide')->text()); ?></li>
-                    <li> <?php echo Linker::linkKnown(Title::newFromText('Contact'),wfMessage('contact')->text()); ?></li>
+                    <li> <?php echo Linker::linkKnown(Title::newFromText('Contact'), wfMessage('contact')->text()); ?></li>
                 </ul>
             </li>
         </ul>
