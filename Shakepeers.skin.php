@@ -991,7 +991,7 @@ $this->html('reporttime');
                 break;
         }
 
-        $infoBoxHTML .= "<div class='icon_line'><span class='badge badge-shakepeers'>".$namespaceIcon.'</span><small><i class="icon icon-flag"></i>&nbsp;'.$language.' &nbsp;&nbsp;<i class="icon icon-pencil"></i>'.wfMsg('changed-on').': '.$infoBox['date_modified'].' - '.wfMsg('created-on').': '.$infoBox['date_created'].'</small></div>';
+        $infoBoxHTML .= "<div class='icon_line'><span class='badge badge-shakepeers'>".$namespaceIcon.'</span><small><i class="icon icon-flag"></i>&nbsp;'.$language.' &nbsp;&nbsp;<i class="icon icon-pencil"></i>'.wfMessage('changed-on')->text().': '.$infoBox['date_modified'].' - '.wfMessage('created-on')->text().': '.$infoBox['date_created'].'</small></div>';
 
 
 
