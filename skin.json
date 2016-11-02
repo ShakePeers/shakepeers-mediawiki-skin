@@ -12,7 +12,7 @@
   "ValidSkinNames": {
     "shakepeers": "Shakepeers"
   },
-  "version": "1.0.3",
+  "version": "1.0.4",
   "MessagesDirs": {
     "Shakepeers": [
       "i18n"
