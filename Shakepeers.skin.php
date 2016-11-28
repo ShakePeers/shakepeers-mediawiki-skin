@@ -171,10 +171,10 @@ class ShakepeersTemplate extends QuickTemplate
                                 } ?>
                                 <ul class="nav navbar-nav navbar-right">
                                 <li>
-                                    <?php echo Linker::link(SpecialPage::getTitleFor('Userlogin'), wfMessage('createaccount')->text(), null, ['returnto' => $returnto, 'type' => 'signup']); ?>
+                                    <?php echo Linker::link(SpecialPage::getTitleFor('Userlogin'), wfMessage('createaccount')->text(), [], ['returnto' => $returnto, 'type' => 'signup']); ?>
                                 </li>
                                 <li>
-                                    <?php echo Linker::link(SpecialPage::getTitleFor('Userlogin'), wfMessage('login')->text(), null, ['returnto' => $returnto]); ?>
+                                    <?php echo Linker::link(SpecialPage::getTitleFor('Userlogin'), wfMessage('login')->text(), [], ['returnto' => $returnto]); ?>
                                 </li>
                             </ul>
                             <?php
