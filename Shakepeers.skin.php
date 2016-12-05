@@ -59,7 +59,6 @@ class SkinShakepeers extends SkinTemplate
 //end setupSkinUserCss
 }
 
-
 class ShakepeersTemplate extends QuickTemplate
 {
     /**
@@ -428,7 +427,6 @@ endif; ?>
                         // Debug
                         //echo "<pre>".print_r($categories, true)."</pre>";
 
-
                         // Start sidebar
                         echo "<!-- widget sidebar --><div class='col-md-4 widget_sidebar'>";
 
@@ -623,9 +621,6 @@ $this->html('reporttime');
         }
 
         //echo '<pre>'; print_r($page_nav); echo "</pre>";
-
-
-
 
         $output = '';
         for ($i = 0; $i < count($page_nav); $i++) {
@@ -839,7 +834,6 @@ $this->html('reporttime');
                         break;
                 }// end switch
 
-
                 // Remove text for 've-edit' and 'discuss'
                 if ($link['id'] == 'talk' || $link['id'] == 've-edit' || $link['id'] == 'back') {
                     $link['title'] = '<i class="'.$icon.'"></i>';
@@ -898,7 +892,6 @@ $this->html('reporttime');
 
 //end get_array_links
 
-
     /*
     Build and return the Info Box for the article
     */
@@ -909,7 +902,6 @@ $this->html('reporttime');
         $wikiPage = new WikiPage($wgTitle);
 
         $infoBox = [];
-
 
         /*
         ====== Contributors ========
@@ -959,8 +951,6 @@ $this->html('reporttime');
         $firstRevisionTimestamp = $wgTitle->getFirstRevision()->getTimestamp();
         $infoBox['date_created'] = date('d/m/y', strtotime($firstRevisionTimestamp));
 
-
-
         /*
         Create infoBox HTML
         */
@@ -992,8 +982,6 @@ $this->html('reporttime');
         }
 
         $infoBoxHTML .= "<div class='icon_line'><span class='badge badge-shakepeers'>".$namespaceIcon.'</span><small><i class="icon icon-flag"></i>&nbsp;'.$language.' &nbsp;&nbsp;<i class="icon icon-pencil"></i>'.wfMessage('changed-on')->text().': '.$infoBox['date_modified'].' - '.wfMessage('created-on')->text().': '.$infoBox['date_created'].'</small></div>';
-
-
 
         return $infoBoxHTML;
     }
