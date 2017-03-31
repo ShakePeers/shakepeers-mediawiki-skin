@@ -275,6 +275,11 @@ div.thumbinner {
     text-align: center;
     overflow: hidden;
 }
+.center .thumbinner {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 html .thumbimage {
     border: 1px solid #ccc;
 }
