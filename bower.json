@@ -1,0 +1,7 @@
+{
+  "name": "shakepeers-mediawiki-skin",
+  "dependencies": {
+    "quicksand-googlefont": "*",
+    "sourcesanspro-googlefont": "*"
+  }
+}

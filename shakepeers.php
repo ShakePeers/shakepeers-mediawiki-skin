@@ -16,13 +16,12 @@ $wgExtensionCredits['skin'][] = [
     'path'        => __FILE__,
     'name'        => 'Shakepeers Skin',
     'url'         => 'http://shakepeers.org',
-    'author'      => '[http://marknightingale.net Mark Nightingale',
+    'author'      => '[http://marknightingale.net Mark Nightingale]',
     'description' => 'MediaWiki skin for Shakepeers using Bootstrap 3',
 ];
 
 $wgValidSkinNames['shakepeers'] = 'Shakepeers';
 $wgAutoloadClasses['SkinShakepeers'] = __DIR__.'/Shakepeers.skin.php';
-
 
 $skinDirParts = explode(DIRECTORY_SEPARATOR, __DIR__);
 $skinDir = array_pop($skinDirParts);
@@ -39,8 +38,6 @@ $wgResourceModules['skins.shakepeers'] = [
         $skinDir.'/vendor/jansy/jasny-bootstrap.min.css'              => ['media' => 'all'],
         $skinDir.'/print.css'                                         => ['media' => 'print'],
         $skinDir.'/custom.css'                                        => ['media' => 'all'],
-
-
 
     ],
     'scripts' => [

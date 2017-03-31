@@ -1,0 +1,75 @@
+{
+  "name": "Shakepeers",
+  "author": [
+    "Mark Nightingale"
+  ],
+  "description": "MediaWiki skin for Shakepeers using Bootstrap 3",
+  "url": "https://github.com/ShakePeers/shakepeers-mediawiki-skin",
+  "descriptionmsg": "vector-skin-desc",
+  "license-name": "GPL-2.0+",
+  "namemsg": "skinname-shakepeers",
+  "type": "skin",
+  "ValidSkinNames": {
+    "shakepeers": "Shakepeers"
+  },
+  "version": "1.0.4",
+  "MessagesDirs": {
+    "Shakepeers": [
+      "i18n"
+    ]
+  },
+  "AutoloadClasses": {
+    "SkinShakepeers": "Shakepeers.skin.php"
+  },
+  "ResourceModules": {
+    "skins.shakepeers": {
+      "styles": {
+        "vendor/bootstrap/css/bootstrap.min.css": {
+          "media": "all"
+        },
+        "vendor/google-code-prettify/prettify.css": {
+          "media": "all"
+        },
+        "style.css": {
+          "media": "all"
+        },
+        "vendor/flatline/style.css": {
+          "media": "all"
+        },
+        "vendor/yamm/yamm.css": {
+          "media": "all"
+        },
+        "vendor/jansy/jasny-bootstrap.min.css": {
+          "media": "all"
+        },
+        "print.css": {
+          "media": "print"
+        },
+        "custom.css": {
+          "media": "all"
+        },
+        "fonts.css": {
+          "media": "all"
+        }
+      },
+      "scripts": [
+        "vendor/bootstrap/js/bootstrap.min.js",
+        "vendor/google-code-prettify/prettify.js",
+        "js/jquery.ba-dotimeout.min.js",
+        "vendor/jansy/jasny-bootstrap.min.js",
+        "js/behavior.js",
+        "myscripts.js"
+      ],
+      "dependencies": [
+        "jquery",
+        "jquery.mwExtension",
+        "jquery.client",
+        "jquery.cookie"
+      ]
+    }
+  },
+  "ResourceFileModulePaths": {
+    "localBasePath": "",
+    "remoteSkinPath": "shakepeers"
+  }
+}

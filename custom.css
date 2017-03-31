@@ -23,7 +23,7 @@ Colors =================
 
 /* Fonts */
 html, body {font-family: "Source Sans Pro", Helvetica, sans-serif; position:relative;}
-h1, h2, h3, h4, h5, h6 {font-family: "Quicksand"; ;}
+h1, h2, h3, h4, h5, h6 {font-family: "Quicksand", sans-serif;}
 h1 {font-size:2.1em; font-weight: bold; color: #2f99cc;}
 h2 {font-size: 1.9em; font-weight: bold; color: #ec6719;}
 h2 a {color: #ec6719;}
@@ -408,7 +408,7 @@ text-align: center;
 
 .ns-talk .lqt_start_discussion {display: inline-block;
 background-color: #2f99cc;
-font-family: "Quicksand";
+font-family: "Quicksand", sans-serif;
 font-weight: normal;
 padding:10px;
 flex: 1 0 0;
@@ -416,7 +416,7 @@ flex: 1 0 0;
 margin: 15px;}
 .ns-talk .lqt_start_discussion a {color: white !important;}
 
-.ns-talk .lqt-talkpage-header label {color: #2f99cc;font-family: "Quicksand";}
+.ns-talk .lqt-talkpage-header label {color: #2f99cc;font-family: "Quicksand", sans-serif;}
 
 .ns-talk .lqt-talkpage-search {flex:2 0 0; -webkit-flex:3 0 0;}
 .ns-talk .lqt_view_options {flex:2 0 0; -webkit-flex:3 0 0;}
@@ -436,7 +436,7 @@ margin: 15px;}
 
 .ns-talk .lqt_toc {width: 100%; border-bottom: #ec6719 solid 5px;}
 
-.ns-talk .lqt_toc thead {background-color: #ec6719; color: white; font-family: "Quicksand"; font-size: 1.3em;}
+.ns-talk .lqt_toc thead {background-color: #ec6719; color: white; font-family: "Quicksand", sans-serif; font-size: 1.3em;}
 .ns-talk .lqt_toc td {border: 0 !important;}
 .ns-talk .lqt_toc th {border: 0 !important;}
 
@@ -459,7 +459,7 @@ margin: 15px;}
 
 
 .ns-talk .lqt_threadlevel_commands {margin: 0;}
-.ns-talk .lqt_threadlevel_commands a {color: #ec6719; font-family: Quicksand;}
+.ns-talk .lqt_threadlevel_commands a {color: #ec6719; font-family: Quicksand, sans-serif;}
 .ns-talk .lqt-post-wrapper {border: none !important; border-radius: 15px;background-color: #F9F9F9}
 
 .ns-talk .lqt_thread .lqt-post-wrapper {background-color: #EBEBEB; margin: 20px 0;}
@@ -510,8 +510,8 @@ button#toggleInlineDiff {margin-bottom: 15px; background-color: #2f99cc; color: 
 
 table.diff td {border: none !important; background: none !important;}
 table.diff tr:first-child {border-bottom: none;}
-table.diff td.diff-otitle {background-color: #ec6719 !important; font-family: "Quicksand";}
-table.diff td.diff-ntitle {background-color: #2f99cc !important; font-family: "Quicksand";}
+table.diff td.diff-otitle {background-color: #ec6719 !important; font-family: "Quicksand", sans-serif;}
+table.diff td.diff-ntitle {background-color: #2f99cc !important; font-family: "Quicksand", sans-serif;}
 table.diff td.diff-otitle a, table.diff td.diff-ntitle a {color: white;}
 table.diff {font-size: 0.85em;}
 table.diff tr {border-bottom: 3px solid #ededed;}
@@ -597,4 +597,9 @@ body.oo-ui-window-isolated {
 
 body.oo-ui-window-isolated {
     font-size:1em;
+}
+
+/*Publication*/
+.ns-5000 .content-actions:not(.loggedin) {
+    display: none;
 }

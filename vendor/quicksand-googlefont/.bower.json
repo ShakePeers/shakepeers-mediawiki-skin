@@ -1,0 +1,26 @@
+{
+  "name": "quicksand-googlefont",
+  "license": "OFL",
+  "authors": [
+    "Andrew Paglinawan"
+  ],
+  "homepage": "https://fonts.google.com/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/google-fonts-bower/quicksand-bower.git"
+  },
+  "description": "Quicksand font",
+  "keywords": [
+    "font",
+    "SANS_SERIF"
+  ],
+  "_release": "4904fa5854",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "4904fa58547d7acd815819d1e237fa15b63362d1"
+  },
+  "_source": "https://github.com/google-fonts-bower/quicksand-bower.git",
+  "_target": "*",
+  "_originalSource": "quicksand-googlefont"
+}

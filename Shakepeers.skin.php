@@ -54,15 +54,10 @@ class SkinShakepeers extends SkinTemplate
 
         // we need to include this here so the file pathing is right
         $out->addStyle('shakepeers/fonts/font-awesome/css/font-awesome.min.css');
-
-        //Include Google Fonts
-        $out->addStyle('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic');
-        $out->addStyle('https://fonts.googleapis.com/css?family=Quicksand:300,400,600,700');
     }
 
 //end setupSkinUserCss
 }
-
 
 class ShakepeersTemplate extends QuickTemplate
 {
@@ -100,7 +95,7 @@ class ShakepeersTemplate extends QuickTemplate
             <a class="navmenu-brand" href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>"><img src="skins/shakepeers/images/shakepeers-white.png" alt="Shakepeers"/> <?php echo $wgSitename ?></a>
             <ul class="nav navmenu-nav">
                 <li class="dropdown">
-                    <?php echo Linker::link(Title::newFromText('Thématiques'), wfMsg('themes').' <b class="caret"></b>', ['class' => 'dropdown-toggle', 'data-toggle' => 'dropdown']); ?>
+                    <?php echo Linker::link(Title::newFromText('Thématiques'), wfMessage('themes')->text().' <b class="caret"></b>', ['class' => 'dropdown-toggle', 'data-toggle' => 'dropdown']); ?>
                     <ul class="dropdown-menu navmenu-nav" role="menu">
                         <?php // get themes
                         $themes = $this->getThemeCategories();
@@ -114,27 +109,27 @@ class ShakepeersTemplate extends QuickTemplate
             </li>
 
             <li class="dropdown">
-                <?php echo Linker::linkKnown(SpecialPage::getTitleFor('AllPages'), wfMsg('articles').' <span class="caret"></span>', ['class' => 'dropdown-toggle', 'data-toggle' => 'dropdown']); ?>
+                <?php echo Linker::linkKnown(SpecialPage::getTitleFor('AllPages'), wfMessage('articles')->text().' <span class="caret"></span>', ['class' => 'dropdown-toggle', 'data-toggle' => 'dropdown']); ?>
                 <ul class="dropdown-menu navmenu-nav">
                     <li>
-                        <?php echo Linker::linkKnown(Title::newFromText('Brouillon'), wfMsg('link-draft')); ?>
+                        <?php echo Linker::linkKnown(Title::newFromText('Brouillon'), wfMessage('link-draft')->text()); ?>
                     </li>
                     <li>
-                        <?php echo Linker::linkKnown(Title::newFromText('Révision'), wfMsg('link-revision')); ?>
+                        <?php echo Linker::linkKnown(Title::newFromText('Révision'), wfMessage('link-revision')->text()); ?>
                     </li>
                     <li>
-                        <?php echo Linker::linkKnown(Title::newFromText('Publication'), wfMsg('link-published')); ?>
+                        <?php echo Linker::linkKnown(Title::newFromText('Publication'), wfMessage('link-published')->text()); ?>
                     </li>
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle info_menu_button" data-toggle="dropdown"><?php echo wfMsg('information') ?> <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle info_menu_button" data-toggle="dropdown"><?php echo wfMessage('information')->text() ?> <span class="caret"></span></a>
                 <ul class="dropdown-menu navmenu-nav" role="menu">
-                    <li> <?php echo Linker::linkKnown(Title::newFromText('ShakePeers'), wfMsg('shakepeers')); ?></li>
-                    <li> <?php echo Linker::linkKnown(Title::newFromText('Contribuer'), wfMsg('contribuer')); ?></li>
-                    <li> <?php echo Linker::linkKnown(Title::newFromText('Communauté'), wfMsg('communauté')); ?></li>
-                    <li> <?php echo Linker::linkKnown(Title::newFromText('Aide'), wfMsg('aide')); ?></li>
-                    <li> <?php echo Linker::linkKnown(Title::newFromText('Contact'), wfMsg('contact')); ?></li>
+                    <li> <?php echo Linker::linkKnown(Title::newFromText('ShakePeers'), wfMessage('shakepeers')->text()); ?></li>
+                    <li> <?php echo Linker::linkKnown(Title::newFromText('Contribuer'), wfMessage('contribuer')->text()); ?></li>
+                    <li> <?php echo Linker::linkKnown(Title::newFromText('Communauté'), wfMessage('communauté')->text()); ?></li>
+                    <li> <?php echo Linker::linkKnown(Title::newFromText('Aide'), wfMessage('aide')->text()); ?></li>
+                    <li> <?php echo Linker::linkKnown(Title::newFromText('Contact'), wfMessage('contact')->text()); ?></li>
                 </ul>
             </li>
         </ul>
@@ -175,10 +170,10 @@ class ShakepeersTemplate extends QuickTemplate
                                 } ?>
                                 <ul class="nav navbar-nav navbar-right">
                                 <li>
-                                    <?php echo Linker::link(SpecialPage::getTitleFor('Userlogin'), wfMsg('createaccount'), null, ['returnto' => $returnto, 'type' => 'signup']); ?>
+                                    <?php echo Linker::link(SpecialPage::getTitleFor('Userlogin'), wfMessage('createaccount')->text(), [], ['returnto' => $returnto, 'type' => 'signup']); ?>
                                 </li>
                                 <li>
-                                    <?php echo Linker::link(SpecialPage::getTitleFor('Userlogin'), wfMsg('login'), null, ['returnto' => $returnto]); ?>
+                                    <?php echo Linker::link(SpecialPage::getTitleFor('Userlogin'), wfMessage('login')->text(), [], ['returnto' => $returnto]); ?>
                                 </li>
                             </ul>
                             <?php
@@ -212,30 +207,30 @@ class ShakepeersTemplate extends QuickTemplate
                             </li>
 
                     <li class="dropdown">
-                        <?php echo Linker::linkKnown(SpecialPage::getTitleFor('AllPages'), wfMsg('articles').' <span class="caret"></span>', ['class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role' => 'button', 'aria-expanded' => 'false']); ?>
+                        <?php echo Linker::linkKnown(SpecialPage::getTitleFor('AllPages'), wfMessage('articles')->text().' <span class="caret"></span>', ['class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role' => 'button', 'aria-expanded' => 'false']); ?>
                         <ul class="dropdown-menu">
                             <li>
-                                <?php echo Linker::linkKnown(Title::newFromText('Brouillon'), wfMsg('link-draft')); ?>
+                                <?php echo Linker::linkKnown(Title::newFromText('Brouillon'), wfMessage('link-draft')->text()); ?>
                             </li>
                             <li>
-                                <?php echo Linker::linkKnown(Title::newFromText('Révision'), wfMsg('link-revision')); ?>
+                                <?php echo Linker::linkKnown(Title::newFromText('Révision'), wfMessage('link-revision')->text()); ?>
                             </li>
                             <li>
-                                <?php echo Linker::linkKnown(Title::newFromText('Publication'), wfMsg('link-published')); ?>
+                                <?php echo Linker::linkKnown(Title::newFromText('Publication'), wfMessage('link-published')->text()); ?>
                             </li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <?php echo Linker::linkKnown(SpecialPage::getTitleFor('ShakePeers'), 'ShakePeers'.' <span class="caret"></span>', ['class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role' => 'button', 'aria-expanded' => 'false']); ?>
                         <ul class="dropdown-menu" role="menu">
-                            <li> <?php echo Linker::linkKnown(Title::newFromText('ShakePeers'), wfMsg('objectifs')); ?></li>
-                            <li> <?php echo Linker::linkKnown(Title::newFromText('Communauté'), wfMsg('communauté')); ?></li>
-                            <li> <?php echo Linker::linkKnown(Title::newFromText('ShakePeers:Association'), wfMsg('association')); ?></li>
-                            <li> <?php echo Linker::linkKnown(Title::newFromText('ShakePeers:Contribuer'), wfMsg('contribuer')); ?></li>
-                            <li> <?php echo Linker::linkKnown(Title::newFromText('Contact'), wfMsg('contact')); ?></li>
+                            <li> <?php echo Linker::linkKnown(Title::newFromText('ShakePeers'), wfMessage('objectifs')->text()); ?></li>
+                            <li> <?php echo Linker::linkKnown(Title::newFromText('Communauté'), wfMessage('communauté')->text()); ?></li>
+                            <li> <?php echo Linker::linkKnown(Title::newFromText('ShakePeers:Association'), wfMessage('association')->text()); ?></li>
+                            <li> <?php echo Linker::linkKnown(Title::newFromText('ShakePeers:Contribuer'), wfMessage('contribuer')->text()); ?></li>
+                            <li> <?php echo Linker::linkKnown(Title::newFromText('Contact'), wfMessage('contact')->text()); ?></li>
                         </ul>
                     </li>
-                    <li> <?php echo Linker::linkKnown(Title::newFromText('Aide'), wfMsg('aide')); ?></li>
+                    <li> <?php echo Linker::linkKnown(Title::newFromText('Aide'), wfMessage('aide')->text()); ?></li>
                 </ul>
                 <!-- End nav bar -->
             </div>
@@ -246,7 +241,7 @@ class ShakepeersTemplate extends QuickTemplate
     Add mainpage central quote block
     -->
     <?php if ($wgTitle->isMainPage()) {
-                                echo "<h2 class='homepage_quote'>".wfMsg('slogan').'</h2>';
+                                echo "<h2 class='homepage_quote'>".wfMessage('slogan')->text().'</h2>';
                             } ?>
     <!--
     End mainpage block
@@ -262,21 +257,21 @@ class ShakepeersTemplate extends QuickTemplate
                     <div class="col-xs-4 published">
                         <a href="#published">
                             <i class="icon-ok-sign"></i>
-                            <?php echo wfMsg('articles-published-title')?>
+                            <?php echo wfMessage('articles-published-title')->text()?>
                         </a>
                     </div>
                     <div class="col-xs-4 revision">
                         <a href="#revision">
 
                             <i class="icon-pencil"></i>
-                            <?php echo wfMsg('articles-revision-title')?>
+                            <?php echo wfMessage('articles-revision-title')->text()?>
                         </a>
                     </div>
                     <div class="col-xs-4 draft">
                         <a href="#draft">
 
                             <i class="icon-file"></i>
-                            <?php echo wfMsg('articles-draft-title')?>
+                            <?php echo wfMessage('articles-draft-title')->text()?>
                         </a>
                     </div>
                 </div>
@@ -294,7 +289,7 @@ endif; ?>
                     <?php
                     if (count($this->data['content_actions']) > 0) {
                         $content_nav = $this->get_array_links($this->data['content_actions'], 'Page', 'page'); ?>
-                        <ul class="nav navbar-nav navbar-right content-actions"><?php echo $content_nav; ?></ul>
+                        <ul class="nav navbar-nav navbar-right content-actions <?php echo $this->data['loggedin'] ? 'loggedin' : '' ?>"><?php echo $content_nav; ?></ul>
                         <?php
 
                     } ?>
@@ -432,7 +427,6 @@ endif; ?>
                         // Debug
                         //echo "<pre>".print_r($categories, true)."</pre>";
 
-
                         // Start sidebar
                         echo "<!-- widget sidebar --><div class='col-md-4 widget_sidebar'>";
 
@@ -443,7 +437,7 @@ endif; ?>
                         <div class="articles_widget articles_widget-<?php echo $category['slug']; ?>">
                             <h3>
                                 <span class="icon <?php echo $category['icon'] ?>"></span>
-                                <?php echo Linker::linkKnown(Title::newFromText($category['pageTitle']), wfMsg("articles-{$category['slug']}-title")); ?>
+                                <?php echo Linker::linkKnown(Title::newFromText($category['pageTitle']), wfMessage("articles-{$category['slug']}-title")->text()); ?>
                                 <a class="rss_button" href="<?php echo $category['feedUrl']; ?>"><i class="icon fa fa-rss"></i></a>
                             </h3>
                             <?php
@@ -463,7 +457,7 @@ endif; ?>
         echo $parsed->getText();
 
                             // Add link
-                            echo '<p class="see_more_link_holder">'.Linker::linkKnown(Title::newFromText($category['pageTitle']), wfMsg("see-{$category['slug']}-articles").' <span class="icon icon-chevron-right"></span>').'</p>'; ?>
+                            echo '<p class="see_more_link_holder">'.Linker::linkKnown(Title::newFromText($category['pageTitle']), wfMessage("see-{$category['slug']}-articles")->text().' <span class="icon icon-chevron-right"></span>').'</p>'; ?>
                             </div>
 
                         <?php
@@ -587,7 +581,7 @@ $this->html('reporttime');
         'link'  => 'javascript:void(0)',
         'class' => 'collabspible dropdown',
         'title' => '<i class="icon icon-wrench"></i><span class="caret"></span>',
-        'text'  => wfMsg('toolbox'),
+        'text'  => wfMessage('toolbox')->text(),
         ];
 
         // Build the array
@@ -598,7 +592,7 @@ $this->html('reporttime');
                     'id'      => 'print',
                     'linkTag' => Linker::link(
                         $wgTitle,
-                        '<i class="icon icon-print"></i> '.wfMsg('print-version'),
+                        '<i class="icon icon-print"></i> '.wfMessage('print-version')->text(),
                         [],
                         ['printable' => 'yes']
                     ),
@@ -628,9 +622,6 @@ $this->html('reporttime');
 
         //echo '<pre>'; print_r($page_nav); echo "</pre>";
 
-
-
-
         $output = '';
         for ($i = 0; $i < count($page_nav); $i++) {
             if ($page_nav[$i]['id'] == 'information' || $page_nav[$i]['id'] == 'tools') {
@@ -649,11 +640,11 @@ $this->html('reporttime');
                 foreach ($page_nav[$i]['sublinks'] as $item) {
                     $output .= '<li>';
                     if (isset($item['linkTag'])) {
-                        $output .=  $item['linkTag'];
+                        $output .= $item['linkTag'];
                     } else {
-                        $output .=  "<a href='".$item['link']."' >".$item['title'].'</a>';
+                        $output .= "<a href='".$item['link']."' >".$item['title'].'</a>';
                     }
-                    $output .=  '</li>';
+                    $output .= '</li>';
                 }
                 $output .= '</ul>';
             }
@@ -843,12 +834,11 @@ $this->html('reporttime');
                         break;
                 }// end switch
 
-
                 // Remove text for 've-edit' and 'discuss'
                 if ($link['id'] == 'talk' || $link['id'] == 've-edit' || $link['id'] == 'back') {
                     $link['title'] = '<i class="'.$icon.'"></i>';
                 } elseif ($link['id'] == 'nstab-revision' || $link['id'] == 'nstab-main' || $link['id'] == 'nstab-brouillon') {
-                    $link['title'] = '<i class="'.$icon.'"></i> '.wfMsg('this-page-link');
+                    $link['title'] = '<i class="'.$icon.'"></i> '.wfMessage('this-page-link')->text();
                 } else {
                     $link['title'] = '<i class="'.$icon.'"></i> '.$link['title'];
                 }
@@ -882,7 +872,7 @@ $this->html('reporttime');
 
                 // Deal with special case 'notifications'
                 if ($key == 'notifications') {
-                    $link['title'] = '<i class="fa fa-exclamation"></i> &nbsp;'.wfMsg('notifications').' &nbsp;&nbsp;<span class="badge">'.$link['title'].'</span>';
+                    $link['title'] = '<i class="fa fa-exclamation"></i> &nbsp;'.wfMessage('notifications')->text().' &nbsp;&nbsp;<span class="badge">'.$link['title'].'</span>';
                 } else {
                     $link['title'] = '<i class="fa fa-'.$icon.'"></i> '.$link['title'];
                 }
@@ -902,7 +892,6 @@ $this->html('reporttime');
 
 //end get_array_links
 
-
     /*
     Build and return the Info Box for the article
     */
@@ -913,7 +902,6 @@ $this->html('reporttime');
         $wikiPage = new WikiPage($wgTitle);
 
         $infoBox = [];
-
 
         /*
         ====== Contributors ========
@@ -963,14 +951,12 @@ $this->html('reporttime');
         $firstRevisionTimestamp = $wgTitle->getFirstRevision()->getTimestamp();
         $infoBox['date_created'] = date('d/m/y', strtotime($firstRevisionTimestamp));
 
-
-
         /*
         Create infoBox HTML
         */
 
         $infoBoxHTML .= '';
-        $infoBoxHTML .= "<p class='contributors'>".wfMsg('last-contributors').': '.$infoBox['contributors'].'</p>';
+        $infoBoxHTML .= "<p class='contributors'>".wfMessage('last-contributors')->text().': '.$infoBox['contributors'].'</p>';
 
         switch ($infoBox['namespace']) {
             case '3000':
@@ -988,16 +974,14 @@ $this->html('reporttime');
         }
         switch ($infoBox['language']) {
             case 'fr':
-                $language = wfMsg('french');
+                $language = wfMessage('french')->text();
                 break;
             case 'en':
-                $language = wfMsg('english');
+                $language = wfMessage('english')->text();
                 break;
         }
 
-        $infoBoxHTML .= "<div class='icon_line'><span class='badge badge-shakepeers'>".$namespaceIcon.'</span><small><i class="icon icon-flag"></i>&nbsp;'.$language.' &nbsp;&nbsp;<i class="icon icon-pencil"></i>'.wfMsg('changed-on').': '.$infoBox['date_modified'].' - '.wfMsg('created-on').': '.$infoBox['date_created'].'</small></div>';
-
-
+        $infoBoxHTML .= "<div class='icon_line'><span class='badge badge-shakepeers'>".$namespaceIcon.'</span><small><i class="icon icon-flag"></i>&nbsp;'.$language.' &nbsp;&nbsp;<i class="icon icon-pencil"></i>'.wfMessage('changed-on')->text().': '.$infoBox['date_modified'].' - '.wfMessage('created-on')->text().': '.$infoBox['date_created'].'</small></div>';
 
         return $infoBoxHTML;
     }
@@ -1049,7 +1033,7 @@ $this->html('reporttime');
         } else {
             $article = new Article($pageTitle);
             $wgParserOptions = new ParserOptions($wgUser);
-            $parserOutput = $wgParser->parse($article->getRawText(), $pageTitle, $wgParserOptions);
+            $parserOutput = $wgParser->parse($article->getText(), $pageTitle, $wgParserOptions);
             echo $parserOutput->getText();
         }
     }
