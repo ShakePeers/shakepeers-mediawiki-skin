@@ -322,7 +322,7 @@ endif; ?>
                             <section class="col-md-3 toc-sidebar"></section>
                             <section class="col-md-9 wiki-body-section">
                                 <?php
-                    }//end if ?>
+                    }//end if?>
                             <?php if ($this->data['sitenotice']) {
                         ?><div id="siteNotice" class="alert-message warning"><?php $this->html('sitenotice') ?></div><?php
                     } ?>
@@ -376,7 +376,7 @@ endif; ?>
                                 ?>
                             </section></section>
                             <?php
-                            }//end if ?>
+                            }//end if?>
                     </div><!-- wikibody -->
 
                     <!-- Display Article boxes on Homepage -->
@@ -617,7 +617,7 @@ $this->html('bottomscripts'); /* JS call to runBodyOnloadHook */
             if ($page_nav[$i]['id'] == 'information' || $page_nav[$i]['id'] == 'tools') {
                 $liAtts = 'class="dropdown"';
                 $linkAtts = 'class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"';
-            } else if ($page_nav[$i]['id'] == 've-edit') {
+            } elseif ($page_nav[$i]['id'] == 've-edit') {
                 //This is now a requirement to enable the visual editor
                 $liAtts = '';
                 $linkAtts = 'id="ca-edit"';
