@@ -617,6 +617,10 @@ $this->html('bottomscripts'); /* JS call to runBodyOnloadHook */
             if ($page_nav[$i]['id'] == 'information' || $page_nav[$i]['id'] == 'tools') {
                 $liAtts = 'class="dropdown"';
                 $linkAtts = 'class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"';
+            } else if ($page_nav[$i]['id'] == 've-edit') {
+                //This is now a requirement to enable the visual editor
+                $liAtts = '';
+                $linkAtts = 'id="ca-edit"';
             } else {
                 $liAtts = '';
                 $linkAtts = '';
