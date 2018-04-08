@@ -1,12 +1,12 @@
 <?php
 /**
-* Bootstrap - A basic MediaWiki skin based on Twitter's excellent Bootstrap CSS framework.
-*
-* @Version   1.0.0
-* @Author    Matthew Batchelder <borkweb@gmail.com>
-* @Copyright Matthew Batchelder 2012 - http://borkweb.com/
-* @License:  GPLv2 (http://www.gnu.org/copyleft/gpl.html)
-*/
+ * Bootstrap - A basic MediaWiki skin based on Twitter's excellent Bootstrap CSS framework.
+ *
+ * @Version   1.0.0
+ * @Author    Matthew Batchelder <borkweb@gmail.com>
+ * @Copyright Matthew Batchelder 2012 - http://borkweb.com/
+ * @License:  GPLv2 (http://www.gnu.org/copyleft/gpl.html)
+ */
 if (!defined('MEDIAWIKI')) {
     die(-1);
 }//end if
@@ -39,7 +39,7 @@ class SkinShakepeers extends SkinTemplate
         $out->addMeta('viewport', 'width=device-width, initial-scale=1, maximum-scale=1');
     }
 
-//end initPage
+    //end initPage
 
     /**
      * prepares the skin's CSS.
@@ -56,7 +56,7 @@ class SkinShakepeers extends SkinTemplate
         $out->addStyle('shakepeers/fonts/font-awesome/css/font-awesome.min.css');
     }
 
-//end setupSkinUserCss
+    //end setupSkinUserCss
 }
 
 class ShakepeersTemplate extends QuickTemplate
@@ -160,7 +160,6 @@ class ShakepeersTemplate extends QuickTemplate
                                     <?php echo $user_nav; ?>
                                 </ul>
                                 <?php
-
                                 }
                             } else {  // else if is not logged in
                                 if (isset($_GET['returnto'])) {
@@ -177,7 +176,6 @@ class ShakepeersTemplate extends QuickTemplate
                                 </li>
                             </ul>
                             <?php
-
                             }//end if?>
                     </div>
                 </div>
@@ -291,7 +289,6 @@ endif; ?>
                         $content_nav = $this->get_array_links($this->data['content_actions'], 'Page', 'page'); ?>
                         <ul class="nav navbar-nav navbar-right content-actions <?php echo $this->data['loggedin'] ? 'loggedin' : '' ?>"><?php echo $content_nav; ?></ul>
                         <?php
-
                     } ?>
                     <!--/page editing -->
                 <!-- Info Box -->
@@ -325,13 +322,10 @@ endif; ?>
                             <section class="col-md-3 toc-sidebar"></section>
                             <section class="col-md-9 wiki-body-section">
                                 <?php
-
-                    }//end if
-                            ?>
+                    }//end if ?>
                             <?php if ($this->data['sitenotice']) {
-                                ?><div id="siteNotice" class="alert-message warning"><?php $this->html('sitenotice') ?></div><?php
-
-                            } ?>
+                        ?><div id="siteNotice" class="alert-message warning"><?php $this->html('sitenotice') ?></div><?php
+                    } ?>
                             <?php if ($this->data['undelete']) : ?>
                                 <!-- undelete -->
                                 <div id="contentSub2"><?php $this->html('undelete') ?></div>
@@ -382,9 +376,7 @@ endif; ?>
                                 ?>
                             </section></section>
                             <?php
-
-                            }//end if
-                        ?>
+                            }//end if ?>
                     </div><!-- wikibody -->
 
                     <!-- Display Article boxes on Homepage -->
@@ -424,13 +416,13 @@ endif; ?>
                             ]
                         );
 
-                        // Debug
-                        //echo "<pre>".print_r($categories, true)."</pre>";
+        // Debug
+        //echo "<pre>".print_r($categories, true)."</pre>";
 
-                        // Start sidebar
-                        echo "<!-- widget sidebar --><div class='col-md-4 widget_sidebar'>";
+        // Start sidebar
+        echo "<!-- widget sidebar --><div class='col-md-4 widget_sidebar'>";
 
-                        // Build content box
+        // Build content box
                         foreach ($categories as $category) : ?>
                         <!-- <?php echo $category['slug'] ?> articles -->
                         <a name="<?php echo $category['slug']; ?>"></a>
@@ -448,16 +440,16 @@ endif; ?>
                             count         = 4
                             }}";
 
-                            //  Parse
-                            $title = $wgTitle;
+        //  Parse
+        $title = $wgTitle;
         $parser = new Parser();
 
-                            // Output
-                            $parsed = $parser->parse($text, $wgTitle, new ParserOptions());
+        // Output
+        $parsed = $parser->parse($text, $wgTitle, new ParserOptions());
         echo $parsed->getText();
 
-                            // Add link
-                            echo '<p class="see_more_link_holder">'.Linker::linkKnown(Title::newFromText($category['pageTitle']), wfMessage("see-{$category['slug']}-articles")->text().' <span class="icon icon-chevron-right"></span>').'</p>'; ?>
+        // Add link
+        echo '<p class="see_more_link_holder">'.Linker::linkKnown(Title::newFromText($category['pageTitle']), wfMessage("see-{$category['slug']}-articles")->text().' <span class="icon icon-chevron-right"></span>').'</p>'; ?>
                             </div>
 
                         <?php
@@ -491,7 +483,7 @@ endif; ?>
 </div><!-- bottom -->
 <?php
 $this->html('bottomscripts'); /* JS call to runBodyOnloadHook */
-$this->html('reporttime');
+        $this->html('reporttime');
 
         if ($this->data['debug']) {
             ?>
@@ -499,17 +491,15 @@ $this->html('reporttime');
     <?php $this->text('debug'); ?>
     -->
     <?php
-
         }//end if
 ?>
 </div>
 </body>
 </html>
 <?php
-
     }
 
-//end execute
+    //end execute
 
     /**
      * Render one or more navigations elements by name, automatically reveresed
@@ -552,7 +542,7 @@ $this->html('reporttime');
         return $output;
     }
 
-//end nav
+    //end nav
 
     private function page_nav($nav)
     {
@@ -689,7 +679,7 @@ $this->html('reporttime');
         return $output;
     }
 
-//end nav_select
+    //end nav_select
 
     private function get_page_links($source)
     {
@@ -763,7 +753,7 @@ $this->html('reporttime');
         return $nav;
     }
 
-//end get_page_links
+    //end get_page_links
 
     private function get_array_links($array, $title, $which)
     {
@@ -890,7 +880,7 @@ $this->html('reporttime');
         }
     }
 
-//end get_array_links
+    //end get_array_links
 
     /*
     Build and return the Info Box for the article
