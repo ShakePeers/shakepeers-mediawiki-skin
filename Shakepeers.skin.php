@@ -1033,7 +1033,7 @@ $this->html('reporttime');
         } else {
             $article = new Article($pageTitle);
             $wgParserOptions = new ParserOptions($wgUser);
-            $parserOutput = $wgParser->parse($article->getText(), $pageTitle, $wgParserOptions);
+            $parserOutput = $article->getPage()->getContent()->getParserOutput($pageTitle, $wgParserOptions);
             echo $parserOutput->getText();
         }
     }
